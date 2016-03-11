@@ -7,9 +7,10 @@ class login extends CI_Controller {
         $this->load->model('login_model');
         $this->load->helper('url_helper');
     }
-    public function index($id)
+    public function index()
     {
-        $password='123456';
+        $id = $this->input->post('id');
+        $password=$this->input->post('password');
         $login= $this->login_model->getlog($id);
         if($password==$login['t_password']){
             if($login['t_power']==1)    //1为普通管理员
