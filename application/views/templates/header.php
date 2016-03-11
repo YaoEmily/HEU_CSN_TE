@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>CodeIgniter Tutorial</title>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    </head>
-    <body>
 
-        <h1><?php echo $title; ?></h1>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>哈工程6系教师监考系统登录</title>
+    <link href="/public/css/stylesheet.css" rel="stylesheet">
+</head>

@@ -25,3 +25,9 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.stTheme.cache
 *.sublime-workspace
 *.sublime-project
+
+
+# TiaossuP的前端bower和grunt
+
+/public/assets/bower
+/node_modules

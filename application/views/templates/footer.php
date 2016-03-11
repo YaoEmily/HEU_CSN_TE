@@ -1,3 +1,3 @@
-        <em>&copy; 2015</em>
-    </body>
+    <script src="/public/js/javascript.js"></script>
+</body>
 </html>
