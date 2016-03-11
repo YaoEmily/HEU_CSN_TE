@@ -7,7 +7,12 @@ class login extends CI_Controller {
         $this->load->model('login_model');
         $this->load->helper('url_helper');
     }
-    public function index()
+    public function index(){
+        $this->load->view('templates/header.php');
+        $this->load->view('templates/login.html');
+        $this->load->view('templates/footer.php');
+    }
+    public function log()
     {
         $id = $this->input->post('id');
         $password=$this->input->post('password');
