@@ -37,6 +37,5 @@ class login extends CI_Controller {
             echo '帐号或密码错误';     //密码错误处理方式
         }
     }
- 
 
 }
