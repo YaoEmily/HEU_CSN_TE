@@ -12,16 +12,23 @@ class teachermanage extends CI_Controller {
 
     }
     public function index(){
-        $this->load->view('templates/header.php');
-        $this->load->view('templates/login.html');
-        $this->load->view('templates/footer.php');z
+        $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
+        $this->load->view('templates/header.php',$data);
+        $this->load->view('templates/manage_menu.php',array('current' => 'teachermanage'));
+        $this->load->view('manage/teachermanage.php');
+        $this->load->view('templates/footer.php');
     }
     public function getall(){
         $this->logstate->adminstate();
         $allinfo=$this->teachermanage_model->getall();
+        $result = $allinfo->result();
+        // foreach ($result as $key) {
+        //     $key[""]
+        // }
+        $data=array('data' => $allinfo->result());
         $this->output
             ->set_content_type('application/json')
-            ->set_output(json_encode($allinfo->result()));
+            ->set_output(json_encode($data));
     }
     public function deleteinfo()
     {

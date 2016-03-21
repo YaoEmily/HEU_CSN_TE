@@ -31,6 +31,6 @@
             </div>
             <!-- /.navbar-static-side -->
            	<script type="text/javascript">
-           		$('#<?php echo $current;?>').addClass('active');
+                document.getElementById("<?php echo $current;?>").class="active";
            	</script>
         </nav>

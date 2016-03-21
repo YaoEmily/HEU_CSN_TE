@@ -13,8 +13,11 @@ module.exports = function(grunt) {
         //将进行的合并项
         src: [
           './public/assets/bower/jquery/dist/jquery.js',
+          './public/assets/bower/datatables/media/js/jquery.dataTables.min.js',
+          './public/assets/bower/datatables/media/js/dataTables.bootstrap.min.js',
           './public/assets/bower/bootstrap/dist/js/bootstrap.js',
           './public/assets/bower/startbootstrap-sb-admin-2/dist/js/sb-admin-2.js',
+          './public/assets/bower/metisMenu/dist/metisMenu.min.js',
           './public/assets/js/base.js',
         ],
         //合并后放置在
@@ -27,7 +30,10 @@ module.exports = function(grunt) {
       app: {
         src: [
           './public/assets/bower/bootstrap/dist/css/bootstrap.css',
+          './public/assets/bower/font-awesome/css/font-awesome.css',
+          './public/assets/bower/datatables/css/dataTables.bootstrap.css',
           './public/assets/css/base.css',
+          './public/assets/bower/metisMenu/dist/metisMenu.min.css',
           './public/assets/bower/startbootstrap-sb-admin-2/dist/css/sb-admin-2.css'
         ],
         dest: './public/assets/css/stylesheet.css'
@@ -51,9 +57,25 @@ module.exports = function(grunt) {
           {
             expand: true,
             flatten: true,
-            cwd: './public/assets/bower/bootstrap/fonts/',
+            cwd: './public/assets/bower/font-awesome/fonts/',
             src: ['**'], 
             dest: './public/assets/fonts/', 
+            filter: 'isFile'
+          },
+          {
+            expand: true,
+            flatten: true,
+            cwd: './public/assets/bower/datatables.net-dt/images',
+            src: ['**'], 
+            dest: './public/assets/images/', 
+            filter: 'isFile'
+          },
+          {
+            expand: true,
+            flatten: true,
+            cwd: './public/assets/bower/datatables-plugins/i18n',
+            src: ['**'], 
+            dest: './public/assets/i18n/', 
             filter: 'isFile'
           },
         ]
