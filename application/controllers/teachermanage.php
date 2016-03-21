@@ -14,12 +14,9 @@ class teachermanage extends CI_Controller {
     public function index(){
         $this->logstate->adminstate();
         $allinfo=$this->teachermanage_model->getall();
-        foreach ($allinfo->result() as $row)
-        {
-            echo $row->t_id;
-            echo $row->t_name;
-            echo $row->t_tel;
-        }
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($allinfo->result()));
     }
     public function deleteinfo()
     {
