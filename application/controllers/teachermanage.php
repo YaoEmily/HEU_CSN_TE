@@ -12,6 +12,11 @@ class teachermanage extends CI_Controller {
 
     }
     public function index(){
+        $this->load->view('templates/header.php');
+        $this->load->view('templates/login.html');
+        $this->load->view('templates/footer.php');z
+    }
+    public function getall(){
         $this->logstate->adminstate();
         $allinfo=$this->teachermanage_model->getall();
         $this->output
