@@ -18,8 +18,9 @@ class teachermanage extends CI_Controller {
         $this->load->view('templates/footer.php');
     }
 
-    public function getpassword($id){
+    public function getpassword(){
         if($this->logstate->adminstate()=='true'){
+            $id=$this->input->get('t_id');
             $password=$this->teachermanage_model->getpassword($id);
             $data=array('msg' => 'true','pas' => $password->result());
             $this->output
