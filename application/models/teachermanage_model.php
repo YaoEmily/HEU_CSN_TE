@@ -25,6 +25,16 @@ class teachermanage_model extends CI_Model {
 	}
 	public function getpassword($id){
 		$query = $this->db->query("select t_password from teacher where t_id = ".$id);
-		return $query;
+		return $query->row_array();
+	}
+	public function insertteacher($id,$password,$name,$tel){
+		$teacher = array(
+        't_id' => $id,
+        't_password' => $password,
+        't_name' => $name,
+        't_tel'=>$tel,
+        't_power'=>'0',
+    	);
+    	return $this->db->insert('teacher', $teacher);
 	}
 }

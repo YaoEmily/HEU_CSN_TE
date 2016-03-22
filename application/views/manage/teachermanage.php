@@ -98,7 +98,7 @@
                     <input id="teachermanage-pass-t_id" class="form-control" placeholder="" value="" disabled></div>
                 <div class="form-group">
                     <label>密码</label>
-                    <input id="teachermanage-pass-t_password" class="form-control" placeholder="*"  value="" ></div>
+                    <input id="teachermanage-pass-t_password" class="form-control" placeholder="*"  value="" type="text"></div>
             </div>
             <div class="modal-footer panel-footer">
                 <button class='btn btn-warning' type='button' onclick="passsubmit()">修改</button>
@@ -317,14 +317,14 @@
             }
             function passsubmit() {
                 var id = $("#teachermanage-pass-t_id").val();
-                var name = $("#teachermanage-pass-t_password").val();
+                var t_password = $("#teachermanage-pass-t_password").val();
                 $.ajax( {  
-                    url:'/teachermanage/updateinfo',// 跳转到 action  
+                    url:'/teachermanage/updatepassword',// 跳转到 action  
                     data:{  
                              t_id : id,
                              t_password : t_password,
                     },
-                    type:'post',
+                    type:'put',
                     cache:false,
                     dataType:'json',
                     success:function(data) {  
@@ -341,12 +341,10 @@
             }
             function delesubmit() {
                 var id = $("#teachermanage-pass-t_id").val();
-                var name = $("#teachermanage-pass-t_password").val();
                 $.ajax( {  
                     url:'/teachermanage/updateinfo',// 跳转到 action  
                     data:{  
                              t_id : id,
-                             t_password : t_password,
                     },
                     type:'post',
                     cache:false,

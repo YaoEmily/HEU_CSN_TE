@@ -22,7 +22,7 @@ class teachermanage extends CI_Controller {
         if($this->logstate->adminstate()=='true'){
             $id=$this->input->get('t_id');
             $password=$this->teachermanage_model->getpassword($id);
-            $data=array('msg' => 'true','pas' => $password->result());
+            $data=array('msg' => 'true','pas' => $password['t_password']);
             $this->output
                 ->set_content_type('application/json')
                 ->set_output(json_encode($data));
@@ -30,31 +30,66 @@ class teachermanage extends CI_Controller {
     }
 
     public function getall(){
-        $this->logstate->adminstate();
-        $allinfo=$this->teachermanage_model->getall();
-        $result = $allinfo->result();
-        $data=array('data' => $allinfo->result());
-        $this->output
-            ->set_content_type('application/json')
-            ->set_output(json_encode($data));
+        if($this->logstate->adminstate()=='true'){
+            $allinfo=$this->teachermanage_model->getall();
+            $result = $allinfo->result();
+            $data=array('data' => $allinfo->result());
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($data));
+        }
     }
 
     public function deleteinfo()
     {
-        $this->logstate->adminstate();
-        $id=$this->input->input_stream('id');
-        $this->teachermanage_model->delete($id);
+        if($this->logstate->adminstate()=='true'){
+            $id=$this->input->post('id');
+            $data=array('msg' => $this->teachermanage_model->delete($id));
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($data));
+        }
     }
     public function updatetel(){
-        $this->logstate->adminstate();
-        $id=$this->input->input_stream('id');
-        $tel=$this->input->input_stream('tel');
-        $this->teachermanage_model->updatetel($id,$tel);
+        if($this->logstate->adminstate()=='true'){
+            $id=$this->input->post('id');
+            $tel=$this->input->post('tel');
+            $data=array('msg' =>$this->teachermanage_model->updatetel($id,$tel));
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($data));
+        }
     }
     public function updatepassword(){
-        $this->logstate->adminstate();
-        $id=$this->input->input_stream('id');
-        $password=$this->input->input_stream('password');
-        $this->teachermanage_model->updatepassword($id,$password);
+        if($this->logstate->adminstate()=='true'){
+            $id=$this->input->post('t_id');
+            $password=$this->input->post('t_password');
+            if($this->teachermanage_model->updatepassword($id,$password)=='true'){
+                $data=array('msg' => 'true');
+            }
+            else{
+                $data=array('msg' => 'false');
+            }
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($data));
+        }
+    }
+    public function insertteacher(){
+        if($this->logstate->adminstate()=='true'){
+            $id=$this->input->post('id');
+            $password=$this->input->post('password');
+            $name=$this->input->post('name');
+            $tel=$this->input->post('tel');
+            if($this->teachermanage_model->insertteacher($id,$password,$name,$tel)=='true'){
+                $data=array('msg' => 'true');
+            }
+            else{
+                $data=array('msg' => 'false');
+            }
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($data));
+        }
     }
 }
