@@ -23,4 +23,8 @@ class teachermanage_model extends CI_Model {
 		$query = $this->db->query("update teacher set t_password = ".$password." where t_id = ".$id);
 		return $query;
 	}
+	public function getpassword($id){
+		$query = $this->db->query("select t_password from teacher where t_id = ".$id);
+		return $query;
+	}
 }

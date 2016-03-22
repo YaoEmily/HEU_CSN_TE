@@ -1,6 +1,8 @@
 {
   "name": "HEU_CSN_TE",
   "dependencies": {
-    "startbootstrap-sb-admin-2": "^1.0.8"
+    "startbootstrap-sb-admin-2": "^1.0.8",
+    "datatables.net": "^1.10.11",
+    "datatables.net-dt": "^1.10.11"
   }
 }
