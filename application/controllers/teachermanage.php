@@ -1,17 +1,40 @@
 <?php
+//getall、autoload和logstate修改了代码
 class teachermanage extends CI_Controller {
 
     public function __construct()
     {
         parent::__construct();
         $this->load->model('teachermanage_model');
-        $this->load->library('logstate');
         $this->load->helper('url_helper');
         $this->load->library('session');
-        $this->logstate->adminstate();
 
     }
     public function index(){
+<<<<<<< HEAD
+        $this->load->view('templates/header.php');
+        $this->load->view('templates/login.html');
+        $this->load->view('templates/footer.php');
+    }
+
+    public function getpassword($id){
+        if($this->logstate->adminstate()=='true'){
+            $password=$this->teachermanage_model->getpassword($id);
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($password->result()));
+        }
+    }
+
+    public function getall(){
+        if($this->logstate->adminstate()=='true'){
+            $allinfo=$this->teachermanage_model->getall();
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($allinfo->result()));
+        }
+    }   
+=======
         $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
         $this->load->view('templates/header.php',$data);
         $this->load->view('templates/manage_menu.php',array('current' => 'teachermanage'));
@@ -30,6 +53,7 @@ class teachermanage extends CI_Controller {
             ->set_content_type('application/json')
             ->set_output(json_encode($data));
     }
+>>>>>>> f00716e37c91f2795c18e5b4c668b2fd80b0b5be
     public function deleteinfo()
     {
         $this->logstate->adminstate();
