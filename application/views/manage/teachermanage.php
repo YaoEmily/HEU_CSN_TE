@@ -56,33 +56,46 @@
             </div>
         </div>
     </div>
-    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            修改信息
-                        </div>
-                        <div class="panel-body">
-                            <div class="form-group">
-                                <label>工号</label>
-                                <input id="teachermanage-edit-t_id" class="form-control" placeholder="" value="" disabled>
-                            </div>
-                            <div class="form-group">
-                                <label>姓名</label>
-                                <input id="teachermanage-edit-t_name" class="form-control" placeholder=""  value="" >
-                            </div>
-                            <div class="form-group">
-                                <label>密码</label>
-                                <input id="teachermanage-edit-t_password" class="form-control" placeholder="*"  value="" >
-                            </div>
-                            <div class="form-group">
-                                <label>联系方式</label>
-                                <input id="teachermanage-edit-t_tel" class="form-control" placeholder=""  value="" >
-                            </div>
+    <div id="teachermanage-panel-edit" class="panel panel-primary">
+        <div class="panel-heading">
+            修改信息
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <label>工号</label>
+                <input id="teachermanage-edit-t_id" class="form-control" placeholder="" value="" disabled>
+            </div>
+            <div class="form-group">
+                <label>姓名</label>
+                <input id="teachermanage-edit-t_name" class="form-control" placeholder=""  value="" >
+            </div>
+            <div class="form-group">
+                <label>联系方式</label>
+                <input id="teachermanage-edit-t_tel" class="form-control" placeholder=""  value="" >
+            </div>
 
-                        </div>
-                        <div class="panel-footer">
-                            <button class='btn btn-warning' type='button'>确定</button>
-                        </div>
+        </div>
+        <div class="panel-footer">
+            <button class='btn btn-warning' type='button'>确定</button>
+        </div>
     </div>
+    <div id="teachermanage-panel-pass" class="panel panel-primary">
+        <div class="panel-heading">
+            查看/修改密码
+        </div>
+        <div class="form-group">
+            <div class="form-group">
+                <label>工号</label>
+                <input id="teachermanage-pass-t_id" class="form-control" placeholder="" value="" disabled>
+            </div>
+            <label>密码</label>
+            <input id="teachermanage-pass-t_password" class="form-control" placeholder="*"  value="" >
+        </div>
+        <div class="panel-footer">
+            <button class='btn btn-warning' type='button'>确定</button>
+        </div>
+    </div>
+
 </div><!-- #wrapper-->
 
     <script src="/public/assets/js/javascript.js"></script>
@@ -118,12 +131,39 @@
                         { "data": "t_id" },
                         { "data": "t_name" },
                         { "data": "t_tel" },
-                        { "data": null, "title":"操作","defaultContent": "<button class='btn btn-info btn-sm' type='button'>查看/修改密码</button>"},
-                        { "data": null, "title":"操作","defaultContent": "<button class='btn btn-info btn-sm' type='button'>编辑</button> <button class='btn btn-danger btn-sm' type='button'>删除</button>"}
+                        { "data": null, "title":"操作","defaultContent": "<button  class='teachermanage-btn-pass btn btn-info btn-sm' type='button' onclick='setPass(this)'>查看/修改密码</button>"},
+                        { "data": null, "title":"操作","defaultContent": "<button  class='teachermanage-btn-edit btn btn-info btn-sm' type='button' onclick='edit(this)'>编辑</button> <button  class='teachermanage-btn-dele btn btn-danger btn-sm' type='button' onclick='dele(this)'>删除</button>"}
                     ],
                     select: true
                 } );
-             
-
+                $("button.teachermanage-btn-pass").click(function() {
+                    console.log(this)
+                    console.log(this.parent().siblings()[0])
+                })
             } );
+            function setPass(that) {
+                console.log($(that))
+                console.log($(that).parent().siblings()[0].innerHTML)
+                var id = $(that).parent().siblings()[0].innerHTML;
+                $("#teachermanage-pass-t_id").val(id);
+                $.ajax( {  
+                    url:'/teachermanage/getpass',// 跳转到 action  
+                    data:{  
+                             t_id : id 
+                    },
+                    type:'get',  
+                    cache:false,
+                    dataType:'json',  
+                    success:function(data) {  
+                        if(data.msg =="true" ){  
+                            $("#teachermanage-pass-t_password").val(data.pas);
+                        }else{  
+                            alert(data.msg);
+                        }
+                     },
+                     error : function() {  
+                          alert("asdasd");
+                     }  
+                });
+            }
         </script>
