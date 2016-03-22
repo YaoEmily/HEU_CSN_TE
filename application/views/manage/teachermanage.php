@@ -63,19 +63,19 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 <label>工号</label>
-                                <input class="form-control" placeholder="" disabled>
+                                <input id="teachermanage-edit-t_id" class="form-control" placeholder="" value="" disabled>
                             </div>
                             <div class="form-group">
                                 <label>姓名</label>
-                                <input class="form-control" placeholder="" >
+                                <input id="teachermanage-edit-t_name" class="form-control" placeholder=""  value="" >
                             </div>
                             <div class="form-group">
                                 <label>密码</label>
-                                <input class="form-control" placeholder="*" >
+                                <input id="teachermanage-edit-t_password" class="form-control" placeholder="*"  value="" >
                             </div>
                             <div class="form-group">
                                 <label>联系方式</label>
-                                <input class="form-control" placeholder="" >
+                                <input id="teachermanage-edit-t_tel" class="form-control" placeholder=""  value="" >
                             </div>
 
                         </div>
