@@ -217,7 +217,7 @@
                 var id = $(that).parent().siblings()[0].innerHTML;
                 $("#teachermanage-pass-t_id").val(id);
                 $.ajax( {  
-                    url:'/teachermanage/getpass',// 跳转到 action  
+                    url:'/teachermanage/getpassword',// 跳转到 action
                     data:{  
                              t_id : id 
                     },
