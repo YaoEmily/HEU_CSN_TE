@@ -12,7 +12,9 @@ class Logstate {
         	$this->load->view('templates/footer.php');
         }
         if($_SESSION['usertype']=='0'){
-        	echo '无权限';
+            echo '无权限';
+        	return 'false';
         }
+        return 'true';
     }
 }

@@ -1,28 +1,28 @@
 <?php
+//getall、autoload和logstate修改了代码
 class teachermanage extends CI_Controller {
 
     public function __construct()
     {
         parent::__construct();
         $this->load->model('teachermanage_model');
-        $this->load->library('logstate');
         $this->load->helper('url_helper');
         $this->load->library('session');
-        $this->logstate->adminstate();
 
     }
     public function index(){
         $this->load->view('templates/header.php');
         $this->load->view('templates/login.html');
-        $this->load->view('templates/footer.php');z
+        $this->load->view('templates/footer.php');
     }
     public function getall(){
-        $this->logstate->adminstate();
-        $allinfo=$this->teachermanage_model->getall();
-        $this->output
-            ->set_content_type('application/json')
-            ->set_output(json_encode($allinfo->result()));
-    }
+        if($this->logstate->adminstate()=='true'){
+            $allinfo=$this->teachermanage_model->getall();
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($allinfo->result()));
+        }
+    }   
     public function deleteinfo()
     {
         $this->logstate->adminstate();
