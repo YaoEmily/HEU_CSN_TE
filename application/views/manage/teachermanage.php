@@ -1,4 +1,3 @@
-
 <div id="page-wrapper" style="min-height: 368px;">
     <div class="row">
         <div class="col-lg-12">
@@ -10,19 +9,13 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    教师信息查询
-                </div>
-                <!-- /.panel-heading -->
+                <div class="panel-heading">教师信息查询</div>
+                <!-- /.panel-heading -->    
                 <div class="panel-body">
                     <div id="teachermanager-table_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                        <div class="row">
+                        <div class="row" style="margin-bottom: 20px">
                             <div class="col-sm-6">
-                                <div class="dt-buttons btn-group">
-                                    <a class="btn btn-default buttons-create" tabindex="0" aria-controls="teachermanager-table">
-                                        <span>添加</span>
-                                    </a>
-                                </div>
+                                    <button class="btn btn-success" data-toggle="modal" data-target="#teachermanage-panel-create">添加</button>
                             </div>
                         </div>
                         <div class="row">
@@ -46,8 +39,7 @@
                                             <th>编辑</th>
                                         </tr>
                                     </tfoot>
-                                    <tbody>
-                                    </tbody>
+                                    <tbody></tbody>
                                 </table>
                             </div>
                         </div>
@@ -56,47 +48,124 @@
             </div>
         </div>
     </div>
-    <div id="teachermanage-panel-edit" class="panel panel-primary">
-        <div class="panel-heading">
-            修改信息
-        </div>
-        <div class="panel-body">
-            <div class="form-group">
-                <label>工号</label>
-                <input id="teachermanage-edit-t_id" class="form-control" placeholder="" value="" disabled>
-            </div>
-            <div class="form-group">
-                <label>姓名</label>
-                <input id="teachermanage-edit-t_name" class="form-control" placeholder=""  value="" >
-            </div>
-            <div class="form-group">
-                <label>联系方式</label>
-                <input id="teachermanage-edit-t_tel" class="form-control" placeholder=""  value="" >
-            </div>
-
-        </div>
-        <div class="panel-footer">
-            <button class='btn btn-warning' type='button'>确定</button>
-        </div>
-    </div>
-    <div id="teachermanage-panel-pass" class="panel panel-primary">
-        <div class="panel-heading">
-            查看/修改密码
-        </div>
-        <div class="form-group">
-            <div class="form-group">
-                <label>工号</label>
-                <input id="teachermanage-pass-t_id" class="form-control" placeholder="" value="" disabled>
-            </div>
-            <label>密码</label>
-            <input id="teachermanage-pass-t_password" class="form-control" placeholder="*"  value="" >
-        </div>
-        <div class="panel-footer">
-            <button class='btn btn-warning' type='button'>确定</button>
-        </div>
-    </div>
 
 </div><!-- #wrapper-->
+
+<!-- 新增Modal -->
+<div class="modal fade teachermanage-model" id="teachermanage-panel-create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content panel panel-info">
+            <div class="panel-heading">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">新增用户</h4>
+            </div>
+            <div class="modal-body panel-body">
+                <div class="form-group">
+                    <label>工号</label>
+                    <input id="teachermanage-create-t_id" class="form-control" placeholder="" value=""></div>
+                <div class="form-group">
+                    <label>密码</label>
+                    <input id="teachermanage-create-t_password" class="form-control" placeholder="6-16位字母及数字"  value="" ></div>
+                <div class="form-group">
+                    <label>姓名</label>
+                    <input id="teachermanage-create-t_name" class="form-control" placeholder=""  value="" ></div>
+                <div class="form-group">
+                    <label>联系方式</label>
+                    <input id="teachermanage-create-t_tel" class="form-control" placeholder=""  value="" ></div>
+            </div>
+            <div class="modal-footer panel-footer">
+                <button class='btn btn-warning' type='button' onclick="createsubmit()">确定</button>
+                <button class='btn btn-info' type='button'  data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 密码Modal -->
+<div class="modal fade teachermanage-model" id="teachermanage-panel-pass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content panel panel-primary">
+            <div class="panel-heading">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">查看/修改密码</h4>
+            </div>
+            <div class="modal-body panel-body">
+                <div class="form-group">
+                    <label>工号</label>
+                    <input id="teachermanage-pass-t_id" class="form-control" placeholder="" value="" disabled></div>
+                <div class="form-group">
+                    <label>密码</label>
+                    <input id="teachermanage-pass-t_password" class="form-control" placeholder="*"  value="" ></div>
+            </div>
+            <div class="modal-footer panel-footer">
+                <button class='btn btn-warning' type='button' onclick="passsubmit()">修改</button>
+                <button class='btn btn-info' type='button'  data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 信息Modal -->
+<div class="modal fade teachermanage-model" id="teachermanage-panel-edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+    <div class="modal-content panel panel-primary">
+        <div class="panel-heading">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">修改信息</h4>
+        </div>
+        <div class="modal-body panel-body">
+            <div class="form-group">
+                <label>工号</label>
+                <input id="teachermanage-edit-t_id" class="form-control" placeholder="" value="" disabled></div>
+            <div class="form-group">
+                <label>姓名</label>
+                <input id="teachermanage-edit-t_name" class="form-control" placeholder=""  value="" ></div>
+            <div class="form-group">
+                <label>联系方式</label>
+                <input id="teachermanage-edit-t_tel" class="form-control" placeholder=""  value="" ></div>
+        </div>
+        <div class="modal-footer panel-footer">
+            <button class='btn btn-warning' type='button' onclick="editsubmit()">修改</button>
+            <button class='btn btn-info' type='button'  data-dismiss="modal">关闭</button>
+        </div>
+    </div>
+</div>
+</div>
+<!-- 删除确认Modal -->
+<div class="modal fade teachermanage-model" id="teachermanage-panel-dele" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+    <div class="modal-content panel panel-danger">
+        <div class="panel-heading">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">删除确认</h4>
+        </div>
+        <div class="modal-body panel-body">
+            你真的要删除以下员工么？
+            <div class="form-group">
+                <label>工号</label>
+                <input id="teachermanage-dele-t_id" class="form-control" placeholder="" value="" disabled></div>
+            <div class="form-group">
+                <label>姓名</label>
+                <input id="teachermanage-dele-t_name" class="form-control" placeholder=""  value="" disabled></div>
+            <div class="form-group">
+                <label>联系方式</label>
+                <input id="teachermanage-dele-t_tel" class="form-control" placeholder=""  value="" disabled></div>
+        </div>
+        <div class="modal-footer panel-footer">
+            <button class='btn btn-warning' type='button' onclick="deletesubmit()">确定</button>
+            <button class='btn btn-info' type='button'  data-dismiss="modal">关闭</button>
+        </div>
+    </div>
+</div>
+</div>
+
 
     <script src="/public/assets/js/javascript.js"></script>
         <script type="text/javascript">
@@ -131,8 +200,8 @@
                         { "data": "t_id" },
                         { "data": "t_name" },
                         { "data": "t_tel" },
-                        { "data": null, "title":"操作","defaultContent": "<button  class='teachermanage-btn-pass btn btn-info btn-sm' type='button' onclick='setPass(this)'>查看/修改密码</button>"},
-                        { "data": null, "title":"操作","defaultContent": "<button  class='teachermanage-btn-edit btn btn-info btn-sm' type='button' onclick='edit(this)'>编辑</button> <button  class='teachermanage-btn-dele btn btn-danger btn-sm' type='button' onclick='dele(this)'>删除</button>"}
+                        { "data": null, "title":"操作","defaultContent": "<button  class='teachermanage-btn-pass btn btn-info btn-sm' type='button' onclick='setPass(this)'  data-toggle='modal' data-target='#teachermanage-panel-pass'>查看/修改密码</button>"},
+                        { "data": null, "title":"操作","defaultContent": "<button  class='teachermanage-btn-edit btn btn-info btn-sm' type='button' onclick='edit(this)' data-toggle='modal' data-target='#teachermanage-panel-edit'>编辑</button> <button  class='teachermanage-btn-dele btn btn-danger btn-sm' type='button' onclick='dele(this)' data-toggle='modal' data-target='#teachermanage-panel-dele'>删除</button>"}
                     ],
                     select: true
                 } );
@@ -141,6 +210,7 @@
                     console.log(this.parent().siblings()[0])
                 })
             } );
+
             function setPass(that) {
                 console.log($(that))
                 console.log($(that).parent().siblings()[0].innerHTML)
@@ -162,7 +232,158 @@
                         }
                      },
                      error : function() {  
-                          alert("asdasd");
+                          alert("查询出现错误，请联系管理员");
+                     }  
+                });
+            }
+            function edit(that) {
+                console.log($(that))
+                console.log($(that).parent().siblings()[0].innerHTML)
+                var id = $(that).parent().siblings()[0].innerHTML;
+                $("#teachermanage-edit-t_id").val(id);
+                $.ajax( {  
+                    url:'/teachermanage/getinfo',// 跳转到 action  
+                    data:{  
+                             t_id : id 
+                    },
+                    type:'get',  
+                    cache:false,
+                    dataType:'json',  
+                    success:function(data) {  
+                        if(data.msg =="true" ){
+                            $("#teachermanage-edit-t_name").val(data.t_name);
+                            $("#teachermanage-edit-t_tel").val(data.t_tel);
+                        }else{  
+                            alert(data.msg);
+                        }
+                     },
+                     error : function() {  
+                          alert("查询出现错误，请联系管理员");
+                     }  
+                });
+            }
+            function dele(that) {
+                console.log($(that))
+                console.log($(that).parent().siblings()[0].innerHTML)
+                var id = $(that).parent().siblings()[0].innerHTML;
+                $("#teachermanage-dele-t_id").val(id);
+                $.ajax( {  
+                    url:'/teachermanage/getinfo',// 跳转到 action  
+                    data:{  
+                             t_id : id 
+                    },
+                    type:'get',  
+                    cache:false,
+                    dataType:'json',  
+                    success:function(data) {  
+                        if(data.msg =="true" ){
+                            $("#teachermanage-dele-t_name").val(data.t_name);
+                            $("#teachermanage-dele-t_tel").val(data.t_tel);
+                        }else{  
+                            alert(data.msg);
+                        }
+                     },
+                     error : function() {  
+                          alert("查询出现错误，请联系管理员");
+                     }  
+                });
+            }
+            function editsubmit() {
+                var id = $("#teachermanage-edit-t_id").val();
+                var name = $("#teachermanage-edit-t_name").val();
+                var tel = $("#teachermanage-edit-t_tel").val();
+                $.ajax( {  
+                    url:'/teachermanage/updateinfo',// 跳转到 action  
+                    data:{  
+                             t_id : id,
+                             t_name : name,
+                             t_tel : tel,
+                    },
+                    type:'post',
+                    cache:false,
+                    dataType:'json',
+                    success:function(data) {  
+                        if(data.msg =="true" ){
+                            $("#teachermanage-edit-t_name").val(data.t_name);
+                            $("#teachermanage-edit-t_tel").val(data.t_tel);
+                        }else{  
+                            alert(data.msg);
+                        }
+                     },
+                     error : function() {  
+                          alert("查询出现错误，请联系管理员");
+                     }  
+                });
+            }
+            function passsubmit() {
+                var id = $("#teachermanage-pass-t_id").val();
+                var name = $("#teachermanage-pass-t_password").val();
+                $.ajax( {  
+                    url:'/teachermanage/updateinfo',// 跳转到 action  
+                    data:{  
+                             t_id : id,
+                             t_password : t_password,
+                    },
+                    type:'post',
+                    cache:false,
+                    dataType:'json',
+                    success:function(data) {  
+                        if(data.msg =="true" ){
+
+                        }else{  
+                            alert(data.msg);
+                        }
+                     },
+                     error : function() {  
+                          alert("查询出现错误，请联系管理员");
+                     }  
+                });
+            }
+            function delesubmit() {
+                var id = $("#teachermanage-pass-t_id").val();
+                var name = $("#teachermanage-pass-t_password").val();
+                $.ajax( {  
+                    url:'/teachermanage/updateinfo',// 跳转到 action  
+                    data:{  
+                             t_id : id,
+                             t_password : t_password,
+                    },
+                    type:'post',
+                    cache:false,
+                    dataType:'json',
+                    success:function(data) {  
+                        if(data.msg =="true" ){
+                            
+                        }else{  
+                            alert(data.msg);
+                        }
+                     },
+                     error : function() {  
+                          alert("查询出现错误，请联系管理员");
+                     }  
+                });
+            }
+            function createsubmit() {
+                $.ajax( {  
+                    url:'/teachermanage/updateinfo',// 跳转到 action  
+                    data:{  
+                        t_id : id,
+                        t_password : t_password,
+                        t_name : name,
+                        t_tel : tel
+                    },
+                    type:'post',
+                    cache:false,
+                    dataType:'json',
+                    success:function(data) {  
+                        if(data.msg =="true" ){
+                            
+                        }else{  
+                            alert(data.msg);
+                        }
+                     },
+                     error : function() {  
+                          alert("查询出现错误，请联系管理员");
                      }  
                 });
             }

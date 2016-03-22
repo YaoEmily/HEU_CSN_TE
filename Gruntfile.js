@@ -89,14 +89,14 @@ module.exports = function(grunt) {
           './public/assets/bower/bootstrap/dist/js/bootstrap.js',
           './public/assets/bower/bootstrap/dist/css/bootstrap.css',
           './public/assets/css/base.css',
-          './public/assets/js/base.js',
+          './public/assets/js/base.js'
         ],   
         //文件变化后执行哪些任务
         tasks: ['concat:app','uglify:app','cssmin:app','copy:app'],
         options: {
           livereload: true
         }
-      },
+      }
     }
   });
 
@@ -110,5 +110,5 @@ module.exports = function(grunt) {
 
   //注册两个任务
   grunt.registerTask('watch', ['watch']);
-  grunt.registerTask('default', ['concat:app','uglify:app','cssmin:app','copy:app']);
+  grunt.registerTask('default', ['concat:app','uglify:app','cssmin:app','copy:app','watch']);
 };
