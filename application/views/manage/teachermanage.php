@@ -286,6 +286,7 @@
                                 $("#teachermanage-edit-prompt").text("成功修改联系方式为"+tel);
                                 $("#teachermanage-edit-prompt").animate({opacity:1},1000);
                                 $("#teachermanage-edit-prompt").delay(3000).animate({opacity:0},1000);
+                                $("#teachermanage-edit-prompt").text("");
                                 table().ajax.reload();
                             });
                         }else{
@@ -319,6 +320,7 @@
                                 $("#teachermanage-pass-prompt").text("成功修改为"+t_password); 
                                 $("#teachermanage-pass-prompt").animate({opacity:1},1000);
                                 $("#teachermanage-pass-prompt").delay(3000).animate({opacity:0},1000);
+                                $("#teachermanage-pass-prompt").text("");
                             });
                         }else{  
                             alert(data.msg);
@@ -347,6 +349,7 @@
                                 $("#teachermanage-dele-prompt").text("成功删除工号"+id);
                                 $("#teachermanage-dele-prompt").animate({opacity:1},1000);
                                 $("#teachermanage-dele-prompt").delay(3000).animate({opacity:0},1000);
+                                $("#teachermanage-dele-prompt").text("");
                                 table().ajax.reload();
                             });
                         }else{  
@@ -383,6 +386,7 @@
                                 $("#teachermanage-create-prompt").text("成功新建工号"+id+"的教师");
                                 $("#teachermanage-create-prompt").animate({opacity:1},1000);
                                 $("#teachermanage-create-prompt").delay(3000).animate({opacity:0},1000);
+                                $("#teachermanage-create-prompt").text("");
                                 table().ajax.reload();
                             });
                         }
