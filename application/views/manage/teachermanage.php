@@ -51,6 +51,9 @@
 
 </div><!-- #wrapper-->
 
+
+
+
 <!-- 新增Modal -->
 <div class="modal fade teachermanage-model" id="teachermanage-panel-create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -64,16 +67,16 @@
             <div class="modal-body panel-body">
                 <div class="form-group">
                     <label>工号</label>
-                    <input id="teachermanage-create-t_id" class="form-control" placeholder="" value=""></div>
+                    <input id="teachermanage-create-t_id" class="form-control" placeholder="" value="" autofocus="autofocus" pattern="[A-z0-9]{1,20}"></div>
                 <div class="form-group">
                     <label>密码</label>
-                    <input id="teachermanage-create-t_password" class="form-control" placeholder="6-16位字母及数字"  value="" ></div>
+                    <input id="teachermanage-create-t_password" class="form-control" placeholder="6-16位字母及数字"  value="" pattern="[A-z0-9]{6,16}"></div>
                 <div class="form-group">
                     <label>姓名</label>
                     <input id="teachermanage-create-t_name" class="form-control" placeholder=""  value="" ></div>
                 <div class="form-group">
                     <label>联系方式</label>
-                    <input id="teachermanage-create-t_tel" class="form-control" placeholder=""  value="" type="number"></div>
+                    <input id="teachermanage-create-t_tel" class="form-control" placeholder=""  value="" type="number" min="13000000000" max="19000000000"></div>
             </div>
             <div class="modal-footer panel-footer">
                 <span id="teachermanage-create-prompt" style="color: red; opacity: 0"></span>
@@ -83,6 +86,32 @@
         </div>
     </div>
 </div>
+
+<!-- 新增Modal -->
+<div class="modal fade teachermanage-model" id="teachermanage-panel-import" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content panel panel-info">
+            <div class="panel-heading">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">新增用户</h4>
+            </div>
+            <div class="modal-body panel-body">
+                <div class="form-group">
+                    <label>上传文件</label>
+                    <input id="teachermanage-import-t_id" type="file" class="form-control"></div>            
+            </div>
+            <div class="modal-footer panel-footer">
+                <span id="teachermanage-import-prompt" style="color: red; opacity: 0"></span>
+                <button class='btn btn-warning' type='button' onclick="importsubmit()">确定</button>
+                <button class='btn btn-info' type='button'  data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- 密码Modal -->
 <div class="modal fade teachermanage-model" id="teachermanage-panel-pass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -99,7 +128,7 @@
                     <input id="teachermanage-pass-t_id" class="form-control" placeholder="" value="" disabled></div>
                 <div class="form-group">
                     <label>密码</label>
-                    <input id="teachermanage-pass-t_password" class="form-control" placeholder="*"  value="" type="text"></div>
+                    <input id="teachermanage-pass-t_password" class="form-control" placeholder="Loading....请输入6-16位字母及数字" value="" type="text" autofocus="autofocus" value="" pattern="[A-z0-9]{6,16}"></div>
             </div>
             <div class="modal-footer panel-footer">
                 <span id="teachermanage-pass-prompt" style="color: red; opacity: 0"></span>
@@ -129,7 +158,7 @@
                 <input id="teachermanage-edit-t_name" class="form-control" placeholder=""  value="" disabled></div>
             <div class="form-group">
                 <label>联系方式</label>
-                <input id="teachermanage-edit-t_tel" class="form-control" placeholder=""  value=""  type="number"></div>
+                <input id="teachermanage-edit-t_tel" class="form-control" placeholder=""  value=""  type="number" pattern="[0-9]{11}"></div>
         </div>
         <div class="modal-footer panel-footer">
             <span id="teachermanage-edit-prompt" style="color: red; opacity: 0"></span>
@@ -268,71 +297,79 @@
             function editsubmit() {
                 var id = $("#teachermanage-edit-t_id").val();
                 var tel = $("#teachermanage-edit-t_tel").val();
-                $("#teachermanage-edit-prompt").animate({opacity:1},1000);
-                $("#teachermanage-edit-prompt").text("修改中...");
-                $.ajax( {  
-                    url:'/teachermanage/updatetel',// 跳转到 action  
-                    data:{  
-                             id : id,
-                             tel : tel,
-                    },
-                    type:'post',
-                    cache:false,
-                    async: true,
-                    dataType:'json',
-                    success:function(data) {  
-                        if(data.msg ==true){
-                            $("#teachermanage-edit-prompt").animate({opacity:0},1000,function() {
-                                $("#teachermanage-edit-prompt").text("成功修改联系方式为"+tel);
-                                $("#teachermanage-edit-prompt").animate({opacity:1},1000);
-                                $("#teachermanage-edit-prompt").delay(3000).animate({opacity:0},1000);
+                if(validtel(tel)) {
+                    changing("#teachermanage-edit-prompt");
+                    $.ajax({
+                        url:'/teachermanage/updatetel',// 跳转到 action  
+                        data:{  
+                                 id : id,
+                                 tel : tel,
+                        },
+                        type:'post',
+                        cache:false,
+                        async: true,
+                        dataType:'json',
+                        success:function(data) {
+                            if(data.msg ==true){
+                                $("#teachermanage-edit-prompt").animate({opacity:0},1000,function() {
+                                    $("#teachermanage-edit-prompt").text("成功修改联系方式为"+tel);
+                                    changed("#teachermanage-edit-prompt");
+                                });
+                            }else{
                                 $("#teachermanage-edit-prompt").text("");
-                                table().ajax.reload();
-                            });
-                        }else{
-                            alert(data.msg);
-                        }
-                     },
-                     error : function() {  
-                          alert("修改出现连接错误，请联系管理员或尝试重新登录");
-                     }  
-                });
+                                alert(data.msg);
+                            }
+                         },
+                         error : function() {  
+                            $("#teachermanage-edit-prompt").text("");
+                            alert("修改出现连接错误，请联系管理员或尝试重新登录");
+                         }
+                    });              
+                }
+                else {
+                    $("#teachermanage-edit-prompt").animate({opacity:1},1000);
+                    $("#teachermanage-edit-prompt").text("请输入正确的联系方式");
+                }
             }
             // 2016年3月23日 13:37:30 调试ok
             function passsubmit() {
                 var id = $("#teachermanage-pass-t_id").val();
-                var t_password = $("#teachermanage-pass-t_password").val();
-                $("#teachermanage-pass-prompt").animate({opacity:1},1000);
-                $("#teachermanage-pass-prompt").text("修改中...");
-                $.ajax( {  
-                    url:'/teachermanage/updatepassword',// 跳转到 action  
-                    data:{  
-                             t_id : id,
-                             t_password : t_password,
-                    },
-                    type:'post',
-                    cache:false,
-                    async: true,
-                    dataType:'json',
-                    success:function(data) {  
-                        if(data.msg =="true" ){
-                            $("#teachermanage-pass-prompt").animate({opacity:0},1000,function() {
-                                $("#teachermanage-pass-prompt").text("成功修改为"+t_password); 
-                                $("#teachermanage-pass-prompt").animate({opacity:1},1000);
-                                $("#teachermanage-pass-prompt").delay(3000).animate({opacity:0},1000);
+                var password = $("#teachermanage-pass-t_password").val();
+                if (validpass(password)) {
+                    changing("#teachermanage-pass-prompt")
+                    $.ajax( {  
+                        url:'/teachermanage/updatepassword',// 跳转到 action  
+                        data:{  
+                                 t_id : id,
+                                 t_password : password,
+                        },
+                        type:'post',
+                        cache:false,
+                        async: true,
+                        dataType:'json',
+                        success:function(data) {  
+                            if(data.msg =="true" ){
+                                $("#teachermanage-pass-prompt").animate({opacity:0},1000,function() {
+                                    $("#teachermanage-pass-prompt").text("成功修改为"+t_password); 
+                                    changed("#teachermanage-pass-prompt")
+                                });
+                            }else{
                                 $("#teachermanage-pass-prompt").text("");
-                            });
-                        }else{  
-                            alert(data.msg);
-                        }
-                     },
-                     error : function() {  
-                          alert("修改密码过程出现错误，请联系管理员或尝试重新登录");
-                     }  
-                });
+                                alert(data.msg);
+                            }
+                         },
+                         error : function() {
+                            $("#teachermanage-pass-prompt").text("");
+                            alert("修改密码过程出现错误，请联系管理员或尝试重新登录");
+                         }  
+                    });                    
+                }
+                else {
+                    validpassfalse("#teachermanage-pass-prompt")
+                }
             }
-
             function deletesubmit() {
+                changing("#teachermanage-dele-prompt");
                 var id = $("#teachermanage-dele-t_id").val();
                 $.ajax( {  
                     url:'/teachermanage/deleteinfo',// 跳转到 action  
@@ -347,17 +384,16 @@
                         if(data.msg == true){
                             $("#teachermanage-dele-prompt").animate({opacity:0},1000,function() {
                                 $("#teachermanage-dele-prompt").text("成功删除工号"+id);
-                                $("#teachermanage-dele-prompt").animate({opacity:1},1000);
-                                $("#teachermanage-dele-prompt").delay(3000).animate({opacity:0},1000);
-                                $("#teachermanage-dele-prompt").text("");
-                                table().ajax.reload();
+                                changed("#teachermanage-dele-prompt");
                             });
-                        }else{  
+                        }else{
+                            $("#teachermanage-dele-prompt").text("");
                             alert(data.msg);
                         }
                      },
-                     error : function() {  
-                          alert("删除出现错误，请联系管理员或尝试重新登录");
+                     error : function() {
+                        $("#teachermanage-dele-prompt").text(""); 
+                        alert("删除出现错误，请联系管理员或尝试重新登录");
                      }  
                 });
             }
@@ -366,37 +402,84 @@
                 var name = $("#teachermanage-create-t_name").val();
                 var password = $("#teachermanage-create-t_password").val();
                 var tel = $("#teachermanage-create-t_tel").val();
-                $("#teachermanage-create-prompt").animate({opacity:1},1000);
-                $("#teachermanage-create-prompt").text("新建中...");
-                $.ajax( {  
-                    url:'/teachermanage/insertteacher',// 跳转到 action  
-                    data:{  
-                        id : id,
-                        password : password,
-                        name : name,
-                        tel : tel
-                    },
-                    type:'post',
-                    cache:false,
-                    async:true,
-                    dataType:'json',
-                    success:function(data) {  
-                        if(data.msg =="true" ){
-                            $("#teachermanage-create-prompt").animate({opacity:0},1000,function() {
-                                $("#teachermanage-create-prompt").text("成功新建工号"+id+"的教师");
-                                $("#teachermanage-create-prompt").animate({opacity:1},1000);
-                                $("#teachermanage-create-prompt").delay(3000).animate({opacity:0},1000);
+                if(validtel(tel)) {
+                    if(validpass(password)) {
+                        changing("#teachermanage-create-prompt");
+                        $.ajax( {  
+                            url:'/teachermanage/insertteacher',// 跳转到 action  
+                            data:{  
+                                id : id,
+                                password : password,
+                                name : name,
+                                tel : tel
+                            },
+                            type:'post',
+                            cache:false,
+                            async:true,
+                            dataType:'json',
+                            success:function(data) {  
+                                if(data.msg =="true") {
+                                    $("#teachermanage-create-prompt").animate({opacity:0},1000,function() {
+                                        $("#teachermanage-create-prompt").text("成功新建工号"+id+"的教师");
+                                        changed("#teachermanage-create-prompt");
+                                    });
+                                }
+                                else {
+                                    $("#teachermanage-create-prompt").animate({opacity:0},1000,function() {
+                                        $("#teachermanage-create-prompt").text("工号为"+id+"的教师已存在");
+                                        changed("#teachermanage-create-prompt");
+                                    });
+                                }
+                             },
+                             error : function() {
                                 $("#teachermanage-create-prompt").text("");
-                                table().ajax.reload();
-                            });
-                        }
-                        else {  
-                            alert(data.msg);
-                        }
-                     },
-                     error : function() {  
-                          alert("创建出现错误，请联系管理员或尝试重新登录");
-                     }  
+                                alert("创建出现错误，请联系管理员或尝试重新登录");
+                             }  
+                        });                       
+                    }
+                    else {
+                        validpassfalse("#teachermanage-create-prompt");
+                    }
+                }
+                else {
+                    validtelfalse("#teachermanage-create-prompt");
+                }
+
+            }
+            function validtel(tel) {
+                if(tel.match(/[0-9]{11}/) && tel.length == 11) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            function validtelfalse(id) {
+                $(id).animate({opacity:1},1000);
+                $(id).text("联系方式请输入11位数字");
+            }
+
+            function validpass(pass) {
+                if(pass.match(/[A-z0-9]{4,16}/) && pass.length > 4 && pass.length < 16 ) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            function validpassfalse(id) {
+                    $(id).animate({opacity:1},1000);
+                    $(id).text("密码请输入6-16位字母及数字");
+            }
+            function changing(id) {
+                $(id).animate({opacity:1},1000);
+                $(id).text("执行中...");
+            }
+            function changed(id) {
+                $(id).animate({opacity:1},1000);
+                $(id).delay(3000).animate({opacity:0},1000,function() {
+                    $(id).text("");
                 });
+                table().ajax.reload();
             }
         </script>
