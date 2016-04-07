@@ -444,7 +444,6 @@
                 else {
                     validtelfalse("#teachermanage-create-prompt");
                 }
-
             }
             function validtel(tel) {
                 if(tel.match(/[0-9]{11}/) && tel.length == 11) {
@@ -470,16 +469,5 @@
             function validpassfalse(id) {
                     $(id).animate({opacity:1},1000);
                     $(id).text("密码请输入6-16位字母及数字");
-            }
-            function changing(id) {
-                $(id).animate({opacity:1},1000);
-                $(id).text("执行中...");
-            }
-            function changed(id) {
-                $(id).animate({opacity:1},1000);
-                $(id).delay(3000).animate({opacity:0},1000,function() {
-                    $(id).text("");
-                });
-                table().ajax.reload();
             }
         </script>
