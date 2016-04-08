@@ -27,6 +27,7 @@ class classmanage extends CI_Controller {
     public function getclass(){
         $state=$this->logstate->normalstate();
         if($state=='true'){
+            $id=$_SESSION['id'];
             $classinfo=$this->classmanage_model->getclass($id);
             $data=array('data' => $classinfo->result_array());
             $this->output

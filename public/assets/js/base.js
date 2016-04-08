@@ -7,7 +7,9 @@ function changed(id) {
     $(id).delay(3000).animate({opacity:0},1000,function() {
         $(id).text("");
     });
-    table().ajax.reload();
+    if(typeof(table) !== "undefined") {
+        table().ajax.reload();
+    }
 }
 var errmsg = {
     "ajaxerr": "出现通讯错误，请检查网络、尝试重新登录或联系管理员"

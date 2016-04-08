@@ -110,5 +110,5 @@ module.exports = function(grunt) {
 
   //注册两个任务
   grunt.registerTask('watch', ['watch']);
-  grunt.registerTask('default', ['concat:app','uglify:app','cssmin:app','copy:app','watch']);
+  grunt.registerTask('default', ['concat:app','uglify:app','cssmin:app','copy:app']);
 };

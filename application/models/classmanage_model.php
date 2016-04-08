@@ -12,7 +12,7 @@ class classmanage_model extends CI_Model {
 		return $query;
 	}
 	public function delete($id,$name,$day,$stime,$etime){
-		$query = $this->db->query("delete from class where  id =".$id." and c_name = '$name' and c_day =".$day."and c_stime= '$stime' and c_etime='$etime'");
+		$query = $this->db->query("delete from class where  id =".$id." and c_name = '$name' and c_day =".$day. " and c_stime= '$stime' and c_etime='$etime'");
 		return $query;
 	}
 	public function classstate($id,$name,$day,$stime,$etime){
@@ -57,7 +57,7 @@ class classmanage_model extends CI_Model {
 	}
 	
 	public function updateclass($id,$name,$day,$stime,$etime,$a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k,$l,$m,$n,$o,$p,$q,$r,$s,$t,$u,$v,$w,$x,$y){
-		$query = $this->db->query("delete from class where  id =".$id." and c_name = '$name' and c_day =".$day."and c_stime= '$stime' and c_etime='$etime' ");
+		$query = $this->db->query("delete from class where  id =".$id." and c_name = '$name' and c_day =".$day." and c_stime= '$stime' and c_etime='$etime' ");
 		$classinfo = array(
         'id' => $id,
         'c_name' => $name,

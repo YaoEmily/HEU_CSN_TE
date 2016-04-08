@@ -1,7 +1,7 @@
 <div id="page-wrapper" style="min-height: 368px;">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">教师信息管理</h1>
+            <h1 class="page-header">课程表管理</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -9,7 +9,6 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">教师信息查询</div>
                 <!-- /.panel-heading -->    
                 <div class="panel-body">
                     <div id="classmanager-table_wrapper" class="form-inline dt-bootstrap">
@@ -17,110 +16,11 @@
                             <div class="col-sm-6">
                                     <button class="btn btn-success" data-toggle="modal" data-target="#classmanage-panel-create">添加课程</button>
                             </div>
+                            <div class="col-sm-6" id="classmanage-container-prompt">
+                            	
+                            </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-6 col-lg-4">
-								<div class="panel panel-info">
-			                        <div class="panel-heading">
-			                        	<div class="row">
-			                        		<div class="col-sm-6 col-lg-8">数据结构2013</div>
-			                        		<div class="col-sm-6 col-lg-4">
-				                            <button class='btn btn-warning btn-xs' onclick='edit()'>修改</button>
-				                            <button class='btn btn-danger btn-xs' onclick='createsubmit()'>删除</button>
-			                        		</div>
-			                        	</div>
-			                        </div>
-			                        <div class="panel-body">
-			                        	<p>上课时间：周1</p>
-			                        	<p>08:00 - 09:35</p>
-										<p>上课周：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20</p>
-			                        </div></div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-lg-4">
-								<div class="panel panel-info">
-			                        <div class="panel-heading">
-			                        	<div class="row">
-			                        		<div class="col-sm-6 col-lg-8">数据结构2013</div>
-			                        		<div class="col-sm-6 col-lg-4">
-				                            <button class='btn btn-warning btn-xs' onclick='edit()'>修改</button>
-				                            <button class='btn btn-danger btn-xs' onclick='createsubmit()'>删除</button>
-			                        		</div>
-			                        	</div>
-			                        </div>
-			                        <div class="panel-body">
-			                        	<p>上课时间：周1</p>
-			                        	<p>08:00 - 09:35</p>
-										<p>上课周：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20</p>
-			                        </div></div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-lg-4">
-								<div class="panel panel-info">
-			                        <div class="panel-heading">
-			                        	<div class="row">
-			                        		<div class="col-sm-6 col-lg-8">数据结构2013</div>
-			                        		<div class="col-sm-6 col-lg-4">
-				                            <button class='btn btn-warning btn-xs' onclick='edit()'>修改</button>
-				                            <button class='btn btn-danger btn-xs' onclick='createsubmit()'>删除</button>
-			                        		</div>
-			                        	</div>
-			                        </div>
-			                        <div class="panel-body">
-			                        	<p>上课时间：周1</p>
-			                        	<p>08:00 - 09:35</p>
-										<p>上课周：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20</p>
-			                        </div></div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-lg-4">
-								<div class="panel panel-info">
-			                        <div class="panel-heading">
-			                        	<div class="row">
-			                        		<div class="col-sm-6 col-lg-8">数据结构2013</div>
-			                        		<div class="col-sm-6 col-lg-4">
-				                            <button class='btn btn-warning btn-xs' onclick='edit()'>修改</button>
-				                            <button class='btn btn-danger btn-xs' onclick='createsubmit()'>删除</button>
-			                        		</div>
-			                        	</div>
-			                        </div>
-			                        <div class="panel-body">
-			                        	<p>上课时间：周1</p>
-			                        	<p>08:00 - 09:35</p>
-										<p>上课周：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20</p>
-			                        </div></div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-lg-4">
-								<div class="panel panel-info">
-			                        <div class="panel-heading">
-			                        	<div class="row">
-			                        		<div class="col-sm-6 col-lg-8">数据结构2013</div>
-			                        		<div class="col-sm-6 col-lg-4">
-				                            <button class='btn btn-warning btn-xs' onclick='edit()'>修改</button>
-				                            <button class='btn btn-danger btn-xs' onclick='createsubmit()'>删除</button>
-			                        		</div>
-			                        	</div>
-			                        </div>
-			                        <div class="panel-body">
-			                        	<p>上课时间：周1</p>
-			                        	<p>08:00 - 09:35</p>
-										<p>上课周：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20</p>
-			                        </div></div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-lg-4">
-								<div class="panel panel-info">
-			                        <div class="panel-heading">
-			                        	<div class="row">
-			                        		<div class="col-sm-6 col-lg-8">数据结构2013</div>
-			                        		<div class="col-sm-6 col-lg-4">
-				                            <button class='btn btn-warning btn-xs' onclick='edit()'>修改</button>
-				                            <button class='btn btn-danger btn-xs' onclick='createsubmit()'>删除</button>
-			                        		</div>
-			                        	</div>
-			                        </div>
-			                        <div class="panel-body">
-			                        	<p>上课时间：周1</p>
-			                        	<p>08:00 - 09:35</p>
-										<p>上课周：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20</p>
-			                        </div></div>
-                            </div>
+                        <div class="row" id="classmanage-container">
                         </div>
                     </div>
                 </div>
@@ -212,7 +112,7 @@
             </div>
             <div class="modal-footer panel-footer">
                 <span id="classmanage-create-prompt" style="color: red; opacity: 0"></span>
-                <button class='btn btn-danger pull-left' type="reset">清空</button>
+                <button id="classmanage-create-reset" class='btn btn-danger pull-left' type="reset">清空</button>
                 <button class='btn btn-warning' type='button' onclick="createsubmit()">确定</button>
                 <button class='btn btn-info' type='button'  data-dismiss="modal">关闭</button>
             </div>
@@ -228,7 +128,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">新增课时</h4>
+                <h4 class="modal-title" id="myModalLabel">修改课程</h4>
             </div>
             <div class="modal-body panel-body">
                 <div class="form-group">
@@ -270,39 +170,42 @@
                 <div class="form-group">
                     <label>选择上课周数</label>
 					<div class="checkbox">
-					<label><input id="classmanage-edit-a" type="checkbox" name="a">第1周</label>
-					<label><input id="classmanage-edit-b" type="checkbox" name="b">第2周</label>
-					<label><input id="classmanage-edit-c" type="checkbox" name="c">第3周</label>
-					<label><input id="classmanage-edit-d" type="checkbox" name="d">第4周</label>
-					<label><input id="classmanage-edit-e" type="checkbox" name="e">第5周</label>
-					<label><input id="classmanage-edit-f" type="checkbox" name="f">第6周</label>
-					<label><input id="classmanage-edit-g" type="checkbox" name="g">第7周</label>
-					<label><input id="classmanage-edit-h" type="checkbox" name="h">第8周</label>
-					<label><input id="classmanage-edit-i" type="checkbox" name="i">第9周</label>
-					<label><input id="classmanage-edit-j" type="checkbox" name="j">第10周</label>
-					<label><input id="classmanage-edit-k" type="checkbox" name="k">第11周</label>
-					<label><input id="classmanage-edit-l" type="checkbox" name="l">第12周</label>
-					<label><input id="classmanage-edit-m" type="checkbox" name="m">第13周</label>
-					<label><input id="classmanage-edit-n" type="checkbox" name="n">第14周</label>
-					<label><input id="classmanage-edit-o" type="checkbox" name="o">第15周</label>
-					<label><input id="classmanage-edit-p" type="checkbox" name="p">第16周</label>
-					<label><input id="classmanage-edit-q" type="checkbox" name="q">第17周</label>
-					<label><input id="classmanage-edit-r" type="checkbox" name="r">第18周</label>
-					<label><input id="classmanage-edit-s" type="checkbox" name="s">第19周</label>
-					<label><input id="classmanage-edit-t" type="checkbox" name="t">第20周</label>
-					<label><input id="classmanage-edit-u" type="checkbox" name="u">第21周</label>
-					<label><input id="classmanage-edit-v" type="checkbox" name="v">第22周</label>
-					<label><input id="classmanage-edit-w" type="checkbox" name="w">第23周</label>
-					<label><input id="classmanage-edit-x" type="checkbox" name="x">第24周</label>
-					<label><input id="classmanage-edit-y" type="checkbox" name="y">第25周</label>
+					<label><input id="classmanage-edit-a" class="week1" type="checkbox" name="a">第1周</label>
+					<label><input id="classmanage-edit-b" class="week2" type="checkbox" name="b">第2周</label>
+					<label><input id="classmanage-edit-c" class="week3" type="checkbox" name="c">第3周</label>
+					<label><input id="classmanage-edit-d" class="week4" type="checkbox" name="d">第4周</label>
+					<label><input id="classmanage-edit-e" class="week5" type="checkbox" name="e">第5周</label>
+					<label><input id="classmanage-edit-f" class="week6" type="checkbox" name="f">第6周</label>
+					<label><input id="classmanage-edit-g" class="week7" type="checkbox" name="g">第7周</label>
+					<label><input id="classmanage-edit-h" class="week8" type="checkbox" name="h">第8周</label>
+					<label><input id="classmanage-edit-i" class="week9" type="checkbox" name="i">第9周</label>
+					<label><input id="classmanage-edit-j" class="week10" type="checkbox" name="j">第10周</label>
+					<label><input id="classmanage-edit-k" class="week11" type="checkbox" name="k">第11周</label>
+					<label><input id="classmanage-edit-l" class="week12" type="checkbox" name="l">第12周</label>
+					<label><input id="classmanage-edit-m" class="week13" type="checkbox" name="m">第13周</label>
+					<label><input id="classmanage-edit-n" class="week14" type="checkbox" name="n">第14周</label>
+					<label><input id="classmanage-edit-o" class="week15" type="checkbox" name="o">第15周</label>
+					<label><input id="classmanage-edit-p" class="week16" type="checkbox" name="p">第16周</label>
+					<label><input id="classmanage-edit-q" class="week17" type="checkbox" name="q">第17周</label>
+					<label><input id="classmanage-edit-r" class="week18" type="checkbox" name="r">第18周</label>
+					<label><input id="classmanage-edit-s" class="week19" type="checkbox" name="s">第19周</label>
+					<label><input id="classmanage-edit-t" class="week20" type="checkbox" name="t">第20周</label>
+					<label><input id="classmanage-edit-u" class="week21" type="checkbox" name="u">第21周</label>
+					<label><input id="classmanage-edit-v" class="week22" type="checkbox" name="v">第22周</label>
+					<label><input id="classmanage-edit-w" class="week23" type="checkbox" name="w">第23周</label>
+					<label><input id="classmanage-edit-x" class="week24" type="checkbox" name="x">第24周</label>
+					<label><input id="classmanage-edit-y" class="week25" type="checkbox" name="y">第25周</label>
 					</div></div>
             </div>
             <div class="modal-footer panel-footer">
                 <span id="classmanage-edit-prompt" style="color: red; opacity: 0"></span>
-                <button class='btn btn-danger pull-left' type="reset">清空</button>
-                <button class='btn btn-warning' type='button' onclick="createsubmit()">确定</button>
+                <button class='btn btn-warning' type='button' onclick="editsubmit()">确定</button>
                 <button class='btn btn-info' type='button'  data-dismiss="modal">关闭</button>
             </div>
+            <input id="classmanage-edit-o_name" value="" type="hidden">
+            <input id="classmanage-edit-o_day" value="" type="hidden">
+            <input id="classmanage-edit-o_stime" value="" type="hidden">
+            <input id="classmanage-edit-o_etime" value="" type="hidden">
         </form>
     </div>
 </div>
@@ -320,8 +223,18 @@
 	        </div>
 	        <div class="modal-body panel-body">
 	            你真的要删除以下课程么？
-				<label>课程名</label>
-                    <input id="classmanage-edit-name" class="form-control" placeholder="" value="" autofocus="autofocus" name="name" disabled>
+	            <div class="form-group">
+	                <label>课程名</label>
+	                <input id="classmanage-dele-name" class="form-control" placeholder="" value="" disabled></div>
+	            <div class="form-group">
+	                <label>周数</label>
+	                <input id="classmanage-dele-day" class="form-control" placeholder=""  value="" disabled></div>
+	            <div class="form-group">
+	                <label>上课时间</label>
+	                <input id="classmanage-dele-stime" class="form-control" placeholder=""  value="" disabled></div>
+	            <div class="form-group">
+	                <label>下课时间</label>
+	                <input id="classmanage-dele-etime" class="form-control" placeholder=""  value="" disabled></div>
 	        </div>
 	        <div class="modal-footer panel-footer">
 	            <span id="classmanage-dele-prompt" style="color: red; opacity: 0"></span>
@@ -334,10 +247,13 @@
 
 
 <script src="/public/assets/js/javascript.js"></script>
+<script src="/public/assets/js/extra.js"></script>
+
 <script type="text/javascript">
+	var classes = [];
 	function createsubmit() {
 		changing("#classmanage-create-prompt");
-	    var id = $("#teachermanage-create-t_id").val();
+	    var id = $("#classmanage-create-t_id").val();
 	    var name = $("#classmanage-create-name").val();
 	    var day = $("#classmanage-create-day").val();
 	    var stime = $("#classmanage-create-stime").val();
@@ -369,8 +285,7 @@
 			x: Number((document.getElementById("classmanage-create-x").checked)),
 			y: Number((document.getElementById("classmanage-create-y").checked))
 	    }
-		console.log(cb);
-		if(validdate(stime,etime)) {
+		if(validdate(stime,etime,create) && validname(name,create)) {
             $.ajax( {  
                 url:'/classmanage/insertteacher',// 跳转到 action  
                 data:{  
@@ -405,67 +320,257 @@
 					x: cb.x,
 					y: cb.y
                 },
-                type:'post',
+                type:'get',
                 cache:false,
                 async:true,
                 dataType:'json',
-                success:function(data) {  
+                success:function(data) {
+                	console.log(data);
                     if(data.msg =="true") {
-                        $("#classmanage-create-prompt").animate({opacity:0},1000,function() {
+                        $("#classmanage-create-prompt").animate({opacity:1},1000,function() {
                             $("#classmanage-create-prompt").text("创建课程："+name+" 成功");
                             changed("#classmanage-create-prompt");
+                            $("#classmanage-create-reset").click();
                         });
                     }
                     else {
-                        $("#classmanage-create-prompt").animate({opacity:0},1000,function() {
+                        $("#classmanage-create-prompt").animate({opacity:1},1000,function() {
                             $("#classmanage-create-prompt").text("创建失败，错误码"+data.msg);
                             changed("#classmanage-create-prompt");
                         });
                     }
                  },
                  error : function() {
-                    $("#classmanage-create-prompt").text("创建出现错误，请联系管理员或尝试重新登录");
+                    $("#classmanage-create-prompt").text(errmsg["ajaxerr"]);
                  }  
             });  
 		}
    	}
-   	function validdate(sdate,edate) {
-   		console.log(sdate)
-   		console.log(edate)
-   		console.log(sdate<edate);
+   	function validdate(sdate,edate,panel) {
    		if(sdate > edate) {
-	        $("#classmanage-create-prompt").animate({opacity:1},1000);
-        	$("#classmanage-create-prompt").text("上下课时间冲突");
+	        $("#classmanage-"+panel+"-prompt").animate({opacity:1},1000);
+        	$("#classmanage-"+panel+"-prompt").text("上下课时间冲突");
         	return false;
    		}
    		return true;
    	}
-	function deletesubmit() {
-		changing("#classmanage-dele-prompt");
-		var id = $("#classmanage-dele-t_id").val();
-		$.ajax( {
-		url:'/classmanage/deleteclass',// 跳转到 action  
-		data:{  
-		         id : id 
-		},
-		type:'post',  
-		cache:false,
-		async:true,
-		dataType:'json',  
-		success:function(data) {  
-		    if(data.msg == true){
-		        $("#classmanage-dele-prompt").animate({opacity:0},1000,function() {
-		            $("#classmanage-dele-prompt").text("成功删除工号"+id);
-		            changed("#classmanage-dele-prompt");
-		        });
-		    }else{
-		        $("#classmanage-dele-prompt").text("");
-		        alert(data.msg);
-		    }
-		 },
-		 error : function() {
-		    $("#classmanage-dele-prompt").text(errmsg["ajaxerr"]); 
-		 }  
-		});
+   	function validname(name,panel) {
+   		console.log(name)
+   		if(name.indexOf(" ")>=0 || name.indexOf("\'")>=0  || name.indexOf("\"")>=0) {
+	        $("#classmanage-"+panel+"-prompt").animate({opacity:1},1000);
+        	$("#classmanage-"+panel+"-prompt").text("课程名非法，不能有空格、单双引号");
+        	return false;
+   		}
+   		return true;
+   	}
+ 	function edit(that) {
+ 		document.getElementById('classmanage-edit-o_day').value = classes[that].c_day;
+ 		document.getElementById('classmanage-edit-o_stime').value = classes[that].c_stime;
+ 		document.getElementById('classmanage-edit-o_etime').value = classes[that].c_etime;
+ 		document.getElementById('classmanage-edit-o_name').value = classes[that].c_name;
+	    $("#classmanage-edit-name").val(classes[that].c_name);
+	    var day=document.getElementById('classmanage-edit-day');
+		for(var i=0;i<day.options.length;i++)
+		{
+			if(day.options[i].value==classes[that].c_day) {
+				day.options[i].selected=true;
+				break;
+			}
+		}
+		var stime=document.getElementById('classmanage-edit-stime');
+		for(var i=0;i<stime.options.length;i++)
+		{
+			if(stime.options[i].value==classes[that].c_stime.substring(0,5)) {
+				stime.options[i].selected=true;
+				break;
+			}
+		}
+		var etime=document.getElementById('classmanage-edit-etime');
+		for(var i=0;i<etime.options.length;i++)
+		{
+			if(etime.options[i].value==classes[that].c_etime.substring(0,5)) {
+				etime.options[i].selected=true;
+				break;
+			}
+		}
+    	for (var i = 1; i<=25;i++) {
+    		if(classes[that]["week"+i] == "1") {
+    			document.getElementsByClassName("week"+i)[0].checked = true;
+    		}
+    	}
+
 	}
+	function editsubmit() {
+        changing("#classmanage-edit-prompt");
+	    var name = $("#classmanage-edit-name").val();
+	    var day = $("#classmanage-edit-day").val();
+	    var stime = $("#classmanage-edit-stime").val();
+	    var etime = $("#classmanage-edit-etime").val();
+	    var o_name = $("#classmanage-edit-o_name").val();
+	    var o_day = $("#classmanage-edit-o_day").val();
+	    var o_stime = $("#classmanage-edit-o_stime").val();
+	    var o_etime = $("#classmanage-edit-o_etime").val();
+	    var cb = {
+			a: Number((document.getElementById("classmanage-edit-a").checked)),
+			b: Number((document.getElementById("classmanage-edit-b").checked)),
+			c: Number((document.getElementById("classmanage-edit-c").checked)),
+			d: Number((document.getElementById("classmanage-edit-d").checked)),
+			e: Number((document.getElementById("classmanage-edit-e").checked)),
+			f: Number((document.getElementById("classmanage-edit-f").checked)),
+			g: Number((document.getElementById("classmanage-edit-g").checked)),
+			h: Number((document.getElementById("classmanage-edit-h").checked)),
+			i: Number((document.getElementById("classmanage-edit-i").checked)),
+			j: Number((document.getElementById("classmanage-edit-j").checked)),
+			k: Number((document.getElementById("classmanage-edit-k").checked)),
+			l: Number((document.getElementById("classmanage-edit-l").checked)),
+			m: Number((document.getElementById("classmanage-edit-m").checked)),
+			n: Number((document.getElementById("classmanage-edit-n").checked)),
+			o: Number((document.getElementById("classmanage-edit-o").checked)),
+			p: Number((document.getElementById("classmanage-edit-p").checked)),
+			q: Number((document.getElementById("classmanage-edit-q").checked)),
+			r: Number((document.getElementById("classmanage-edit-r").checked)),
+			s: Number((document.getElementById("classmanage-edit-s").checked)),
+			t: Number((document.getElementById("classmanage-edit-t").checked)),
+			u: Number((document.getElementById("classmanage-edit-u").checked)),
+			v: Number((document.getElementById("classmanage-edit-v").checked)),
+			w: Number((document.getElementById("classmanage-edit-w").checked)),
+			x: Number((document.getElementById("classmanage-edit-x").checked)),
+			y: Number((document.getElementById("classmanage-edit-y").checked))
+	    }
+		if(validdate(stime,etime,edit) && validname(name,edit)) {
+            $.ajax( {  
+                url:'/classmanage/updateclass',// 跳转到 action  
+                data:{  
+                    name : name,
+                    day : day,
+                    stime: stime,
+                    etime: etime,
+                    o_name : o_name,
+                    o_day : o_day,
+                    o_stime: o_stime,
+                    o_etime: o_etime,
+                    a: cb.a,
+					b: cb.b,
+					c: cb.c,
+					d: cb.d,
+					e: cb.e,
+					f: cb.f,
+					g: cb.g,
+					h: cb.h,
+					i: cb.i,
+					j: cb.j,
+					k: cb.k,
+					l: cb.l,
+					m: cb.m,
+					n: cb.n,
+					o: cb.o,
+					p: cb.p,
+					q: cb.q,
+					r: cb.r,
+					s: cb.s,
+					t: cb.t,
+					u: cb.u,
+					v: cb.v,
+					w: cb.w,
+					x: cb.x,
+					y: cb.y
+                },
+                type:'get',
+                cache:false,
+                async:true,
+                dataType:'json',
+                success:function(data) {
+                	console.log(data);
+                    if(data.msg =="true") {
+                        $("#classmanage-edit-prompt").animate({opacity:1},1000,function() {
+                            $("#classmanage-edit-prompt").text("修改课程："+name+" 成功");
+                            changed("#classmanage-edit-prompt");
+                            $("#classmanage-edit-reset").click();
+                        });
+                    }
+                    else {
+                        $("#classmanage-edit-prompt").animate({opacity:1},1000,function() {
+                            $("#classmanage-edit-prompt").text("修改失败，错误码"+data.msg);
+                            changed("#classmanage-edit-prompt");
+                        });
+                    }
+                 },
+                 error : function() {
+                    $("#classmanage-edit-prompt").text(errmsg["ajaxerr"]);
+                 }  
+            });  
+		}
+	}
+	function dele(that) {
+		$("#classmanage-dele-name").val(classes[that].c_name);
+		$("#classmanage-dele-day").val(classes[that].c_day);
+		$("#classmanage-dele-stime").val(classes[that].c_stime);
+		$("#classmanage-dele-etime").val(classes[that].c_etime);
+	}
+	function deletesubmit() {
+        changing("#classmanage-dele-prompt");
+        var name = $("#classmanage-dele-name").val();
+        var day = $("#classmanage-dele-day").val();
+        var stime = $("#classmanage-dele-stime").val();
+        var etime = $("#classmanage-dele-etime").val();
+        $.ajax( {  
+            url:'/classmanage/deleteclass',// 跳转到 action  
+            data:{  
+                     name : name,
+                     day: day,
+                     stime: stime,
+                     etime: etime 
+            },
+            type:'post',  
+            cache:false,
+            async:true,
+            dataType:'json',  
+            success:function(data) {  
+                if(data.msg == true){
+                    $("#classmanage-dele-prompt").animate({opacity:1},1000,function() {
+                        $("#classmanage-dele-prompt").text("成功删除课程"+name);
+                        changed("#classmanage-dele-prompt");
+                    });
+                }else{
+                    $("#classmanage-dele-prompt").text(data.msg);
+                }
+             },
+             error : function() {
+                $("#classmanage-dele-prompt").text(errmsg["ajaxerr"]);
+             }  
+        });		
+	}
+	function load() {
+		var cont = document.getElementById("classmanage-container");
+		var promot = document.getElementById("classmanage-container-prompt");
+		promot.innerHTML = '正在加载中';
+	    $.ajax( {  
+            url:'/classmanage/getclass',// 跳转到 action  
+            data:{},
+            type:'get',
+            cache:false,
+            async:true,
+            dataType:'json',
+            success:function(data) {
+            	promot.innerHTML = "共有 "+data.data.length+" 条记录";
+            	classes = data.data;
+                for(var i=0 ; i < data.data.length; i++) {
+                	var newClass = '<div class="col-xs-12 col-sm-6 col-lg-4"><div class="panel panel-info"><div class="panel-heading"><div class="row"><div class="col-sm-6 col-lg-8">'+classes[i].c_name+'</div><div class="col-sm-6 col-lg-4"><button class="btn btn-warning btn-xs" onclick="edit('+i+')" data-toggle="modal" data-target="#classmanage-panel-edit">修改</button> <button class="btn btn-danger btn-xs" onclick="dele('+i+')" data-toggle="modal" data-target="#classmanage-panel-dele" >删除</button></div></div></div><div class="panel-body"><p>上课时间：周'+classes[i].c_day+'<p>'+ classes[i].c_stime.substring(0,5) +'-'+ classes[i].c_etime.substring(0,5) +'</p><p>上课周：';
+                	for (var j = 1; j<=25;j++) {
+                		if(classes[i]["week"+j] == "1") {
+                			newClass = newClass + j + ', ';
+                		}
+                	}
+                	newClass = newClass + '</p></div></div></div>';
+                	$(cont).append(newClass);
+                }
+             },
+             error : function() {
+                promot.innerHTML = errmsg["ajaxerr"];
+             }  
+        });
+	}
+	$(function() {
+		load();
+	})
 </script>
