@@ -19,7 +19,8 @@ class exammanage extends CI_Controller {
     }
 
     public function examinfo(){
-        if($this->logstate->adminstate()=='true'){
+        $state=$this->logstate->adminstate();
+        if($state=='true'){
             $examinfo=$this->exammanage_model->examinfo();
             $result = $examinfo->result();
             $data=array('data' => $examinfo->result());
@@ -27,11 +28,15 @@ class exammanage extends CI_Controller {
                 ->set_content_type('application/json')
                 ->set_output(json_encode($data));
         }
+        else{
+            return $state;
+        }
     }
 
     public function deleteexam()
     {
-        if($this->logstate->adminstate()=='true'){
+         $state=$this->logstate->adminstate();
+        if($state=='true'){
             $date=$this->input->post('date');
             $stime=$this->input->post('stime');
             $etime=$this->input->post('etime');
@@ -42,9 +47,13 @@ class exammanage extends CI_Controller {
                 ->set_content_type('application/json')
                 ->set_output(json_encode($data));
         }
+        else{
+            return $state;
+        }
     }
     public function insertexam(){
-        if($this->logstate->adminstate()=='true'){
+        $state=$this->logstate->adminstate();
+        if($state=='true'){
             $date=$this->input->post('date');
             $stime=$this->input->post('stime');
             $etime=$this->input->post('etime');
@@ -64,6 +73,9 @@ class exammanage extends CI_Controller {
             $this->output
                 ->set_content_type('application/json')
                 ->set_output(json_encode($data));
+        }
+        else{
+            return $state;
         }
     }
 

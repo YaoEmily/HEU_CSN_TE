@@ -10,28 +10,39 @@ class classmanage extends CI_Controller {
 
     }
     public function index(){
-        if($this->logstate->normalstate()=='true'){
+        $state=$this->logstate->normalstate();
+        if($state=='true'){
             $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
             $this->load->view('templates/header.php',$data);
             $this->load->view('templates/teacher_menu.php',array('current' => 'classmanage'));
             $this->load->view('teacher/classmanage.php');
             $this->load->view('templates/footer.php');
         }
+        else
+        {
+            return $state;
+        }
     }
 
     public function getclass(){
-        if($this->logstate->normalstate()=='true'){
+        $state=$this->logstate->normalstate();
+        if($state=='true'){
             $classinfo=$this->classmanage_model->getclass($id);
             $data=array('data' => $classinfo->result_array());
             $this->output
                 ->set_content_type('application/json')
                 ->set_output(json_encode($data));
         }
+        else
+        {
+            return $state;
+        }
     }
 
     public function deleteclass()
     {
-        if($this->logstate->normalstate()=='true'){
+        $state=$this->logstate->normalstate();
+        if($state=='true'){
             $id=$_SESSION['id'];
             $name=$this->input->post('name');
             $day=$this->input->post('day');
@@ -42,9 +53,14 @@ class classmanage extends CI_Controller {
                 ->set_content_type('application/json')
                 ->set_output(json_encode($data));
         }
+        else
+        {
+            return $state;
+        }
     }
     public function updateclass(){
-        if($this->logstate->normalstate()=='true'){
+        $state=$this->logstate->normalstate();
+        if($state=='true'){
             $id=$_SESSION['id'];
             $name=$this->input->get('name');
             $day=$this->input->get('day');
@@ -80,9 +96,14 @@ class classmanage extends CI_Controller {
                 ->set_content_type('application/json')
                 ->set_output(json_encode($data));
         }
+        else
+        {
+            return $state;
+        }
     }
     public function insertteacher(){
-        if($this->logstate->normalstate()=='true'){
+        $state=$this->logstate->normalstate();
+        if($state=='true'){
             $id=$_SESSION['id'];
             $name=$this->input->get('name');
             $day=$this->input->get('day');
@@ -124,6 +145,10 @@ class classmanage extends CI_Controller {
             $this->output
                 ->set_content_type('application/json')
                 ->set_output(json_encode($data));
+        }
+        else
+        {
+            return $state;
         }
     }
 }

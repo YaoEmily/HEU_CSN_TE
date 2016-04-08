@@ -12,7 +12,8 @@ class distribute extends CI_Controller {
 
     }
     public function autodis(){
-        if($this->logstate->adminstate()=='true'){
+        $state=$this->logstate->adminstate();
+        if($state=='true'){
             $examinfo=$this->exammanage_model->examinfo();
             $result = $examinfo->result_array();
             foreach($result as $exam){
@@ -31,6 +32,9 @@ class distribute extends CI_Controller {
             }
             return 'true';
         }
+        else{
+            return $state;
+        }
     }
     public function dis(){
         $state=$this->logstate->adminstate();
@@ -40,6 +44,7 @@ class distribute extends CI_Controller {
             $etime=$this->input->post('etime');
             $room=$this->input->post('room');
             $name=$this->input->post('name');
+            $id=$this->input->post('id');
             $this->distribute_model->dis($date,$stime,$etime,$room,$name)
         }
         else{

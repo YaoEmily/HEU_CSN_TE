@@ -45,7 +45,7 @@ class distribute_model extends CI_Model {
                 'd_ftime'=>date("H:i:s"),
 
                 );
-                return $this->db->insert('distribute', $teacher);
+                return $this->db->insert('distribute', $distribute);
             }    
 		}
         return 'false';
@@ -56,6 +56,23 @@ class distribute_model extends CI_Model {
 
     public function updatenum($date,$stime,$etime,$room,$name,$num){
         return $this->db->query("update exam set e_teachernum= $num where e_date= $date and e_stime= $stime and e_etime= $etime and e_room= $room and e_name= $name");
+    }
+
+    public function dis($date,$time,$room,$ename,$tid){
+        $this->db->query("update teacher set t_num=t_num+1 where t_id= $tid");
+        $this->db->query("update exam set e_teachernum=e_teachernum-1 where e_date= $date and e_stime= $stime and e_etime= $etime and e_room= $room and e_name= $name");
+        $distribute = array(
+            'd_date' => $date,
+            'd_time' => $time,
+            'd_room' => $room,
+            'd_ename'=>$ename,
+            'd_tid'=>$id,
+            'd_type'=>'0',
+            'd_state'=>'0',
+            'd_fdate'=>date('Y-m-d'),
+            'd_ftime'=>date("H:i:s"),
+            );
+        return $this->db->insert('distribute', $distribute);
     }
 
 }

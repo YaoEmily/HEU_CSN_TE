@@ -19,7 +19,8 @@ class teachermanage extends CI_Controller {
     }
 
     public function getpassword(){
-        if($this->logstate->adminstate()=='true'){
+        $state=$this->logstate->adminstate();
+        if($state=='true'){
             $id=$this->input->get('t_id');
             $password=$this->teachermanage_model->getpassword($id);
             $data=array('msg' => 'true','pas' => $password['t_password']);
@@ -27,9 +28,14 @@ class teachermanage extends CI_Controller {
                 ->set_content_type('application/json')
                 ->set_output(json_encode($data));
         }
+        else{
+            return $state;
+        }
     }
+
     public function getall(){
-        if($this->logstate->adminstate()=='true'){
+        $state=$this->logstate->adminstate();
+        if($state=='true'){
             $allinfo=$this->teachermanage_model->getall();
             $result = $allinfo->result();
             $data=array('data' => $allinfo->result());
@@ -37,20 +43,28 @@ class teachermanage extends CI_Controller {
                 ->set_content_type('application/json')
                 ->set_output(json_encode($data));
         }
+        else{
+            return $state;
+        }
     }
 
     public function deleteinfo()
     {
-        if($this->logstate->adminstate()=='true'){
+        $state=$this->logstate->adminstate();
+        if($state=='true'){
             $id=$this->input->post('id');
             $data=array('msg' => $this->teachermanage_model->delete($id));
             $this->output
                 ->set_content_type('application/json')
                 ->set_output(json_encode($data));
         }
+        else{
+            return $state;
+        }
     }
     public function updatetel(){
-        if($this->logstate->adminstate()=='true'){
+        $state=$this->logstate->adminstate();
+        if($state=='true'){
             $id=$this->input->post('id');
             $tel=$this->input->post('tel');
             $data=array('msg' =>$this->teachermanage_model->updatetel($id,$tel));
@@ -58,9 +72,13 @@ class teachermanage extends CI_Controller {
                 ->set_content_type('application/json')
                 ->set_output(json_encode($data));
         }
+        else{
+            return $state;
+        }
     }
     public function updatepassword(){
-        if($this->logstate->adminstate()=='true'){
+        $state=$this->logstate->adminstate();
+        if($state=='true'){
             $id=$this->input->post('t_id');
             $password=$this->input->post('t_password');
             if($this->teachermanage_model->updatepassword($id,$password)=='true'){
@@ -73,9 +91,14 @@ class teachermanage extends CI_Controller {
                 ->set_content_type('application/json')
                 ->set_output(json_encode($data));
         }
+        else{
+            return $state;
+        }
     }
+
     public function insertteacher(){
-        if($this->logstate->adminstate()=='true'){
+        $state=$this->logstate->adminstate();
+        if($state=='true'){
             $id=$this->input->get('id');
             $password=$this->input->get('password');
             $name=$this->input->get('name');
@@ -91,6 +114,9 @@ class teachermanage extends CI_Controller {
             $this->output
                 ->set_content_type('application/json')
                 ->set_output(json_encode($data));
+        }
+        else{
+            return $state;
         }
     }
 }
