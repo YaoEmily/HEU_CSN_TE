@@ -26,12 +26,16 @@ class login extends CI_Controller {
             if($login['t_power']=='1'){    //1为普通管理员
                 echo '管理员';
                 $this->session->set_tempdata('usertype', '1', 300);
+                $this->session->set_tempdata('id', $login['t_id'], 300);
                 echo $_SESSION['usertype'];
+                echo $_SESSION['id'];
             }
             else{                        //0为普通老师
                 echo '普通老师';
                $this->session->set_tempdata('usertype', '0', 300);
+               $this->session->set_tempdata('id', $login['t_id'], 300);
                 echo $_SESSION['usertype'];
+                echo $_SESSION['id'];
             }
         }
         else{

@@ -10,15 +10,17 @@ class classmanage extends CI_Controller {
 
     }
     public function index(){
-        $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
-        $this->load->view('templates/header.php',$data);
-        $this->load->view('templates/teacher_menu.php',array('current' => 'classmanage'));
-        $this->load->view('teacher/classmanage.php');
-        $this->load->view('templates/footer.php');
+        if($this->logstate->normalstate()=='true'){
+            $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
+            $this->load->view('templates/header.php',$data);
+            $this->load->view('templates/teacher_menu.php',array('current' => 'classmanage'));
+            $this->load->view('teacher/classmanage.php');
+            $this->load->view('templates/footer.php');
+        }
     }
 
     public function getclass(){
-        if($this->logstate->adminstate()=='true'){
+        if($this->logstate->normalstate()=='true'){
             $classinfo=$this->classmanage_model->getclass($id);
             $data=array('data' => $classinfo->result_array());
             $this->output
@@ -29,8 +31,8 @@ class classmanage extends CI_Controller {
 
     public function deleteclass()
     {
-        if($this->logstate->adminstate()=='true'){
-            $id=$this->input->post('id');
+        if($this->logstate->normalstate()=='true'){
+            $id=$_SESSION['id'];
             $name=$this->input->post('name');
             $day=$this->input->post('day');
             $stime=$this->input->post('stime');
@@ -42,8 +44,8 @@ class classmanage extends CI_Controller {
         }
     }
     public function updateclass(){
-        if($this->logstate->adminstate()=='true'){
-            $id=$this->input->post('id');
+        if($this->logstate->normalstate()=='true'){
+            $id=$_SESSION['id'];
             $name=$this->input->post('name');
             $day=$this->input->post('day');
             $stime=$this->input->post('stime');
@@ -80,8 +82,8 @@ class classmanage extends CI_Controller {
         }
     }
     public function insertteacher(){
-        if($this->logstate->adminstate()=='true'){
-            $id=$this->input->post('id');
+        if($this->logstate->normalstate()=='true'){
+            $id=$_SESSION['id'];
             $name=$this->input->post('name');
             $day=$this->input->post('day');
             $stime=$this->input->post('stime');

@@ -51,11 +51,11 @@ class distribute_model extends CI_Model {
         return 'false';
     }
     public function okstate($date,$stime,$etime,$room,$name){
-        return $this->db->query("update exam set e_state='1' where e_date=$date and e_stime=$stime and e_etime=$etime and e_room=$room and e_name=$name");
+        return $this->db->query("update exam set e_state='1' where e_date= $date and e_stime= $stime and e_etime= $etime and e_room= $room and e_name= $name");
     }
 
     public function updatenum($date,$stime,$etime,$room,$name,$num){
-        return $this->db->query("update exam set e_teachernum=$num where e_date=$date and e_stime=$stime and e_etime=$etime and e_room=$room and e_name=$name");
+        return $this->db->query("update exam set e_teachernum= $num where e_date= $date and e_stime= $stime and e_etime= $etime and e_room= $room and e_name= $name");
     }
 
 }
