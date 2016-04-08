@@ -19,8 +19,107 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-12">
-
+                            <div class="col-xs-12 col-sm-6 col-lg-4">
+								<div class="panel panel-info">
+			                        <div class="panel-heading">
+			                        	<div class="row">
+			                        		<div class="col-sm-6 col-lg-8">数据结构2013</div>
+			                        		<div class="col-sm-6 col-lg-4">
+				                            <button class='btn btn-warning btn-xs' onclick='edit()'>修改</button>
+				                            <button class='btn btn-danger btn-xs' onclick='createsubmit()'>删除</button>
+			                        		</div>
+			                        	</div>
+			                        </div>
+			                        <div class="panel-body">
+			                        	<p>上课时间：周1</p>
+			                        	<p>08:00 - 09:35</p>
+										<p>上课周：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20</p>
+			                        </div></div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-lg-4">
+								<div class="panel panel-info">
+			                        <div class="panel-heading">
+			                        	<div class="row">
+			                        		<div class="col-sm-6 col-lg-8">数据结构2013</div>
+			                        		<div class="col-sm-6 col-lg-4">
+				                            <button class='btn btn-warning btn-xs' onclick='edit()'>修改</button>
+				                            <button class='btn btn-danger btn-xs' onclick='createsubmit()'>删除</button>
+			                        		</div>
+			                        	</div>
+			                        </div>
+			                        <div class="panel-body">
+			                        	<p>上课时间：周1</p>
+			                        	<p>08:00 - 09:35</p>
+										<p>上课周：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20</p>
+			                        </div></div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-lg-4">
+								<div class="panel panel-info">
+			                        <div class="panel-heading">
+			                        	<div class="row">
+			                        		<div class="col-sm-6 col-lg-8">数据结构2013</div>
+			                        		<div class="col-sm-6 col-lg-4">
+				                            <button class='btn btn-warning btn-xs' onclick='edit()'>修改</button>
+				                            <button class='btn btn-danger btn-xs' onclick='createsubmit()'>删除</button>
+			                        		</div>
+			                        	</div>
+			                        </div>
+			                        <div class="panel-body">
+			                        	<p>上课时间：周1</p>
+			                        	<p>08:00 - 09:35</p>
+										<p>上课周：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20</p>
+			                        </div></div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-lg-4">
+								<div class="panel panel-info">
+			                        <div class="panel-heading">
+			                        	<div class="row">
+			                        		<div class="col-sm-6 col-lg-8">数据结构2013</div>
+			                        		<div class="col-sm-6 col-lg-4">
+				                            <button class='btn btn-warning btn-xs' onclick='edit()'>修改</button>
+				                            <button class='btn btn-danger btn-xs' onclick='createsubmit()'>删除</button>
+			                        		</div>
+			                        	</div>
+			                        </div>
+			                        <div class="panel-body">
+			                        	<p>上课时间：周1</p>
+			                        	<p>08:00 - 09:35</p>
+										<p>上课周：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20</p>
+			                        </div></div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-lg-4">
+								<div class="panel panel-info">
+			                        <div class="panel-heading">
+			                        	<div class="row">
+			                        		<div class="col-sm-6 col-lg-8">数据结构2013</div>
+			                        		<div class="col-sm-6 col-lg-4">
+				                            <button class='btn btn-warning btn-xs' onclick='edit()'>修改</button>
+				                            <button class='btn btn-danger btn-xs' onclick='createsubmit()'>删除</button>
+			                        		</div>
+			                        	</div>
+			                        </div>
+			                        <div class="panel-body">
+			                        	<p>上课时间：周1</p>
+			                        	<p>08:00 - 09:35</p>
+										<p>上课周：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20</p>
+			                        </div></div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-lg-4">
+								<div class="panel panel-info">
+			                        <div class="panel-heading">
+			                        	<div class="row">
+			                        		<div class="col-sm-6 col-lg-8">数据结构2013</div>
+			                        		<div class="col-sm-6 col-lg-4">
+				                            <button class='btn btn-warning btn-xs' onclick='edit()'>修改</button>
+				                            <button class='btn btn-danger btn-xs' onclick='createsubmit()'>删除</button>
+			                        		</div>
+			                        	</div>
+			                        </div>
+			                        <div class="panel-body">
+			                        	<p>上课时间：周1</p>
+			                        	<p>08:00 - 09:35</p>
+										<p>上课周：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20</p>
+			                        </div></div>
                             </div>
                         </div>
                     </div>
