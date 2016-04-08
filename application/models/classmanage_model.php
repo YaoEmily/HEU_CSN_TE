@@ -16,7 +16,7 @@ class classmanage_model extends CI_Model {
 		return $query;
 	}
 	public function classstate($id,$name,$day,$stime,$etime){
-		$query = $this->db->query("select c_name from class where id =".$id." and c_name = ".$name." and c_day = ".$day." and c_stime= '".$stime."'and c_etime='".$etime."'");
+		$query = $this->db->query("select c_name from class where id =".$id." and c_name = ".$name." and c_day = ".$day." and c_stime= '$stime' and c_etime='$etime'");
 		return $query->num_rows();
 	}
 
@@ -62,8 +62,8 @@ class classmanage_model extends CI_Model {
         'id' => $id,
         'c_name' => $name,
         'c_day' => $day,
-        'c_stime'=>$stime,
-        'c_etime'=>$etime,
+        'c_stime'=>"$stime",
+        'c_etime'=>"$etime",
         'week1'=>$a,
         'week2'=>$b,
         'week3'=>$c,
