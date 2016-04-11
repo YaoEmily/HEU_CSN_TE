@@ -54,14 +54,14 @@ class exammanage extends CI_Controller {
     public function insertexam(){
         $state=$this->logstate->adminstate();
         if($state=='true'){
-            $date=$this->input->get('date');
-            $stime=$this->input->get('stime');
-            $etime=$this->input->get('etime');
-            $room=$this->input->get('room');
-            $name=$this->input->get('name');
-            $class=$this->input->get('class');
-            $teachernum=(int)$this->input->get('teachernum');
-            $state=$this->input->get('state');
+            $date=$this->input->post('date');
+            $stime=$this->input->post('stime');
+            $etime=$this->input->post('etime');
+            $room=$this->input->post('room');
+            $name=$this->input->post('name');
+            $class=$this->input->post('class');
+            $teachernum=(int)$this->input->post('teachernum');
+            $state=$this->input->post('state');
             if($this->exammanage_model->examstate($date,$stime,$etime,$room,$name)=='0'){
                 if($this->exammanage_model->insertexam($date,$stime,$etime,$room,$name,$class,$teachernum,$state)=='true'){
                     $data=array('msg' => 'true');
