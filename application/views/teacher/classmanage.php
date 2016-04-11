@@ -11,14 +11,12 @@
             <div class="panel panel-default">
                 <!-- /.panel-heading -->    
                 <div class="panel-body">
-                    <div id="classmanager-table_wrapper" class="form-inline dt-bootstrap">
+                    <div id="classmanage-table_wrapper" class="form-inline dt-bootstrap">
                         <div class="row" style="margin-bottom: 20px">
                             <div class="col-sm-6">
                                     <button class="btn btn-success" data-toggle="modal" data-target="#classmanage-panel-create">添加课程</button>
                             </div>
-                            <div class="col-sm-6" id="classmanage-container-prompt">
-                            	
-                            </div>
+                            <div class="col-sm-6" id="classmanage-container-prompt"></div>
                         </div>
                         <div class="row" id="classmanage-container">
                         </div>
@@ -27,7 +25,6 @@
             </div>
         </div>
     </div>
-
 </div><!-- #wrapper-->
 
 
@@ -133,10 +130,10 @@
             <div class="modal-body panel-body">
                 <div class="form-group">
                     <label>课程名</label>
-                    <input id="classmanage-edit-name" class="form-control" placeholder="" value="" autofocus="autofocus" name="name"></div>
+                    <input id="classmanage-edit-name" class="form-control" placeholder="" value="" autofocus="autofocus" name="name" disabled></div>
                 <div class="form-group">
                     <label>周</label>
-                    <select id="classmanage-edit-day" class="form-control" name="day">
+                    <select id="classmanage-edit-day" class="form-control" name="day" disabled>
 						<option value="1">周一</option>
 						<option value="2">周二</option>
 						<option value="3">周三</option>
@@ -148,7 +145,7 @@
 					</div>
                 <div class="form-group">
                     <label>上课时间</label>
-					<select id="classmanage-edit-stime" class="form-control" name="stime">
+					<select id="classmanage-edit-stime" class="form-control" name="stime" disabled>
 						<option value="08:00">第1小节（08:00）</option>
 						<option value="09:55">第3小节（09:55）</option>
 						<option value="13:30">第6小节（13:30）</option>
@@ -157,7 +154,7 @@
 					</select></div>
                 <div class="form-group">
                     <label>下课时间</label>
-					<select id="classmanage-edit-etime" class="form-control" name="etime">
+					<select id="classmanage-edit-etime" class="form-control" name="etime" disabled>
 						<option value="09:35">第2小节（09:35）</option>
 						<option value="11:30">第4小节（11:30）</option>
 						<option value="12:20">第5小节（12:20）</option>
@@ -398,7 +395,6 @@
     			document.getElementsByClassName("week"+i)[0].checked = true;
     		}
     	}
-
 	}
 	function editsubmit() {
         changing("#classmanage-edit-prompt");
@@ -410,7 +406,7 @@
 	    var o_day = $("#classmanage-edit-o_day").val();
 	    var o_stime = $("#classmanage-edit-o_stime").val();
 	    var o_etime = $("#classmanage-edit-o_etime").val();
-	    var cb = {
+	    var ceb = {
 			a: Number((document.getElementById("classmanage-edit-a").checked)),
 			b: Number((document.getElementById("classmanage-edit-b").checked)),
 			c: Number((document.getElementById("classmanage-edit-c").checked)),
@@ -445,35 +441,31 @@
                     day : day,
                     stime: stime,
                     etime: etime,
-                    o_name : o_name,
-                    o_day : o_day,
-                    o_stime: o_stime,
-                    o_etime: o_etime,
-                    a: cb.a,
-					b: cb.b,
-					c: cb.c,
-					d: cb.d,
-					e: cb.e,
-					f: cb.f,
-					g: cb.g,
-					h: cb.h,
-					i: cb.i,
-					j: cb.j,
-					k: cb.k,
-					l: cb.l,
-					m: cb.m,
-					n: cb.n,
-					o: cb.o,
-					p: cb.p,
-					q: cb.q,
-					r: cb.r,
-					s: cb.s,
-					t: cb.t,
-					u: cb.u,
-					v: cb.v,
-					w: cb.w,
-					x: cb.x,
-					y: cb.y
+                    a: ceb.a,
+					b: ceb.b,
+					c: ceb.c,
+					d: ceb.d,
+					e: ceb.e,
+					f: ceb.f,
+					g: ceb.g,
+					h: ceb.h,
+					i: ceb.i,
+					j: ceb.j,
+					k: ceb.k,
+					l: ceb.l,
+					m: ceb.m,
+					n: ceb.n,
+					o: ceb.o,
+					p: ceb.p,
+					q: ceb.q,
+					r: ceb.r,
+					s: ceb.s,
+					t: ceb.t,
+					u: ceb.u,
+					v: ceb.v,
+					w: ceb.w,
+					x: ceb.x,
+					y: ceb.y
                 },
                 type:'get',
                 cache:false,
@@ -481,7 +473,7 @@
                 dataType:'json',
                 success:function(data) {
                 	console.log(data);
-                    if(data.msg =="true") {
+                    if(data.msg ==true) {
                         $("#classmanage-edit-prompt").animate({opacity:1},1000,function() {
                             $("#classmanage-edit-prompt").text("修改课程："+name+" 成功");
                             changed("#classmanage-edit-prompt");

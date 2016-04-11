@@ -12,15 +12,16 @@
                 <div class="panel-heading">教师信息查询</div>
                 <!-- /.panel-heading -->    
                 <div class="panel-body">
-                    <div id="teachermanager-table_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    <div id="teachermanage-table_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                         <div class="row" style="margin-bottom: 20px">
                             <div class="col-sm-6">
                                     <button class="btn btn-success" data-toggle="modal" data-target="#teachermanage-panel-create">添加</button>
+                                    <a class="btn btn-default pull-right" href="./teachermanage/import" target="">从文件中导入</a>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <table id="teachermanager-table" class="table table-striped table-bordered dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="teachermanager-table_info" style="width: 100%;">
+                                <table id="teachermanage-table" class="table table-striped table-bordered dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="teachermanage-table_info" style="width: 100%;">
                                     <thead>
                                         <tr role="row">
                                             <th>工号</th>
@@ -87,27 +88,29 @@
     </div>
 </div>
 
-<!-- 新增Modal -->
+<!-- 导入Modal -->
 <div class="modal fade teachermanage-model" id="teachermanage-panel-import" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
-        <div class="modal-content panel panel-info">
-            <div class="panel-heading">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">新增用户</h4>
+        <form action="">
+            <div class="modal-content panel panel-info">
+                <div class="panel-heading">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">导入用户</h4>
+                </div>
+                <div class="modal-body panel-body">
+                    <div class="form-group">
+                        <label></label>
+                        <input id="teachermanage-import-t_id" type="file" class="form-control"></div>            
+                </div>
+                <div class="modal-footer panel-footer">
+                    <span id="teachermanage-import-prompt" style="color: red; opacity: 0"></span>
+                    <button class='btn btn-warning' type='button'>确定</button>
+                    <button class='btn btn-info' type='button' data-dismiss="modal">关闭</button>
+                </div>
             </div>
-            <div class="modal-body panel-body">
-                <div class="form-group">
-                    <label>上传文件</label>
-                    <input id="teachermanage-import-t_id" type="file" class="form-control"></div>            
-            </div>
-            <div class="modal-footer panel-footer">
-                <span id="teachermanage-import-prompt" style="color: red; opacity: 0"></span>
-                <button class='btn btn-warning' type='button' onclick="importsubmit()">确定</button>
-                <button class='btn btn-info' type='button'  data-dismiss="modal">关闭</button>
-            </div>
-        </div>
+        </form>
     </div>
 </div>
 
@@ -203,11 +206,11 @@
     <script src="/public/assets/js/javascript.js"></script>
         <script type="text/javascript">
             var table = function (){
-                if ( $.fn.dataTable.isDataTable( '#teachermanager-table' ) ) {
-                    return $('#teachermanager-table').DataTable();
+                if ( $.fn.dataTable.isDataTable( '#teachermanage-table' ) ) {
+                    return $('#teachermanage-table').DataTable();
                 }
                 else {
-                    return $('#teachermanager-table').DataTable( {
+                    return $('#teachermanage-table').DataTable( {
                                 language: {
                                     "sProcessing":   "处理中...",
                                     "sLengthMenu":   "显示 _MENU_ 项结果",

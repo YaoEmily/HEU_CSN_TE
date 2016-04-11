@@ -11,11 +11,19 @@ class teachermanage extends CI_Controller {
 
     }
     public function index(){
-        //$data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
-        //$this->load->view('templates/header.php',$data);
-        //$this->load->view('templates/manage_menu.php',array('current' => 'teachermanage'));
-        //$this->load->view('manage/teachermanage.php');
-        //$this->load->view('templates/footer.php');
+        $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
+        $this->load->view('templates/header.php',$data);
+        $this->load->view('templates/manage_menu.php',array('current' => 'teachermanage'));
+        $this->load->view('manage/teachermanage.php');
+        $this->load->view('templates/footer.php');
+    }
+
+    public function import(){
+        $data = array('title' => '教师导入','heading' => '教师导入管理');
+        $this->load->view('templates/header.php',$data);
+        $this->load->view('templates/manage_menu.php',array('current' => 'teachermanage'));
+        $this->load->view('manage/teachermanage_import.php');
+        $this->load->view('templates/footer.php');
     }
 
     public function getpassword(){
