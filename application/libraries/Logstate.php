@@ -6,7 +6,7 @@ class Logstate {
 
     public function adminstate()
     {
-        if($_SESSION['usertype']==null){
+        if($_SESSION['usertype']==NULL){
             return 'needlog';
         }
         if($_SESSION['usertype']=='0'){
