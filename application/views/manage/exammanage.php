@@ -106,6 +106,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="exammanage-create-e_class" class="col-sm-3 control-label">班级</label>
+                    <div class="col-sm-7">
+                        <input id="exammanage-create-e_class" class="form-control" value="" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="exammanage-create-e_teachernum" class="col-sm-3 control-label">需求老师数</label>
                     <div class="col-sm-7">
                         <input id="exammanage-create-e_teachernum" class="form-control" value="" type="number">
@@ -423,11 +429,11 @@
                 $.ajax( { 
                     url:'/exammanage/deleteexam',// 跳转到 action  
                     data:{  
-                        'e_date': e_date,
-                        'e_stime': e_stime,
-                        'e_etime': e_etime,
-                        'e_name': e_name,
-                        'e_room': e_room
+                        'date': e_date,
+                        'stime': e_stime,
+                        'etime': e_etime,
+                        'name': e_name,
+                        'room': e_room
                     },
                     type:'post',  
                     cache:false,
