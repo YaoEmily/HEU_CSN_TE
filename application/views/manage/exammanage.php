@@ -134,7 +134,7 @@
     </div>
 </div>
 
-<!-- 修改信息Modal -->
+<!-- 编辑信息Modal 暂时没有-->
 <div class="modal fade exammanage-model" id="exammanage-panel-edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content panel panel-primary">
