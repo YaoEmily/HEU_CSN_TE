@@ -6,24 +6,28 @@ class Logstate {
 
     public function adminstate()
     {
-        if($_SESSION['usertype']==NULL){
+        if(isset($_SESSION['usertype'])){
+            if($_SESSION['usertype']=='0'){
+                echo '无权限';
+            	return 'nopower';
+            }
+            return 'true';
+        }
+        else{
             return 'needlog';
         }
-        if($_SESSION['usertype']=='0'){
-            echo '无权限';
-        	return 'nopower';
-        }
-        return 'true';
     }
 
     public function normalstate(){
-        if($_SESSION['usertype']==null){
+        if(isset($_SESSION['usertype'])){
+            if($_SESSION['usertype']=='1'){
+                echo '无权限';
+                return 'nopower';
+            }
+            return 'true';
+        }
+        else{
             return 'needlog';
         }
-        if($_SESSION['usertype']=='1'){
-            echo '无权限';
-            return 'nopower';
-        }
-        return 'true';
     }
 }
