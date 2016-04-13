@@ -144,7 +144,7 @@
     </div>
 </div>
 
-<!-- 分配确认Modal -->
+<!-- 分配提示Modal -->
 <div class="modal fade bs-example-modal-sm" id="distrubute-model-prompt" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">

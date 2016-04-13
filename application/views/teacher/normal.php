@@ -135,7 +135,6 @@
             });
         }
         else {
-            console.log("sads")
             prompt.innerHTML = "输入11位手机号";
         }
     }
