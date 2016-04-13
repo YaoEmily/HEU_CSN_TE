@@ -3,29 +3,14 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav in" id="side-menu">
                         <li>
-                            <a id="teachermanage" href="/teachermanage"><i class="fa fa-group fa-fw"></i> 教师信息</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level collapse">
-                                <li>
-                                    <a href="flot.html">Flot Charts</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Morris.js Charts</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                            <a id="teachermanage" href="/normal"><i class="fa fa-group fa-fw"></i> 个人信息管理</a>
                         </li>
                         <li>
                             <a id="classmanage" href="/exammanage"><i class="fa fa-table fa-fw"></i> 课程表管理</a>
                         </li>
                         <li>
-                            <a id="distmanage" href="/distmanage"><i class="fa fa-exchange fa-fw"></i> 考试分配</a>
-                        </li>
-                        <li>
-                            <a id="statmanage" href="/statmanage"><i class="fa fa-dashboard fa-fw"></i> 教师监考统计</a>
-                        </li>                                                
+                            <a id="distmanage" href="/distmanage"><i class="fa fa-exchange fa-fw"></i> 监考信息</a>
+                        </li>                                            
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>
