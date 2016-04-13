@@ -366,7 +366,7 @@
                      },
                      error : function() {
                         $("#distrubute-dis-prompt").text(""); 
-                        alert("删除出现错误，请联系管理员或尝试重新登录");
+                        alert("分配出现错误，请联系管理员或尝试重新登录");
                      }  
                 });
             }

@@ -3,7 +3,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav in" id="side-menu">
                         <li>
-                            <a id="normal" href="/normalinfo"><i class="fa fa-group fa-fw"></i> 个人信息管理</a>
+                            <a id="normal" href="/normal"><i class="fa fa-group fa-fw"></i> 个人信息管理</a>
                         </li>
                         <li>
                             <a id="classmanage" href="/normal/classmanage"><i class="fa fa-table fa-fw"></i> 课程表管理</a>

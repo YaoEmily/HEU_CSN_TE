@@ -88,6 +88,7 @@
                                     </tfoot>
                                     <tbody></tbody>
                                 </table>
+               	<input type="text" class="form-control" placeholder="请输入转交理由" id="exammanage-entrust-reason">
             </div>
             <div class="modal-footer panel-footer">
                 <span id="exammanage-entrust-prompt" style="color: red; opacity: 0"></span>
@@ -178,7 +179,7 @@
                                 "sSortDescending": ": 以降序排列此列"
                             }
                         },
-                        ajax: "/normalexam/getteachers",
+                        ajax: "/normalexam/teacher",
                         columns: [
                             { "data": "t_id" },
                             { "data": "t_name" },
@@ -192,14 +193,11 @@
     }
 
 
-
-
-
 	function loadtable() {
 	    $.ajax( {  
-            url:'/normal/getexam',// 跳转到 action  
+            url:'/normalexam/getall',
             data:{},
-            type:'get',
+            type:'post',
             cache:false,
             async:true,
             dataType:'json',
@@ -286,11 +284,11 @@
                 "time":time,
                 "room":room,
                 "ename":ename,
-                "tid":tid
+                "id":tid
             },
             type:'get',
             cache:false,
-            async:true,
+            async:false,
             dataType:'json',
             success:function(data) {
             	if(data.msg == true) {
@@ -321,12 +319,18 @@
 			alert(errmsg["ajaxerr"]);
 			return false;
 		}
+		if($("#exammanage-entrust-reason").val() == "") {
+			alert("请输入转交理由");
+			return false;
+		}
+		exammanage-entrust-reason
 		var date = exams[ci]["date"];
 		var time = exams[ci]["time"];
 		var room = exams[ci]["room"];
 		var ename = exams[ci]["ename"];
 		var tid = exams[ci]["tid"];
 		var zid = $("#exammanage-entrust-table>tbody>tr.selected>td:eq(0)").text();
+		var reason = $("#exammanage-entrust-reason").val();
         if($("#distrubute-teacher-table>tbody>tr.selected").length == 0) {
         	alert("请选择一位您想将此任务转交给的老师");
             return false;
@@ -335,18 +339,19 @@
 			if(confirm("再次确定将此任务转交给"+$("#exammanage-entrust-table>tbody>tr.selected>td:eq(1)").text()+"么")==true)
 			{
 		        $.ajax( {  
-		            url:'/normalexam/accept',
+		            url:'/normalexam/change',
 		            data:{
 		                "date":date,
 		                "time":time,
 		                "room":room,
 		                "ename":ename,
-		                "tid":tid,
-		                "zid":zid
+		                "id":tid,
+		                "zid":zid,
+		                "reason": reason
 		            },
-		            type:'get',
+		            type:'post',
 		            cache:false,
-		            async:true,
+		            async:false,
 		            dataType:'json',
 		            success:function(data) {
 		            	if(data.msg == true) {
@@ -390,17 +395,17 @@
 		var ename = exams[ci]["ename"];
 		var tid = exams[ci]["tid"];
         $.ajax( {  
-            url:'/normalexam/reject',// 跳转到 action  
+            url:'/normalexam/refuse',// 跳转到 action  
             data:{
                 "date":date,
                 "time":time,
                 "room":room,
                 "ename":ename,
-                "tid":tid
+                "id":tid
             },
-            type:'get',
+            type:'post',
             cache:false,
-            async:true,
+            async:false,
             dataType:'json',
             success:function(data) {
             	if(data.msg == true) {
