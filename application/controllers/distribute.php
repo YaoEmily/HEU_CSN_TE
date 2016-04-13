@@ -39,13 +39,13 @@ class distribute extends CI_Controller {
     public function dis(){
         $state=$this->logstate->adminstate();
         if($state=='true'){
-            $date=$this->input->post('date');
-            $stime=$this->input->post('stime');
-            $etime=$this->input->post('etime');
-            $room=$this->input->post('room');
-            $name=$this->input->post('name');
-            $id=$this->input->post('id');
-            $this->distribute_model->dis($date,$stime,$etime,$room,$name)
+            $date=$this->input->get('date');
+            $stime=$this->input->get('stime');
+            $etime=$this->input->get('etime');
+            $room=$this->input->get('room');
+            $name=$this->input->get('name');
+            $id=$this->input->get('id');
+            $this->distribute_model->dis($date,$stime,$etime,$room,$name);
         }
         else{
             return $state;
