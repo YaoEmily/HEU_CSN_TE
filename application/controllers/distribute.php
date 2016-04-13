@@ -11,6 +11,14 @@ class distribute extends CI_Controller {
         $this->load->library('session');
 
     }
+
+    public function index(){
+        $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
+        $this->load->view('templates/header.php',$data);
+        $this->load->view('templates/manage_menu.php',array('current' => 'distribute'));
+        $this->load->view('manage/distribute.php');
+        $this->load->view('templates/footer.php');
+    }
     public function autodis(){
         $state=$this->logstate->adminstate();
         if($state=='true'){
@@ -39,12 +47,12 @@ class distribute extends CI_Controller {
     public function dis(){
         $state=$this->logstate->adminstate();
         if($state=='true'){
-            $date=$this->input->get('date');
-            $stime=$this->input->get('stime');
-            $etime=$this->input->get('etime');
-            $room=$this->input->get('room');
-            $name=$this->input->get('name');
-            $id=$this->input->get('id');
+            $date=$this->input->post('date');
+            $stime=$this->input->post('stime');
+            $etime=$this->input->post('etime');
+            $room=$this->input->post('room');
+            $name=$this->input->post('name');
+            $id=$this->input->post('id');
             $this->distribute_model->dis($date,$stime,$etime,$room,$name);
         }
         else{

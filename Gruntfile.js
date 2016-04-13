@@ -15,6 +15,7 @@ module.exports = function(grunt) {
           './public/assets/bower/jquery/dist/jquery.js',
           './public/assets/bower/datatables/media/js/jquery.dataTables.min.js',
           './public/assets/bower/datatables/media/js/dataTables.bootstrap.min.js',
+          './public/assets/bower/datatables.net-select/js/dataTables.select.min.js',
           './public/assets/bower/bootstrap/dist/js/bootstrap.js',
           './public/assets/bower/startbootstrap-sb-admin-2/dist/js/sb-admin-2.js',
           './public/assets/bower/metisMenu/dist/metisMenu.min.js',
@@ -32,6 +33,9 @@ module.exports = function(grunt) {
           './public/assets/bower/bootstrap/dist/css/bootstrap.css',
           './public/assets/bower/font-awesome/css/font-awesome.css',
           './public/assets/bower/datatables/css/dataTables.bootstrap.css',
+          './public/assets/bower/datatables/css/jquery.dataTables.min.css',
+          './public/assets/bower/datatables.net-select/css/select.dataTables.min.css',
+          '//cdn.datatables.net/select/1.1.2/css/select.dataTables.min.css',
           './public/assets/css/base.css',
           './public/assets/bower/metisMenu/dist/metisMenu.min.css',
           './public/assets/bower/startbootstrap-sb-admin-2/dist/css/sb-admin-2.css'
@@ -85,9 +89,6 @@ module.exports = function(grunt) {
     watch: {
       app: {
         files: [
-          './public/assets/bower/jquery/dist/jquery.js',
-          './public/assets/bower/bootstrap/dist/js/bootstrap.js',
-          './public/assets/bower/bootstrap/dist/css/bootstrap.css',
           './public/assets/css/base.css',
           './public/assets/js/base.js'
         ],   
