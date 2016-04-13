@@ -29,7 +29,7 @@ class teachermanage extends CI_Controller {
     public function getpassword(){
         $state=$this->logstate->adminstate();
         if($state=='true'){
-            $id=$this->input->get('t_id');
+            $id=$this->input->post('t_id');
             $password=$this->teachermanage_model->getpassword($id);
             $data=array('msg' => 'true','pas' => $password['t_password']);
             $this->output
@@ -107,10 +107,10 @@ class teachermanage extends CI_Controller {
     public function insertteacher(){
         $state=$this->logstate->adminstate();
         if($state=='true'){
-            $id=$this->input->get('id');
-            $password=$this->input->get('password');
-            $name=$this->input->get('name');
-            $tel=$this->input->get('tel');
+            $id=$this->input->post('id');
+            $password=$this->input->post('password');
+            $name=$this->input->post('name');
+            $tel=$this->input->post('tel');
             if($this->teachermanage_model->idstate($id)=='0'){
                 if($this->teachermanage_model->insertteacher($id,$password,$name,$tel)=='true'){
                     $data=array('msg' => 'true');

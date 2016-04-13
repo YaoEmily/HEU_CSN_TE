@@ -26,7 +26,24 @@ class all extends CI_Controller {
     public function deleteall(){
         $state=$this->logstate->adminstate();
         if($state='true'){
-            $allinfo=$this->all_model->delete();
+            $data=array('msg' => $this->all_model->delete());
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($data));
+        }
+        else{
+            return $state;
+        }
+    }
+
+    public function setnew(){
+        $state=$this->logstate->adminstate();
+        if($state='true'){
+            $date=$this->input->post('date');
+            $data=array('msg' => $this->all_model->setnew($date));
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($data));
         }
         else{
             return $state;

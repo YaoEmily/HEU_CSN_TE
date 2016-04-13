@@ -15,4 +15,9 @@ class all_model extends CI_Model {
 		$query = $this->db->query("update teacher set t_num=0");
 		return $query;
 	}
+
+	public function setnew($date){
+		$query = $this->db->query("update common set start='$date'");
+		return $query;
+	}
 }

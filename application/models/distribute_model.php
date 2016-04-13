@@ -31,7 +31,6 @@ class distribute_model extends CI_Model {
             }
             if($can=='true'){
                 $te= $teacher['t_id'];
-                $this->db->query("update teacher set t_num=t_num+1 where t_id= $te");
                 
                 $distribute = array(
                 'd_date' => $date,
@@ -60,7 +59,7 @@ class distribute_model extends CI_Model {
 
     public function dis($date,$stime,$etime,$room,$ename,$tid){
 
-        $this->db->query("update teacher set t_num=t_num+1 where t_id= $tid");
+        
         $this->db->query("update exam set e_teachernum=e_teachernum-1 where e_date= '$date' and e_stime= '$stime' and e_etime= '$etime' and e_room= $room and e_name= '$ename'");
         $distribute = array(
             'd_date' => $date,
