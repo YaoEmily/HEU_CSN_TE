@@ -490,7 +490,7 @@
                  error : function() {
                     $("#classmanage-edit-prompt").text(errmsg["ajaxerr"]);
                  }  
-            });  
+            });
 		}
 	}
 	function dele(that) {

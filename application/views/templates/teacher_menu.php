@@ -3,14 +3,15 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav in" id="side-menu">
                         <li>
-                            <a id="teachermanage" href="/normal"><i class="fa fa-group fa-fw"></i> 个人信息管理</a>
+                            <a id="normal" href="/normalinfo"><i class="fa fa-group fa-fw"></i> 个人信息管理</a>
                         </li>
                         <li>
-                            <a id="classmanage" href="/exammanage"><i class="fa fa-table fa-fw"></i> 课程表管理</a>
+                            <a id="classmanage" href="/normal/classmanage"><i class="fa fa-table fa-fw"></i> 课程表管理</a>
                         </li>
                         <li>
-                            <a id="distmanage" href="/distmanage"><i class="fa fa-exchange fa-fw"></i> 监考信息</a>
-                        </li>                                            
+                            <a id="exammanage" href="/normal/exammanage"><i class="fa fa-exchange fa-fw"></i> 监考信息</a>
+                        </li>
+                    </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>
