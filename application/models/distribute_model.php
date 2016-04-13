@@ -34,8 +34,8 @@ class distribute_model extends CI_Model {
                 $this->db->query("update teacher set t_num=t_num+1 where t_id= $te");
                 
                 $distribute = array(
-                'd_date' => $date,
-                'd_time' => $stime,
+                'd_date' => "$date",
+                'd_time' => "$stime",
                 'd_room' => $room,
                 'd_ename'=>$name,
                 'd_tid'=>$teacher['t_id'],
@@ -51,26 +51,29 @@ class distribute_model extends CI_Model {
         return 'false';
     }
     public function okstate($date,$stime,$etime,$room,$name){
-        return $this->db->query("update exam set e_state='1' where e_date= $date and e_stime= $stime and e_etime= $etime and e_room= $room and e_name= $name");
+        return $this->db->query("update exam set e_state='1' where e_date= '$date' and e_stime= '$stime' and e_etime= '$etime' and e_room= $room and e_name= $name");
     }
 
     public function updatenum($date,$stime,$etime,$room,$name,$num){
-        return $this->db->query("update exam set e_teachernum= $num where e_date= $date and e_stime= $stime and e_etime= $etime and e_room= $room and e_name= $name");
+        return $this->db->query("update exam set e_teachernum= $num where e_date= '$date' and e_stime= '$stime' and e_etime= '$etime' and e_room= $room and e_name= $name");
     }
 
-    public function dis($date,$time,$room,$ename,$tid){
+    public function dis($date,$stime,$etime,$room,$ename,$tid){
+
         $this->db->query("update teacher set t_num=t_num+1 where t_id= $tid");
-        $this->db->query("update exam set e_teachernum=e_teachernum-1 where e_date= $date and e_stime= $stime and e_etime= $etime and e_room= $room and e_name= $name");
+        $this->db->query("update exam set e_teachernum=e_teachernum-1 where e_date= '$date' and e_stime= '$stime' and e_etime= '$etime' and e_room= $room and e_name= '$ename'");
         $distribute = array(
-            'd_date' => $date,
-            'd_time' => $time,
+            'd_date' => "$date",
+            'd_time' => "$stime",
             'd_room' => $room,
             'd_ename'=>$ename,
-            'd_tid'=>$id,
+            'd_tid'=>$tid,
             'd_type'=>'0',
             'd_state'=>'0',
             'd_fdate'=>date('Y-m-d'),
             'd_ftime'=>date("H:i:s"),
+            'd_reason'=>'0',
+            'd_zid'=>0,
             );
         return $this->db->insert('distribute', $distribute);
     }
