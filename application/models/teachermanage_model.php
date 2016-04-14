@@ -47,4 +47,9 @@ class teachermanage_model extends CI_Model {
     	);
     	return $this->db->insert('teacher', $teacher);
 	}
+
+	public function getnum($id){
+		$query = $this->db->query("select * from distribute where d_tid = '$id' and d_state = '0'");
+		return $query->num_rows();
+	}
 }

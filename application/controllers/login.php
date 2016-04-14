@@ -5,6 +5,7 @@ class login extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('login_model');
+        $this->load->model('check_model');
         $this->load->helper('url_helper');
         $this->load->library('session');
     }
@@ -16,6 +17,7 @@ class login extends CI_Controller {
     }
     public function log()
     {
+        $this->check_model->check();
         $id = $this->input->post('id');
         $password = $this->input->post('password');
         $login= $this->login_model->getlog($id);

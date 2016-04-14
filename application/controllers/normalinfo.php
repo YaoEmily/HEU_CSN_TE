@@ -80,4 +80,20 @@ class normalinfo extends CI_Controller {
         }
     }
 
+    public function getnum(){
+        $state=$this->logstate->normalstate();
+        if($state=='true'){
+            $id=$_SESSION['id'];;
+            $data=array('msg' =>$this->teachermanage_model->getnum($id));
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($data));
+        }
+        else{
+            $this->output->set_status_header(401);
+            $this->load->view('errors/401.php');
+        }
+    }
+    }
+
 }

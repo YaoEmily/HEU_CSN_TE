@@ -29,6 +29,9 @@ class distribute_model extends CI_Model {
                     }
                 }                   
             }
+            if(examstate($date,$teacher['t_id'])=='hasexam'){
+                $can='false';
+            }
             if($can=='true'){
                 $te= $teacher['t_id'];
                 
@@ -49,6 +52,19 @@ class distribute_model extends CI_Model {
 		}
         return 'false';
     }
+
+    public function examstate($date,$tid){
+        $query=$this->db->query("select * from distribute where d_type !='2' and d_tid = '$tid' and d_date='$date'");
+        $num=$query->num_rows();
+        if($num=='0'){
+            return 'noexam';
+        }
+        else{
+            return 'hasexam';
+        }
+    }
+
+
     public function okstate($date,$stime,$etime,$room,$name){
         return $this->db->query("update exam set e_state='1' where e_date= '$date' and e_stime= '$stime' and e_etime= '$etime' and e_room= $room and e_name= $name");
     }
@@ -80,6 +96,7 @@ class distribute_model extends CI_Model {
             if($query) {
                 $this->db->query("update exam set e_teachernum=e_teachernum-1 where e_date= '$date' and e_stime= '$stime' and e_etime= '$etime' and e_room= $room and e_name= '$ename'");
                 return "true";
+
             }
             // return $query;
         }
@@ -91,3 +108,4 @@ class distribute_model extends CI_Model {
     }
 
 }
+?>
