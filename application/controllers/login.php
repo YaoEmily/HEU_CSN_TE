@@ -28,6 +28,7 @@ class login extends CI_Controller {
             if($login['t_power']=='1'){    //1为普通管理员
                 $this->session->set_tempdata('usertype', '1', 3000);
                 $this->session->set_tempdata('id', $login['t_id'], 3000);
+                header("Location: http://localhost/exammanage"); 
 
             }
             else{                        //0为普通老师
