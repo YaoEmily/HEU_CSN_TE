@@ -94,6 +94,4 @@ class normalinfo extends CI_Controller {
             $this->load->view('errors/401.php');
         }
     }
-    }
-
 }

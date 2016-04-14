@@ -11,9 +11,7 @@ class login extends CI_Controller {
     }
     public function index(){
         $data = array('title' => '请登录','heading' => '哈工程6系监考系统管理');
-        $this->load->view('templates/header.php',$data);
-        $this->load->view('templates/login.html');
-        $this->load->view('templates/footer.php');
+        $this->load->view('templates/login.html',$data);
     }
     public function log()
     {

@@ -9,6 +9,15 @@ class all extends CI_Controller {
         $this->load->library('session');
     }
 
+    public function index(){
+        $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
+        $this->load->view('templates/header.php',$data);
+        $this->load->view('templates/manage_menu.php',array('current' => 'all'));
+        $this->load->view('manage/all.php');
+        $this->load->view('templates/footer.php');
+    }
+
+
     public function getall(){
         $state=$this->logstate->adminstate();
         if($state=='true'){
