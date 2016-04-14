@@ -282,7 +282,7 @@
 			x: Number((document.getElementById("classmanage-create-x").checked)),
 			y: Number((document.getElementById("classmanage-create-y").checked))
 	    }
-		if(validdate(stime,etime,create) && validname(name,create)) {
+		if(validdate(stime,etime,"create") && validname(name,"create")) {
             $.ajax( {  
                 url:'/classmanage/insertteacher',// 跳转到 action  
                 data:{  
@@ -317,9 +317,9 @@
 					x: cb.x,
 					y: cb.y
                 },
-                type:'get',
+                type:'post',
                 cache:false,
-                async:true,
+                async:false,
                 dataType:'json',
                 success:function(data) {
                 	console.log(data);
@@ -329,6 +329,7 @@
                             changed("#classmanage-create-prompt");
                             $("#classmanage-create-reset").click();
                         });
+                        load();
                     }
                     else {
                         $("#classmanage-create-prompt").animate({opacity:1},1000,function() {
@@ -467,9 +468,9 @@
 					x: ceb.x,
 					y: ceb.y
                 },
-                type:'get',
+                type:'post',
                 cache:false,
-                async:true,
+                async:false,
                 dataType:'json',
                 success:function(data) {
                 	console.log(data);
@@ -479,6 +480,7 @@
                             changed("#classmanage-edit-prompt");
                             $("#classmanage-edit-reset").click();
                         });
+                        load();
                     }
                     else {
                         $("#classmanage-edit-prompt").animate({opacity:1},1000,function() {
@@ -515,14 +517,15 @@
             },
             type:'post',  
             cache:false,
-            async:true,
+            async:false,
             dataType:'json',  
             success:function(data) {  
                 if(data.msg == true){
                     $("#classmanage-dele-prompt").animate({opacity:1},1000,function() {
                         $("#classmanage-dele-prompt").text("成功删除课程"+name);
                         changed("#classmanage-dele-prompt");
-                    });
+                    })
+                    load();
                 }else{
                     $("#classmanage-dele-prompt").text(data.msg);
                 }
@@ -534,6 +537,7 @@
 	}
 	function load() {
 		var cont = document.getElementById("classmanage-container");
+		cont.innerHTML = "";
 		var promot = document.getElementById("classmanage-container-prompt");
 		promot.innerHTML = '正在加载中';
 	    $.ajax( {  

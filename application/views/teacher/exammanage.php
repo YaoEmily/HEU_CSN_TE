@@ -24,26 +24,24 @@
                                 <table id="exammanage-table" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" role="grid" aria-describedby="exammanage-table_info" style="width: 100%;">
                                     <thead>
                                         <tr role="row">
-                                            <th>日期</th>
+                                            <th>分配时间</th>
+                                            <th>考试日期</th>
                                             <th>考试时间</th>
                                             <th>考试名称</th>
                                             <th>房间</th>
-                                            <th>班级</th>
                                             <th>状态</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody id="exammanage-tbody">
-                                    	<tr><td>exams[i][date]</td><td>exams[i][stime]</td><td>exams[i][name]</td><td>exams[i][room]</td><td>exams[i][class]</td>
-            			<td>已分配，待监考，可委托</td><td><button class="btn btn-success btn-xs"onclick="entrust(0)" data-toggle="modal" data-target="#classmanage-panel-entrust">委托</button></td></tr>;
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>日期</th>
+                                            <th>分配时间</th>
+                                            <th>考试日期</th>
                                             <th>考试时间</th>
                                             <th>考试名称</th>
                                             <th>房间</th>
-                                            <th>班级</th>
                                             <th>状态</th>
                                             <th>操作</th>
                                         </tr>
@@ -206,29 +204,30 @@
             	cprompt.innerHTML = "共有 "+exams.length+" 条记录";
             	$("#exammanage-tbody").empty();
             	for (var i = 0;i< exams.length; i++) {
-            		var newexam = "<tr>"+"<td>"+exams[i]["date"]+"</td><td>"+exams[i]["time"]+"</td><td>"+exams[i]["ename"]+"</td><td>"+exams[i]["room"]+"</td><td>"+exams[i]["class"]+"</td>";
-            		var option = '';
-            		switch(exams[i]["type"]) {
+            		var newexam = "<tr>"+"<td>"+exams[i]["d_fdate"]+" "+exams[i]["d_ftime"]+"</td><td>"+exams[i]["d_date"]+"</td><td>"+exams[i]["d_time"]+"</td><td>"+exams[i]["d_ename"]+"</td><td>"+exams[i]["d_room"]+"</td>";
+            		var state = ""
+                    var option = '';
+            		switch(exams[i]["d_type"]) {
             			case "0": {
 	            			state = "系统分配，";
 	            			break;
 	            		}
             			case "1": {
-	            			state = "由"+exams[i]["zid"]+"转交，";
+	            			state = "由"+exams[i]["d_zid"]+"转交，";
 	            			break;
 	            		}
             			case "2": {
-	            			state = "已转交给"+exams[i]["zid"]+"，对方";
+	            			state = "已转交给"+exams[i]["d_zid"]+"，对方";
 	            			break;
 	            		}
             		}
-            		switch(exams[i]["state"]) {
+            		switch(exams[i]["d_state"]) {
             			case "0": {
-	            			state = "待接受";
-	            			if(exams[i]["type"]=="0") {
+	            			state = state+"待接受";
+	            			if(exams[i]["d_type"]=="0") {
 	            				option = '<button class="btn btn-success btn-xs" onclick="cci('+i+')" data-toggle="modal" data-target="#exammanage-panel-accept">接受</button> <button class="btn btn-success btn-xs" onclick="cci('+i+')" data-toggle="modal" data-target="#exammanage-panel-entrust">转交</button>';
 	            			}
-	            			else if(exams[i]["type"]=="1") {
+	            			else if(exams[i]["d_type"]=="1") {
 	            				option = '<button class="btn btn-success btn-xs" onclick="cci('+i+')" data-toggle="modal" data-target="#exammanage-panel-accept">接受</button> <button class="btn btn-success btn-xs" onclick="cci('+i+')" data-toggle="modal" data-target="#exammanage-panel-reject">拒绝</button>';
 	            			}
 	            			break;
@@ -272,11 +271,11 @@
 			alert("出现系统错误，请联系管理员，错误原因：未选择");
 			return false;
 		}
-		var date = exams[ci]["date"];
-		var time = exams[ci]["time"];
-		var room = exams[ci]["room"];
-		var ename = exams[ci]["ename"];
-		var tid = exams[ci]["tid"];
+		var date = exams[ci]["d_date"];
+		var time = exams[ci]["d_time"];
+		var room = exams[ci]["d_room"];
+		var ename = exams[ci]["d_ename"];
+		var tid = exams[ci]["d_tid"];
         $.ajax( {  
             url:'/normalexam/accept',// 跳转到 action  
             data:{
@@ -286,13 +285,14 @@
                 "ename":ename,
                 "id":tid
             },
-            type:'get',
+            type:'post',
             cache:false,
             async:false,
             dataType:'json',
             success:function(data) {
             	if(data.msg == true) {
                 	alert('已成功接受');
+                    $('#exammanage-panel-accept').modal('hide');
                 	loadtable();
             	}
             },
@@ -323,7 +323,6 @@
 			alert("请输入转交理由");
 			return false;
 		}
-		exammanage-entrust-reason
 		var date = exams[ci]["date"];
 		var time = exams[ci]["time"];
 		var room = exams[ci]["room"];
@@ -357,6 +356,7 @@
 		            	if(data.msg == true) {
 		            		loadtable();
 		                	alert("已成功转交");
+                            $('#exammanage-panel-entrust').modal('hide');
 		            	}
 		            },
 		            error: function(jqXHR, textStatus, errorThrown) {
@@ -411,6 +411,7 @@
             	if(data.msg == true) {
                 	alert('已成功拒绝');
                 	loadtable();
+                    $('#exammanage-panel-reject').modal('hide');
             	}
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -429,7 +430,7 @@
 	}
 	$(function() {
 		loadtable();
-		entrusttable();
+		
 	})
 
 

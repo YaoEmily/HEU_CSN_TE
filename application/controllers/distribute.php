@@ -53,7 +53,21 @@ class distribute extends CI_Controller {
             $room=$this->input->post('room');
             $name=$this->input->post('name');
             $id=$this->input->post('id');
-            $this->distribute_model->dis($date,$stime,$etime,$room,$name,$id);
+            $res=$this->distribute_model->dis($date,$stime,$etime,$room,$name,$id);
+            if($res=='num'){
+                $data=array('msg' => "num");
+            }
+            else if($res=="true") {
+                $data=array('msg' => "true");
+            }
+
+            else{
+                $data=array('msg' => "exist");
+            }
+            
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($data));
         }
         else{
             return $state;

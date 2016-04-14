@@ -15,6 +15,7 @@
                         <div class="row" style="margin-bottom: 20px">
                             <div class="col-sm-6">
                                     <button class="btn btn-success" data-toggle="modal" data-target="#normal-modal-edittel">修改联系方式</button>
+                                    <button class="btn btn-danger" data-toggle="modal" data-target="#normal-modal-editpass">修改密码</button>                                    
                             </div>
                             <div class="col-sm-6" id="normal-container-prompt"></div>
                         </div>
@@ -92,31 +93,93 @@
     </div>
 </div>
 
+<!-- 修改密码Modal -->
+<div class="modal fade normal-model" id="normal-modal-editpass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">修改密码</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel  panel-default"><div class="panel-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="normal-editpass-password" class="col-sm-3 control-label">请输入新密码</label>
+                            <div class="col-sm-9">
+                                <input id="normal-editpass-password" class="form-control" value="" type="text">
+                            </div>
+                        </div>
+                    </form>
+                </div></div>
+
+            </div>
+            <div class="modal-footer">
+                <span id="normal-editpass-prompt" style="color: red;"></span>
+                <button class='btn btn-warning' type='button' onclick="passsubmit()">确定</button>
+                <button class='btn btn-info' type='button'  data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script src="/public/assets/js/javascript.js"></script>
 <script>
+    function passsubmit() {
+        var password = $("#normal-editpass-password").val();
+        var prompt = document.getElementById("normal-editpass-prompt");
+        if(password.length > 16 || password.length < 6) {
+            prompt.innerHTML = "请输入6-16位字母或数字";
+            return false;
+        }
+        $.ajax( {  
+            url:'/normalinfo/updatepassword',// 跳转到 action  
+            data:{
+                password: password
+            },
+            type:'post',
+            cache:false,
+            async:true,
+            dataType:'json',
+            success:function(data) {
+                prompt.innerHTML = "";
+                prompt.innerHTML = "修改成功";
+                window.location.href= "/logout";
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                prompt.innerHTML = errmsg["ajaxerr"];
+            },
+            statusCode: 
+            {
+                404: function() { 
+                    prompt.innerHTML = errmsg["ajaxerr"]+"，错误码:404";
+                },
+                401: function() { 
+                    prompt.innerHTML = errmsg["401"];
+                // alert("asd")
+                }
+            }
+        });
+    }
     function editsubmit() {
-
         var newtel = $("#normal-edittel-newtel").val();
         var prompt = document.getElementById("normal-edittel-prompt");
         console.log(prompt)
         if(newtel.length == 11) {
             console.log(prompt)
             $.ajax( {  
-                url:'/normal/edittel',// 跳转到 action  
+                url:'/normalinfo/updatetel',// 跳转到 action  
                 data:{
                     tel: newtel
                 },
-                type:'get',
+                type:'post',
                 cache:false,
                 async:true,
                 dataType:'json',
                 success:function(data) {
                     prompt.innerHTML = "";
-                    $("#normal-id").val(data.data["id"]);
-                    $("#normal-name").val(data.data["name"]);
-                    $("#normal-tel").val(data.data["tel"]);
-                    $("#normal-edittel-tel").val(data.data["tel"]);
-                    $("#normal-num").val(data.data["num"]);
+                    $("#normal-tel").val(newtel);
                     prompt.innerHTML = "修改成功";
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
@@ -143,19 +206,20 @@
         var prompt = document.getElementById("normal-container-prompt");
         prompt.innerHTML = '正在加载中';
         $.ajax( {  
-            url:'/normal/getinfo',// 跳转到 action  
+            url:'/normalinfo/getinfo',// 跳转到 action  
             data:{},
             type:'get',
             cache:false,
             async:true,
             dataType:'json',
             success:function(data) {
+                console.log(data)
                 prompt.innerHTML = "";
-                $("#normal-id").val(data.data["id"]);
-                $("#normal-name").val(data.data["name"]);
-                $("#normal-tel").val(data.data["tel"]);
-                $("#normal-edittel-tel").val(data.data["tel"]);
-                $("#normal-num").val(data.data["num"]);
+                $("#normal-id").text(data.data[0]["t_id"]);
+                $("#normal-name").text(data.data[0]["t_name"]);
+                $("#normal-tel").val(data.data[0]["t_tel"]);
+                $("#normal-edittel-tel").val(data.data[0]["t_tel"]);
+                $("#normal-num").text(data.data[0]["t_num"]);
             },
             error : function() {
                 prompt.innerHTML = errmsg["ajaxerr"];

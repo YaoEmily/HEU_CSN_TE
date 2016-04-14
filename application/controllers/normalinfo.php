@@ -29,7 +29,7 @@ class normalinfo extends CI_Controller {
     public function getinfo(){
         $state=$this->logstate->normalstate();
         if($state=='true'){
-            $id=$this->input->post('id');
+            $id=$_SESSION['id'];
             $allinfo=$this->teachermanage_model->info($id);
             $result = $allinfo->result();
             $data=array('data' => $allinfo->result());
@@ -38,14 +38,15 @@ class normalinfo extends CI_Controller {
                 ->set_output(json_encode($data));
         }
         else{
-            return $state;
+            $this->output->set_status_header(401);
+            $this->load->view('errors/401.php');
         }
     }
 
     public function updatepassword(){
         $state=$this->logstate->normalstate();
         if($state=='true'){
-            $id=$this->input->post('id');
+            $id=$_SESSION['id'];
             $password=$this->input->post('password');
             if($this->teachermanage_model->updatepassword($id,$password)=='true'){
                 $data=array('msg' => 'true');
@@ -58,14 +59,15 @@ class normalinfo extends CI_Controller {
                 ->set_output(json_encode($data));
         }
         else{
-            return $state;
+            $this->output->set_status_header(401);
+            $this->load->view('errors/401.php');
         }
     }
 
     public function updatetel(){
         $state=$this->logstate->normalstate();
         if($state=='true'){
-            $id=$this->input->post('id');
+            $id=$_SESSION['id'];
             $tel=$this->input->post('tel');
             $data=array('msg' =>$this->teachermanage_model->updatetel($id,$tel));
             $this->output
@@ -73,7 +75,8 @@ class normalinfo extends CI_Controller {
                 ->set_output(json_encode($data));
         }
         else{
-            return $state;
+            $this->output->set_status_header(401);
+            $this->load->view('errors/401.php');
         }
     }
 

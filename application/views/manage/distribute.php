@@ -353,21 +353,44 @@
                     async:false,
                     dataType:'json',  
                     success:function(data) {  
-                        if(data.msg == true){
+                        if(data.msg == "true"){
                             $("#distrubute-dis-prompt").animate({opacity:1},1000,function() {
-                                $("#distrubute-dis-prompt").text("成功分配考试"+e_name);
+                                $("#distrubute-dis-prompt").text("成功分配考试"+name);
                                 changed("#distrubute-dis-prompt");
                                 table1();
                             });
-                        }else{
-                            $("#distrubute-dis-prompt").text("");
-                            alert(data.msg);
+                        }else if(data.msg == "num"){
+                            $("#distrubute-dis-prompt").animate({opacity:1},1000,function() {
+                                $("#distrubute-dis-prompt").text("该考试已经分配足够教师");
+                                changed("#distrubute-dis-prompt");
+                            });
                         }
                      },
-                     error : function() {
-                        $("#distrubute-dis-prompt").text(""); 
-                        alert("分配出现错误，请联系管理员或尝试重新登录");
-                     }  
+                    statusCode: 
+                    {
+                        404: function() { 
+                            $("#distrubute-dis-prompt").animate({opacity:1},1000,function() {
+                                $("#distrubute-dis-prompt").text(errmsg["ajaxerr"]+"，错误码:404");
+                                changed("#distrubute-dis-prompt");
+                            });
+                        },
+                        401: function() { 
+                            $("#distrubute-dis-prompt").animate({opacity:1},1000,function() {
+                                $("#distrubute-dis-prompt").text(errmsg["401"]);
+                                changed("#distrubute-dis-prompt");
+                            });
+                        },
+                        500: function() { 
+                            $("#distrubute-dis-prompt").animate({opacity:1},1000,function() {
+                                $("#distrubute-dis-prompt").text("该老师时间冲突");
+                                changed("#distrubute-dis-prompt");
+                            });
+                        }
+                    },
+                    error : function() {
+                        // $("#distrubute-dis-prompt").text(""); 
+                        // alert("分配出现错误，请联系管理员或尝试重新登录");
+                    },
                 });
             }
         </script>

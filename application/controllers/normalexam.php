@@ -30,7 +30,7 @@ class normalexam extends CI_Controller {
     public function getall(){
         $state=$this->logstate->normalstate();
         if($state=='true'){
-            $id=$this->input->post('id');
+            $id=$_SESSION['id'];
             $allinfo=$this->normalexam_model->getall($id);
             $result = $allinfo->result();
             $data=array('data' => $allinfo->result());
@@ -65,7 +65,7 @@ class normalexam extends CI_Controller {
             $time=$this->input->post('time');
             $room=$this->input->post('room');
             $ename=$this->input->post('ename');
-            $id=$this->input->post('id');
+            $id=$_SESSION['id'];
             $data=array('msg' =>$this->normalexam_model->accept($date,$time,$room,$ename,$id));
             $this->output
                 ->set_content_type('application/json')
@@ -84,7 +84,7 @@ class normalexam extends CI_Controller {
             $time=$this->input->post('time');
             $room=$this->input->post('room');
             $ename=$this->input->post('ename');
-            $id=$this->input->post('id');
+            $id=$_SESSION['id'];
             $data=array('msg' =>$this->normalexam_model->refuse($date,$time,$room,$ename,$id));
             $this->output
                 ->set_content_type('application/json')
@@ -102,7 +102,7 @@ class normalexam extends CI_Controller {
             $time=$this->input->post('time');
             $room=$this->input->post('room');
             $ename=$this->input->post('ename');
-            $id=$this->input->post('id');
+            $id=$_SESSION['id'];
             $zid=$this->input->post('zid');
             $reason=$this->input->post('reason');
             $data=array('msg' =>$this->normalexam_model->change($date,$time,$room,$ename,$id,$zid,$reason));
