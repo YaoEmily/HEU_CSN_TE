@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Days {
 
+
 	public function getday($Date_1,$Date_2){
 	    $Date_List_a1=explode("-",$Date_1);
 
@@ -16,10 +17,5 @@ class Days {
 
 	    return $Days;
 	}
-	public function getstart(){
-		$this->load->database();
-		$start=$this->db->query("select start from common");
-        $time=$start->row_array();
-        $start=$time['start'];
-	}
+
 }

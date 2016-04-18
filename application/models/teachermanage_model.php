@@ -39,9 +39,9 @@ class teachermanage_model extends CI_Model {
 
 	public function insertteacher($id,$password,$name,$tel){
 		$teacher = array(
-        't_id' => $id,
-        't_password' => $password,
-        't_name' => $name,
+        't_id' => "$id",
+        't_password' => "$password",
+        't_name' => "$name",
         't_tel'=>$tel,
         't_power'=>'0',
     	);

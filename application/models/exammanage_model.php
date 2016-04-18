@@ -11,7 +11,7 @@ class exammanage_model extends CI_Model {
 		return $query;
 	}
 	public function delete($date,$stime,$etime,$room,$name){
-		$query = $this->db->query("delete from exam where  e_date='$date' and e_stime='$stime' and e_etime='$etime' and e_room=$room and e_name='$name'");
+		$query = $this->db->query("delete from exam where  e_date='$date' and e_stime='$stime' and e_etime='$etime' and e_room='$room' and e_name='$name'");
 		return $query;
 	}
 

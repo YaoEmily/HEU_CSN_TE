@@ -22,8 +22,8 @@ class classmanage_model extends CI_Model {
 
 	public function insertclass($id,$name,$day,$stime,$etime,$a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k,$l,$m,$n,$o,$p,$q,$r,$s,$t,$u,$v,$w,$x,$y){
 		$classinfo = array(
-        'id' => $id,
-        'c_name' => $name,
+        'id' => "$id",
+        'c_name' => "$name",
         'c_day' => $day,
         'c_stime'=>$stime,
         'c_etime'=>$etime,
