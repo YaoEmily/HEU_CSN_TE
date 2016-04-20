@@ -32,6 +32,24 @@ class all extends CI_Controller {
             return $state;
         }
     }
+
+     public function gethistory(){
+        $state=$this->logstate->adminstate();
+        if($state=='true'){
+            $year  =$this->input->post('year');
+            $allinfo=$this->all_model->gethistory($year);
+            $result = $allinfo->result();
+            $data=array('data' => $allinfo->result());
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($data));
+        }
+        else{
+            return $state;
+        }
+    }
+
+
     public function deleteall(){
         $state=$this->logstate->adminstate();
         if($state='true'){
