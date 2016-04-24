@@ -57,9 +57,10 @@ p {
 </head>
 <body>
 	<div id="container">
-		<h1>需要正确登录</h1>
-		
-		您未登录或登录已过期,<a href="/login">点击以登录</a>
+		<h1>提示：需要正确登录</h1>
+		<div class="prompt" style="font-size: 24px; text-align: center; padding-bottom: 50px; padding-top: 40px;">
+			您未登录或登录已过期,可<a href="/login">点击这里</a>来登录
+		</div>
 	</div>
 </body>
 </html>

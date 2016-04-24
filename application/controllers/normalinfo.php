@@ -39,7 +39,9 @@ class normalinfo extends CI_Controller {
         }
         else{
             $this->output->set_status_header(401);
-            $this->load->view('errors/401.php');
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode(array("err" => "401")));
         }
     }
 
@@ -60,7 +62,9 @@ class normalinfo extends CI_Controller {
         }
         else{
             $this->output->set_status_header(401);
-            $this->load->view('errors/401.php');
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode(array("err" => "401")));
         }
     }
 
@@ -76,14 +80,16 @@ class normalinfo extends CI_Controller {
         }
         else{
             $this->output->set_status_header(401);
-            $this->load->view('errors/401.php');
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode(array("err" => "401")));
         }
     }
 
     public function getnum(){
         $state=$this->logstate->normalstate();
         if($state=='true'){
-            $id=$_SESSION['id'];;
+            $id=$_SESSION['id'];
             $data=array('msg' =>$this->teachermanage_model->getnum($id));
             $this->output
                 ->set_content_type('application/json')
@@ -91,7 +97,9 @@ class normalinfo extends CI_Controller {
         }
         else{
             $this->output->set_status_header(401);
-            $this->load->view('errors/401.php');
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode(array("err" => "401")));
         }
     }
 }

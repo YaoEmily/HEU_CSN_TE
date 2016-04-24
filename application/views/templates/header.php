@@ -19,7 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"><?php echo $heading;?></a>
+                <a class="navbar-brand" href="/"><span style="background-image: url('/public/assets/images/clogo_64.png');background-size:100%;height: 32px;width: 32px;display: inline-block;left: 6px;top:6px;position: absolute;"></span><span style="position: relative;left: 32px;"><?php echo $heading;?></span></a>
             </div>
             <!-- /.navbar-header -->
 

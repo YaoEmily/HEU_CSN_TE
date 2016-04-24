@@ -41,7 +41,6 @@ class Upload extends CI_Controller {
         if (!file_exists("./uploads/".$filename)) {
             exit("not found success.xls.\n");
         }
-         
         $reader = PHPExcel_IOFactory::createReader('Excel5'); //设置以Excel5格式(Excel97-2003工作簿)
         $PHPExcel = $reader->load("./uploads/".$filename); // 载入excel文件
         $sheet = $PHPExcel->getSheet(0); // 读取第一個工作表

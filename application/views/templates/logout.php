@@ -57,9 +57,11 @@ p {
 </head>
 <body>
 	<div id="container">
-		<h1>登出</h1>
+		<h1>提示</h1>
+		<div class="prompt" style="font-size: 24px; text-align: center; padding-bottom: 50px; padding-top: 40px;">
+			您已经成功退出登录，可<a href="/login">点击这里</a>来重新登录
+		</div>
 		
-		您以成功退出登录，<a href="/login">点击以重新登录</a>
 	</div>
 </body>
 </html>

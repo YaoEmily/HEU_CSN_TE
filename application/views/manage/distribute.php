@@ -202,7 +202,7 @@
                                     { "data": "e_teachernum" },
                                 ],
                                 select: {
-                                    style: 'single'
+                                    style: 'os'
                                 }
                     });
                 }
@@ -254,8 +254,10 @@
             $(document).ready(function() {
                 table1();
                 table2();
+
             } );
             function dis() {
+
                 if($("#distrubute-exam-table>tbody>tr.selected>td:eq(0)").length == 0 || $("#distrubute-teacher-table>tbody>tr.selected").length == 0) {
                     $('#distrubute-model-prompt-content').text('请在左侧考试表格和右侧教师表格中分别选择一个以进行手动非配');
                     $('#distrubute-model-prompt').modal('show');

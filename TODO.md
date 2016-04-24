@@ -1,2 +1,1 @@
-
-修复normal关模态重开还有的bug
+teachermanage 151

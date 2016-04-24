@@ -13,11 +13,18 @@ class distribute extends CI_Controller {
     }
 
     public function index(){
-        $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
-        $this->load->view('templates/header.php',$data);
-        $this->load->view('templates/manage_menu.php',array('current' => 'distribute'));
-        $this->load->view('manage/distribute.php');
-        $this->load->view('templates/footer.php');
+        $state=$this->logstate->adminstate();
+        if($state=='true'){             
+            $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
+            $this->load->view('templates/header.php',$data);
+            $this->load->view('templates/manage_menu.php',array('current' => 'distribute'));
+            $this->load->view('manage/distribute.php');
+            $this->load->view('templates/footer.php');
+        }
+        else{
+            $this->output->set_status_header(401);
+            $this->load->view('errors/401.php');
+        }
     }
     public function autodis(){
         $state=$this->logstate->adminstate();
@@ -41,7 +48,10 @@ class distribute extends CI_Controller {
             return 'true';
         }
         else{
-            return $state;
+            $this->output->set_status_header(401);
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode(array("err" => "401")));
         }
     }
     public function dis(){
@@ -70,7 +80,10 @@ class distribute extends CI_Controller {
                 ->set_output(json_encode($data));
         }
         else{
-            return $state;
+            $this->output->set_status_header(401);
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode(array("err" => "401")));
         }
     }
 
@@ -88,7 +101,10 @@ class distribute extends CI_Controller {
                 ->set_output(json_encode($data));
         }
         else{
-            return $state;
+            $this->output->set_status_header(401);
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode(array("err" => "401")));
         }
     }
 }

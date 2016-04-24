@@ -12,14 +12,8 @@ class logout extends CI_Controller {
         $state=$this->logstate->state();
         if($state=='true'){
             $this->session->sess_destroy();
-            $this->load->view('templates/logout.php');
         }   
-        else
-        {
-            $this->output->set_status_header(401);
-            $this->load->view('errors/401.php');
-        }
-
+        $this->load->view('templates/logout.php');
     }
 
 }

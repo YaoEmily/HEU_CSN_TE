@@ -15,10 +15,10 @@
                     <div id="all-table_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                         <div class="row" style="margin-bottom: 20px">
                             <div class="col-sm-6">
-                                <button class="btn btn-success">全部推送</button>
+                                <button class="btn btn-success" onclick="pushallsure()">全部推送</button>
                             </div>
                             <div class="col-sm-6">
-                                <button class="btn btn-success">推送</button>通过ctrl和shift选择下面行来推送。
+                                <button class="btn btn-success" onclick="psure()">推送</button>通过ctrl和shift选择下面行来推送。
                             </div>
                         </div>
                         <div class="row">
@@ -41,7 +41,7 @@
                                             <th>考试名称</th>
                                             <th>房间</th>
                                             <th>教工号</th>
-                                            <th>姓名</th>  
+                                            <th>姓名</th>
                                         </tr>
                                     </tfoot>
                                     <tbody></tbody>
@@ -56,8 +56,176 @@
 
 </div><!-- #wrapper-->
 
+<div class="modal fade" id="pushmanage-modal-confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content panel panel-warning">
+            <div class="panel-heading">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">提示</h4>
+            </div>
+            <div class="modal-body panel-body">
+                            <p id="pushmanage-modal-confirm-p">加载中</p>
+            </div>
+            <div class="modal-footer panel-footer">
+                <button id="pushmanage-modal-confirm-btn" class='btn btn-warning' type='button' data-loading-text="处理中……">确定</button>
+                <button id="pushmanage-modal-confirm-btncl" class='btn btn-info' type='button' data-loading-text="处理中……" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="pushmanage-modal-prompt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content panel panel-warning">
+            <div class="panel-heading">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">提示</h4>
+            </div>
+            <div class="modal-body panel-body">
+                            <p id="pushmanage-modal-prompt-p">加载中</p>
+            </div>
+            <div class="modal-footer panel-footer">
+                <button id="pushmanage-modal-prompt-btncl" class='btn btn-info' type='button' data-loading-text="处理中……" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 <script src="/public/assets/js/javascript.js"></script>
 <script type="text/javascript">
+    function getSelected() {
+        for (var i = table1().rows( { selected: true } ).data().length - 1; i >= 0; i--) {
+            console.log(table1().rows( { selected: true } ).data()[i]);
+        };
+    }
+    function psure() {
+        var length = table.rows( { selected: true } ).data().length;
+        if(length > 20) {
+            $("#pushmanage-modal-confirm-btn").off("click");
+            document.getElementById("pushmanage-modal-confirm-btn").disabled=true
+            $("#pushmanage-modal-confirm-p").html("请将选择数量限定在20个以内");
+            $('#pushmanage-modal-confirm').modal('show');
+        }
+        else if(length == 0) {
+            $("#pushmanage-modal-confirm-btn").off("click");
+            document.getElementById("pushmanage-modal-confirm-btn").disabled=true
+            $("#pushmanage-modal-confirm-p").html("请选择至少1行");
+            $('#pushmanage-modal-confirm').modal('show');
+        }
+        else {
+            document.getElementById("pushmanage-modal-confirm-btn").disabled=false
+            $("#setting-modal-confirm-btn").on("click",push);
+            $("#pushmanage-modal-confirm-p").html("确定发送？");
+            $('#pushmanage-modal-confirm').modal('show');
+        }
+    }
+    function pushallsure() {
+        document.getElementById("pushmanage-modal-confirm-btn").disabled=false
+        $("#setting-modal-confirm-btn").on("click",pushall);
+        $("#pushmanage-modal-confirm-p").html("确定向所有待监考教师发送提醒短信？");
+        $('#pushmanage-modal-confirm').modal('show');
+    }
+    function push() {
+        var $btn = $("#pushmanage-modal-confirm-btn").button('loading')
+        var $btncl = $("#pushmanage-modal-confirm-btncl").button('loading')
+        $.ajax( {
+          url:'/pushmanage/push',// 跳转到 action  
+          data:{
+              tern: table1().rows( { selected: true } ).data()
+          },
+          type:'post',
+          cache:false,
+          async:true,
+          dataType:'json',
+          success:function(data) {
+            if(data.msg==="true") {
+                $('#pushmanage-modal-confirm').modal('hide');
+                $btn.button('reset');
+                $btncl.button('reset');
+                        $("#pushmanage-modal-prompt-p").html("<span style='color: red'>修改成功！</span>");
+                        $('#pushmanage-modal-prompt').modal('show');           
+            }
+
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+            $('#pushmanage-modal-confirm').modal('hide');
+            $btn.button('reset');
+            $btncl.button('reset');
+                    $("#pushmanage-modal-prompt-p").html("<span style='color: red'>"+errmsg.ajaxerr+"</span>");
+                    $('#pushmanage-modal-prompt').modal('show');
+          },
+          statusCode: 
+          {
+              404: function() { 
+                $('#pushmanage-modal-confirm').modal('hide');
+                    $btn.button('reset');
+                    $btncl.button('reset');
+                            $("#pushmanage-modal-prompt-p").html("<span style='color: red'>"+errmsg.ajaxerr+"，错误码:404</span>");
+                            $('#pushmanage-modal-prompt').modal('show');
+              },
+              401: function() { 
+                $('#pushmanage-modal-confirm').modal('hide');
+                    $btn.button('reset');
+                    $btncl.button('reset');
+                            $("#pushmanage-modal-prompt-p").html("<span style='color: red'>"+errmsg.ajaxerr+"，错误码:401(无权限)</span>");
+                            $('#pushmanage-modal-prompt').modal('show');
+              }
+          }
+        });
+    }
+    function pushall() {
+        var $btn = $("#pushmanage-modal-confirm-btn").button('loading')
+        var $btncl = $("#pushmanage-modal-confirm-btncl").button('loading')
+        $.ajax( {
+          url:'/pushmanage/push',// 跳转到 action  
+          data:{},
+          type:'post',
+          cache:false,
+          async:true,
+          dataType:'json',
+          success:function(data) {
+            if(data.msg==="true") {
+                $('#pushmanage-modal-confirm').modal('hide');
+                $btn.button('reset');
+                $btncl.button('reset');
+                        $("#pushmanage-modal-prompt-p").html("<span style='color: red'>修改成功！</span>");
+                        $('#pushmanage-modal-prompt').modal('show');           
+            }
+
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+            $('#pushmanage-modal-confirm').modal('hide');
+            $btn.button('reset');
+            $btncl.button('reset');
+                    $("#pushmanage-modal-prompt-p").html("<span style='color: red'>"+errmsg.ajaxerr+"</span>");
+                    $('#pushmanage-modal-prompt').modal('show');
+          },
+          statusCode: 
+          {
+              404: function() { 
+                $('#pushmanage-modal-confirm').modal('hide');
+                    $btn.button('reset');
+                    $btncl.button('reset');
+                            $("#pushmanage-modal-prompt-p").html("<span style='color: red'>"+errmsg.ajaxerr+"，错误码:404</span>");
+                            $('#pushmanage-modal-prompt').modal('show');
+              },
+              401: function() { 
+                $('#pushmanage-modal-confirm').modal('hide');
+                    $btn.button('reset');
+                    $btncl.button('reset');
+                            $("#pushmanage-modal-prompt-p").html("<span style='color: red'>"+errmsg.ajaxerr+"，错误码:401(无权限)</span>");
+                            $('#pushmanage-modal-prompt').modal('show');
+              }
+          }
+        });
+    }
     var table = function (){
         if ( $.fn.dataTable.isDataTable( '#push-table' ) ) {
             return $('#push-table').DataTable();
@@ -90,13 +258,16 @@
                         },
                         ajax: "/pushmanage/getall",
                         columns: [
-                            { "data": "t_id" },
-                            { "data": "t_name" },
-                            { "data": "t_tel" },
-                            { "data": null, "title":"操作","defaultContent": "<button  class='teachermanage-btn-pass btn btn-info btn-sm' type='button' onclick='setPass(this)'  data-toggle='modal' data-target='#teachermanage-panel-pass'>查看/修改密码</button>"},
-                            { "data": null, "title":"操作","defaultContent": "<button  class='teachermanage-btn-edit btn btn-info btn-sm' type='button' onclick='edit(this)' data-toggle='modal' data-target='#teachermanage-panel-edit'>编辑</button> <button  class='teachermanage-btn-dele btn btn-danger btn-sm' type='button' onclick='dele(this)' data-toggle='modal' data-target='#teachermanage-panel-dele'>删除</button>"}
+                            { "data": "d_date" },
+                            { "data": "d_time" },
+                            { "data": "d_ename" },
+                            { "data": "d_room"},
+                            { "data": "d_tid"},
+                            { "data": "d_name"},
                         ],
-                        select: true
+                        select: {
+                            style: "os"
+                        }
             });
         }
     }

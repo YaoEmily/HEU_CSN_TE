@@ -11,11 +11,32 @@ class normal extends CI_Controller {
 
     }
     public function index(){
-        $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
-        $this->load->view('templates/header.php',$data);
-        $this->load->view('templates/teacher_menu.php',array('current' => 'normal'));
-        $this->load->view('teacher/normal.php');
-        $this->load->view('templates/footer.php');
+        $state=$this->logstate->normalstate();
+        if($state=='true'){
+            $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
+            $this->load->view('templates/header.php',$data);
+            $this->load->view('templates/teacher_menu.php',array('current' => 'normal'));
+            $this->load->view('teacher/normal.php');
+            $this->load->view('templates/footer.php');
+        }
+        else{
+            $this->output->set_status_header(401);
+            $this->load->view('errors/401.php');
+        }            
+    }
+    public function info(){
+        $state=$this->logstate->normalstate();
+        if($state=='true'){
+            $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
+            $this->load->view('templates/header.php',$data);
+            $this->load->view('templates/teacher_menu.php',array('current' => 'info'));
+            $this->load->view('teacher/info.php');
+            $this->load->view('templates/footer.php');
+        }
+        else{
+            $this->output->set_status_header(401);
+            $this->load->view('errors/401.php');
+        }            
     }
 
     public function classmanage(){
@@ -29,7 +50,6 @@ class normal extends CI_Controller {
         }
         else
         {
-            // show_401($page = 'application/views/errors/401.php', $log_error = TRUE);
             $this->output->set_status_header(401);
             $this->load->view('errors/401.php');
         }

@@ -39,7 +39,10 @@ class normalexam extends CI_Controller {
                 ->set_output(json_encode($data));
         }
         else{
-            return $state;
+            $this->output->set_status_header(401);
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode(array("err" => "401")));
         }
     }
 
@@ -54,7 +57,10 @@ class normalexam extends CI_Controller {
                 ->set_output(json_encode($data));
         }
         else{
-            return $state;
+            $this->output->set_status_header(401);
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode(array("err" => "401")));
         }
     }
 
@@ -72,7 +78,10 @@ class normalexam extends CI_Controller {
                 ->set_output(json_encode($data));
         }
         else{
-            return $state;
+            $this->output->set_status_header(401);
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode(array("err" => "401")));
         }
     }
 
@@ -91,7 +100,10 @@ class normalexam extends CI_Controller {
                 ->set_output(json_encode($data));
         }
         else{
-            return $state;
+            $this->output->set_status_header(401);
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode(array("err" => "401")));
         }
     }
 
@@ -111,7 +123,10 @@ class normalexam extends CI_Controller {
                 ->set_output(json_encode($data));
         }
         else{
-            return $state;
+            $this->output->set_status_header(401);
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode(array("err" => "401")));
         }
     }
 
