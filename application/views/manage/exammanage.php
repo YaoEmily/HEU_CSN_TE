@@ -117,12 +117,6 @@
                         <input id="exammanage-create-e_teachernum" class="form-control" value="" type="number">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="exammanage-create-e_state" class="col-sm-3 control-label">状态</label>
-                    <div class="col-sm-7">
-                        <input id="exammanage-create-e_state" class="form-control" value="" type="number">
-                    </div>
-                </div>
             </div>
             <div class="modal-footer panel-footer">
                 <span id="exammanage-create-prompt" style="color: red; opacity: 0"></span>
@@ -181,13 +175,6 @@
                         <input id="exammanage-edit-e_teachernum" class="form-control" value="" type="number">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="exammanage-edit-e_state" class="col-sm-3 control-label">状态</label>
-                    <div class="col-sm-7">
-                        <input id="exammanage-edit-e_state" class="form-control" value="" type="number">
-                    </div>
-                </div>
-
             </div>
             <div class="modal-footer panel-footer">
                 <span id="exammanage-edit-prompt" style="color: red; opacity: 0"></span>
@@ -313,7 +300,6 @@
                 var e_room = $("#exammanage-create-e_room").val();
                 var e_class = $("#exammanage-create-e_class").val();
                 var e_teachernum = $("#exammanage-create-e_teachernum").val();
-                var e_state = $("#exammanage-create-e_state").val();
                 // 缺检查是否为空
                 changing("#exammanage-create-prompt");
                 $.ajax( {  
@@ -326,7 +312,7 @@
                         'name': e_name,
                         'class': e_class,
                         'teachernum': e_teachernum,
-                        'state': e_state
+                        'state': "0"
                     },
                     type:'post',
                     cache:false,

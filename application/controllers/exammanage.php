@@ -13,8 +13,16 @@ class exammanage extends CI_Controller {
     public function index(){
         $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
         $this->load->view('templates/header.php',$data);
-        $this->load->view('templates/manage_menu.php',array('current' => 'teachermanage'));
+        $this->load->view('templates/manage_menu.php',array('current' => 'exammanage'));
         $this->load->view('manage/exammanage.php');
+        $this->load->view('templates/footer.php');
+    }
+
+    public function import(){
+        $data = array('title' => '考试导入','heading' => '考试导入管理');
+        $this->load->view('templates/header.php',$data);
+        $this->load->view('templates/manage_menu.php',array('current' => 'exammanage'));
+        $this->load->view('manage/exammanage_import.php');
         $this->load->view('templates/footer.php');
     }
 

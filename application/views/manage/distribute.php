@@ -17,6 +17,9 @@
                             <div class="col-sm-6">
                                     <button class="btn btn-success" data-toggle="modal" data-target="#distrubute-panel-create">自动分配</button>
                             </div>
+                            <div class="col-sm-6">
+                                <button class="btn btn-success" data-toggle="modal" data-target="#distrubute-panel-create" onclick="dis()">手动分配</button>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
@@ -44,10 +47,8 @@
                                     <tbody></tbody>
                                 </table>
                             </div>
-                            <div class="col-sm-1">
-                                <button class="btn btn-success" data-toggle="modal" data-target="#distrubute-panel-create" onclick="dis()">手动分配</button>
-                            </div>
-                            <div class="col-sm-5">
+
+                            <div class="col-sm-6">
                                 <table id="distrubute-teacher-table" class="table table-striped table-bordered dataTable table-hover" cellspacing="0" width="100%" role="grid" aria-describedby="distrubute-teacher-table_info" style="width: 100%;">
                                     <thead>
                                         <tr role="row">

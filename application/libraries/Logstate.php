@@ -30,4 +30,14 @@ class Logstate {
             return 'needlog';
         }
     }
+
+
+    public function state(){
+        if(isset($_SESSION['usertype'])){
+            return 'true';
+        }
+        else{
+            return 'false';
+        }
+    }
 }

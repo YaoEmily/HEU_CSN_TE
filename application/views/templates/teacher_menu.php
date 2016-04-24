@@ -1,3 +1,29 @@
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="/setting"><i class="fa fa-sign-out fa-fw"></i> 设置</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
@@ -17,6 +43,6 @@
             </div>
             <!-- /.navbar-static-side -->
             <script type="text/javascript">
-                document.getElementById("<?php echo $current;?>").class="active";
+                // document.getElementById("<?php echo $current;?>").class="active";
             </script>
         </nav>

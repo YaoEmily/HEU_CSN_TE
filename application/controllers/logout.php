@@ -9,11 +9,11 @@ class logout extends CI_Controller {
 
     }
     public function index(){
-        $state=$this->logstate->normalstate();
+        $state=$this->logstate->state();
         if($state=='true'){
             $this->session->sess_destroy();
             $this->load->view('templates/logout.php');
-        }
+        }   
         else
         {
             $this->output->set_status_header(401);
