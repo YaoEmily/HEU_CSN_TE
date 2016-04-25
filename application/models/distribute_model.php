@@ -115,5 +115,11 @@ class distribute_model extends CI_Model {
         return $start;
     }
 
+
+    public function getall(){
+        $query=$this->db->query("select * from distribute");
+        return $query;
+    }
+
 }
 ?>

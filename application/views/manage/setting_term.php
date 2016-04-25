@@ -108,7 +108,7 @@ function nsubmit() {
 	var $btn = $("#setting-modal-confirm-btn").button('loading')
 	var $btncl = $("#setting-modal-confirm-btncl").button('loading')
   $.ajax( {  
-      url:'/setting/changenewterm',// 跳转到 action  
+      url:'/all/setnew',// 跳转到 action  
       data:{
           tern: $("#setting-newterm-date").val()
       },
@@ -117,7 +117,7 @@ function nsubmit() {
       async:true,
       dataType:'json',
       success:function(data) {
-      	if(data.msg==="true") {
+      	if(data.data==="true") {
 	      	$('#setting-modal-confirm').modal('hide');
 	      	$btn.button('reset');
 	      	$btncl.button('reset');
@@ -169,7 +169,7 @@ function csubmit() {
   var $btn = $("#setting-modal-confirm-btn").button('loading')
   var $btncl = $("#setting-modal-confirm-btncl").button('loading')
   $.ajax( {  
-      url:'/setting/changecurterm',// 跳转到 action  
+      url:'/all/changenew',// 跳转到 action  
       data:{
           date: $("#setting-curterm-date").val()
       },
@@ -178,7 +178,7 @@ function csubmit() {
       async:true,
       dataType:'json',
       success:function(data) {
-        if(data.msg==="true") {
+        if(data.data==="true") {
           $('#setting-modal-confirm').modal('hide');
           $btn.button('reset');
           $btncl.button('reset');

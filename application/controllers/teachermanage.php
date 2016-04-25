@@ -1,4 +1,5 @@
 <?php
+require_once './application/libraries/Classes/PHPExcel/IOFactory.php';
 //getall、autoload和logstate修改了代码
 class teachermanage extends CI_Controller {
 
@@ -15,7 +16,7 @@ class teachermanage extends CI_Controller {
     public function index(){
         $state=$this->logstate->adminstate();
         if($state=='true'){
-            $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
+            $data = array('title' =>  $this->Sys_model->getname(),'heading' =>  $this->Sys_model->getname());
             $this->load->view('templates/header.php',$data);
             $this->load->view('templates/manage_menu.php',array('current' => 'teachermanage'));
             $this->load->view('manage/teachermanage.php');

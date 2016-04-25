@@ -10,13 +10,12 @@ class exammanage extends CI_Controller {
         $this->load->model('exammanage_model');
         $this->load->helper('url_helper');
         $this->load->library('session');
-        $this->load->helper(array('form', 'url'));
 
     }
     public function index(){
         $state=$this->logstate->adminstate();
         if($state=='true'){             
-            $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
+            $data = array('title' => $this->Sys_model->getname(),'heading' => $this->Sys_model->getname());
             $this->load->view('templates/header.php',$data);
             $this->load->view('templates/manage_menu.php',array('current' => 'exammanage'));
             $this->load->view('manage/exammanage.php');
@@ -123,7 +122,7 @@ class exammanage extends CI_Controller {
 
         if ( ! $this->upload->do_upload('userfile'))
         {
-            $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
+            $data = array('title' => '考试导入','heading' => '考试导入管理');
             $error = array('error' => $this->upload->display_errors(), 'disabled' => 'disabled');
             $this->load->view('templates/header.php',$data);
             $this->load->view('templates/manage_menu.php',array('current' => 'exammanage'));
@@ -135,7 +134,7 @@ class exammanage extends CI_Controller {
             // $data = array('upload_data' => $this->upload->data());
             $filename = $this->upload->data('file_name');
             // $this->load->view('upload_success', $data);
-            $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
+            $data = array('title' => '考试导入','heading' => '考试导入管理');
             $error = array('error' => "已成功上传并重命名文件名为:<span id='filename'>".$filename."</span>，请点击导入按钮完成导入操作，或重新选择文件重新上传",'disabled' => '');
             $this->load->view('templates/header.php',$data);
             $this->load->view('templates/manage_menu.php',array('current' => 'exammanage'));

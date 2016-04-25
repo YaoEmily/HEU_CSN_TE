@@ -13,7 +13,7 @@ class normalexam extends CI_Controller {
     public function index(){
         $state=$this->logstate->normalstate();
         if($state=='true'){
-            $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
+            $data = array('title' =>  $this->Sys_model->getname(),'heading' =>  $this->Sys_model->getname());
             $this->load->view('templates/header.php',$data);
             $this->load->view('templates/teacher_menu.php',array('current' => 'exammanage'));
             $this->load->view('teacher/exammanage.php');
@@ -114,7 +114,7 @@ class normalexam extends CI_Controller {
             $time=$this->input->post('time');
             $room=$this->input->post('room');
             $ename=$this->input->post('ename');
-            $id=$_SESSION['id'];
+            $id=$this->input->post('id');
             $zid=$this->input->post('zid');
             $reason=$this->input->post('reason');
             $data=array('msg' =>$this->normalexam_model->change($date,$time,$room,$ename,$id,$zid,$reason));

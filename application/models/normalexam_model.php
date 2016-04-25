@@ -38,7 +38,7 @@ class normalexam_model extends CI_Model {
 
 	public function change($date,$time,$room,$ename,$id,$zid,$reason)
 	{
-	    $this->db->query("update distribute set d_type='2',d_state = '0' where d_date='$date' and d_time='$time' and d_room= '$room' and d_ename= '$ename' and d_tid= '$id'");
+	    $this->db->query("update distribute set d_type='2',d_state = '0',d_zid='$zid' where d_date='$date' and d_time='$time' and d_room= '$room' and d_ename= '$ename' and d_tid= '$id'");
         $distribute = array(
             'd_date' => "$date",
             'd_time' => "$time",

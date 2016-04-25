@@ -5,15 +5,16 @@ class pushmanage extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        // $this->load->model('pushmanage_model');
+        $this->load->model('distribute_model');
         $this->load->helper('url_helper');
         $this->load->library('session');
+
 
     }
     public function index(){
         $state=$this->logstate->adminstate();
         if($state=='true'){           
-            $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
+            $data = array('title' =>  $this->Sys_model->getname(),'heading' =>  $this->Sys_model->getname());
             $this->load->view('templates/header.php',$data);
             $this->load->view('templates/manage_menu.php',array('current' => 'pushmanage'));
             $this->load->view('manage/pushmanage.php');
@@ -24,4 +25,15 @@ class pushmanage extends CI_Controller {
             $this->load->view('errors/401.php');
         }        
     }
+
+    public function getall(){
+            $allinfo=$this->distribute_model->getall();
+            $result = $allinfo->result();
+            $data=array('data' => $allinfo->result());
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($data));
+    }
+
+
 }

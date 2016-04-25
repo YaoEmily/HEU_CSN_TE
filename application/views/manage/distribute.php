@@ -15,7 +15,7 @@
                     <div id="distrubute-table_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                         <div class="row" style="margin-bottom: 20px">
                             <div class="col-sm-6">
-                                    <button class="btn btn-success" data-toggle="modal" data-target="#distrubute-panel-create">自动分配</button>
+                                    <button class="btn btn-success" data-toggle="modal" data-target="#distrubute-modal-autodis">自动分配</button>
                             </div>
                             <div class="col-sm-6">
                                 <button class="btn btn-success" data-toggle="modal" data-target="#distrubute-panel-create" onclick="dis()">手动分配</button>
@@ -75,6 +75,31 @@
     </div>
 
 </div><!-- #wrapper-->
+
+
+
+<!-- 分配确认Modal -->
+<div class="modal fade distrubute-model" id="distrubute-modal-autodis" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">自动分配确认</h4>
+            </div>
+            <div class="modal-body">
+                你真的要执行自动分配么？
+            </div>
+            <div class="modal-footer">
+                <span id="distrubute-autodis-prompt" style="color: red; opacity: 0"></span>
+                <button class='btn btn-warning' type='button' onclick="autodissubmit()">确定</button>
+                <button class='btn btn-info' type='button'  data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 <!-- 分配确认Modal -->
 <div class="modal fade distrubute-model" id="distrubute-modal-dis" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -331,6 +356,58 @@
                         alert("创建出现错误，请联系管理员或尝试重新登录");
                      }  
                 });
+            }
+
+
+            function autodissubmit() {
+                $.ajax( { 
+                    url:'/distribute/autodis',// 跳转到 action  
+                    data:{  
+                    },
+                    type:'get',  
+                    cache:false,
+                    async:false,
+                    dataType:'json',  
+                    success:function(data) {  
+                        if(data.err == "true"){
+                            $("#distrubute-autodis-prompt").animate({opacity:1},1000,function() {
+                                $("#distrubute-autodis-prompt").text("成功自动分配考试");
+                                changed("#distrubute-autodis-prompt");
+                                table1();
+                            });
+                        }else if(data.err == "false"){
+                            $("#distrubute-autodis-prompt").animate({opacity:1},1000,function() {
+                                $("#distrubute-autodis-prompt").text("自动分配失败，请咨询管理员");
+                                changed("#distrubute-autodis-prompt");
+                            });
+                        }
+                     },
+                    statusCode: 
+                    {
+                        404: function() { 
+                            $("#distrubute-autodis-prompt").animate({opacity:1},1000,function() {
+                                $("#distrubute-autodis-prompt").text(errmsg["ajaxerr"]+"，错误码:404");
+                                changed("#distrubute-autodis-prompt");
+                            });
+                        },
+                        401: function() { 
+                            $("#distrubute-autodis-prompt").animate({opacity:1},1000,function() {
+                                $("#distrubute-autodis-prompt").text(errmsg["ajaxerr"]+", 错误码：401");
+                                changed("#distrubute-autodis-prompt");
+                            });
+                        },
+                        500: function() { 
+                            $("#distrubute-autodis-prompt").animate({opacity:1},1000,function() {
+                                $("#distrubute-autodis-prompt").text(errmsg["ajaxerr"]+", 错误码：500");
+                                changed("#distrubute-autodis-prompt");
+                            });
+                        }
+                    },
+                    error : function() {
+                        // $("#distrubute-dis-prompt").text(""); 
+                        // alert("分配出现错误，请联系管理员或尝试重新登录");
+                    },
+                });                
             }
 
             function dissubmit() {

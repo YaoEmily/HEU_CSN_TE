@@ -20,10 +20,10 @@
                                 <?php
                                     foreach($terms as $i){
                                         if($i == $term) { ?>
-                                            <option value="<?php echo $i;?>" selected="selected"><?php echo $i;?></option>
+                                            <option value="<?php echo $i;?>" selected="selected"><?php echo $i."-".((int)$i+1)."学年度";?></option>
                                         <?php 
                                         } else {?>
-                                            <option value="<?php echo $i;?>" selected="selected"><?php echo $i;?></option>
+                                            <option value="<?php echo $i;?>"><?php echo $i."-".((int)$i+1)."学年度";?></option>
                                         <?php }
                                     }
                                 ?>
@@ -61,7 +61,7 @@
 
 <script src="/public/assets/js/javascript.js"></script>
 <script type="text/javascript">
-    var ajaxstr = "/all/getall?term=<?php echo $term; ?>";
+    var ajaxstr = "/all/select?term=<?php echo $term; ?>";
     var table = function (){
         if ( $.fn.dataTable.isDataTable( '#all-table' ) ) {
             return $('#all-table').DataTable();
@@ -96,7 +96,7 @@
                         columns: [
                             { "data": "t_id" },
                             { "data": "t_name" },
-                            { "data": "t_num" },
+                            { "data": <?php if((string)$term==(string)date('Y')){?>"t_num"<?php }else echo '"y'.(string)$term.'"';      ?>  <?php   ?> },
                         ],
                         select: {
                             style: 'os'

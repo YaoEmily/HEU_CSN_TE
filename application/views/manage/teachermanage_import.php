@@ -51,7 +51,7 @@
 		$.ajax( {  
 			      url:'/teachermanage/importteacher',// 跳转到 action  
 			      data:{
-			      	filename: $("#filename").val()
+			      	filename: $("#filename").text()
 			      },
 			      type:'get',
 			      cache:false,
@@ -70,10 +70,9 @@
 			      	}
 			      },
 			      error: function(jqXHR, textStatus, errorThrown) {
-			      	$btn.button('reset');
-			      	$btn.text("导入");
-			      	$("#teachermanage-import-modal-prompt-p").html("<span style='color: red'>"+errmsg.ajaxerr+"</span>");
-			      	$('#teachermanage-import-modal-prompt').modal('show');
+			      		$btn.text("导入失败");
+			      		$("#teachermanage-import-modal-prompt-p").html("<span style='color: red'>导入失败，文件格式不对，请确认文件格式</span>");
+			      		$('#teachermanage-import-modal-prompt').modal('show');	
 			      },
 			      statusCode: 
 			      {

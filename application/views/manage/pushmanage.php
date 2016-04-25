@@ -101,12 +101,12 @@
 <script src="/public/assets/js/javascript.js"></script>
 <script type="text/javascript">
     function getSelected() {
-        for (var i = table1().rows( { selected: true } ).data().length - 1; i >= 0; i--) {
-            console.log(table1().rows( { selected: true } ).data()[i]);
+        for (var i = table().rows( { selected: true } ).data().length - 1; i >= 0; i--) {
+            console.log(table().rows( { selected: true } ).data()[i]);
         };
     }
     function psure() {
-        var length = table.rows( { selected: true } ).data().length;
+        var length = table().rows( { selected: true } ).data().length;
         if(length > 20) {
             $("#pushmanage-modal-confirm-btn").off("click");
             document.getElementById("pushmanage-modal-confirm-btn").disabled=true
@@ -121,14 +121,16 @@
         }
         else {
             document.getElementById("pushmanage-modal-confirm-btn").disabled=false
-            $("#setting-modal-confirm-btn").on("click",push);
+            $("#pushmanage-modal-confirm-btn").off("click");
+            $("#pushmanage-modal-confirm-btn").on("click",push);
             $("#pushmanage-modal-confirm-p").html("确定发送？");
             $('#pushmanage-modal-confirm').modal('show');
         }
     }
     function pushallsure() {
         document.getElementById("pushmanage-modal-confirm-btn").disabled=false
-        $("#setting-modal-confirm-btn").on("click",pushall);
+        $("#pushmanage-modal-confirm-btn").off("click");
+        $("#pushmanage-modal-confirm-btn").on("click",pushall);
         $("#pushmanage-modal-confirm-p").html("确定向所有待监考教师发送提醒短信？");
         $('#pushmanage-modal-confirm').modal('show');
     }
@@ -136,9 +138,9 @@
         var $btn = $("#pushmanage-modal-confirm-btn").button('loading')
         var $btncl = $("#pushmanage-modal-confirm-btncl").button('loading')
         $.ajax( {
-          url:'/pushmanage/push',// 跳转到 action  
+          url:'/message/sendstart',// 跳转到 action  
           data:{
-              tern: table1().rows( { selected: true } ).data()
+              tern: table().rows( { selected: true } ).data()
           },
           type:'post',
           cache:false,
@@ -184,7 +186,7 @@
         var $btn = $("#pushmanage-modal-confirm-btn").button('loading')
         var $btncl = $("#pushmanage-modal-confirm-btncl").button('loading')
         $.ajax( {
-          url:'/pushmanage/push',// 跳转到 action  
+          url:'/message/sendall',// 跳转到 action  
           data:{},
           type:'post',
           cache:false,
@@ -195,7 +197,7 @@
                 $('#pushmanage-modal-confirm').modal('hide');
                 $btn.button('reset');
                 $btncl.button('reset');
-                        $("#pushmanage-modal-prompt-p").html("<span style='color: red'>修改成功！</span>");
+                        $("#pushmanage-modal-prompt-p").html("<span style='color: red'>推送成功！</span>");
                         $('#pushmanage-modal-prompt').modal('show');           
             }
 

@@ -323,14 +323,15 @@
 			alert("请输入转交理由");
 			return false;
 		}
-		var date = exams[ci]["date"];
-		var time = exams[ci]["time"];
-		var room = exams[ci]["room"];
-		var ename = exams[ci]["ename"];
-		var tid = exams[ci]["tid"];
+		var date = exams[ci]["d_date"];
+        console.log(date)
+		var time = exams[ci]["d_time"];
+		var room = exams[ci]["d_room"];
+		var ename = exams[ci]["d_ename"];
+		var tid = exams[ci]["d_tid"];
 		var zid = $("#exammanage-entrust-table>tbody>tr.selected>td:eq(0)").text();
 		var reason = $("#exammanage-entrust-reason").val();
-        if($("#distrubute-teacher-table>tbody>tr.selected").length == 0) {
+        if($("#exammanage-entrust-table>tbody>tr.selected").length == 0) {
         	alert("请选择一位您想将此任务转交给的老师");
             return false;
         }
@@ -430,7 +431,7 @@
 	}
 	$(function() {
 		loadtable();
-		
+		entrusttable();
 	})
 
 

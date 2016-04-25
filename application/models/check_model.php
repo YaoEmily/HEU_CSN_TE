@@ -27,6 +27,22 @@ class check_model extends CI_Model {
 				}
 			}
 		}
+
+
+		$query = $this->db->query("select * from exam where e_teachernum>0");
+		$result = $query->result_array();
+		foreach($result as $exam){
+			$e_date=$exam['e_date'];
+			$e_stime=$exam['e_stime'];
+			$e_etime=$exam['e_etime'];
+			$e_room=$exam['e_room'];
+			$e_name=$exam['e_name'];
+			if(date('Y-m-d')>=$e_date){
+				$query = $this->db->query("update exam set e_teachernum=0 where e_date='$e_date' and e_stime='$e_stime' and e_etime='$e_etime' and e_room='$e_room' and e_name='$e_name'");
+			}
+		}
+
+
     }
 }
 ?>

@@ -84,7 +84,7 @@ function submit() {
       async:true,
       dataType:'json',
       success:function(data) {
-      	if(data.msg==="true") {
+      	if(data.data==="true") {
 	      	$('#setting-modal-confirm').modal('hide');
 	      	$btn.button('reset');
 	      	$btncl.button('reset');

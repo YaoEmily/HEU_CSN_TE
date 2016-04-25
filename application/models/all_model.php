@@ -13,7 +13,7 @@ class all_model extends CI_Model {
 	}
 
 	public function gethistory($year){
-		$query = $this->db->query("select t_id,$year from teacher ");
+		$query = $this->db->query("select * from teacher ");
 		return $query;
 	}
 	public function delete(){
@@ -23,10 +23,16 @@ class all_model extends CI_Model {
 
 	public function setnew($date){
 		$query = $this->db->query("update common set start='$date'");
-		$year=date('Y');
-		$year="y".$year;
+		$year=(int)date('Y');
+		$year=$year-1;
+		$year="y".(string)$year;
 		$query = $this->db->query("alter table teacher change  t_num $year int(11)");
 		$query = $this->db->query("ALTER TABLE teacher ADD t_num int(11) default 0");
+		return $query;
+	}
+
+	public function changenew($date){
+		$query = $this->db->query("update common set start='$date'");
 		return $query;
 	}
 }

@@ -15,7 +15,7 @@ class distribute extends CI_Controller {
     public function index(){
         $state=$this->logstate->adminstate();
         if($state=='true'){             
-            $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
+            $data = array('title' => $this->Sys_model->getname(),'heading' => $this->Sys_model->getname());
             $this->load->view('templates/header.php',$data);
             $this->load->view('templates/manage_menu.php',array('current' => 'distribute'));
             $this->load->view('manage/distribute.php');
@@ -38,14 +38,22 @@ class distribute extends CI_Controller {
                     	   $exam['e_teachernum']=$exam['e_teachernum']-1;
                            $this->distribute_model->updatenum($exam['e_date'],$exam['e_stime'],$exam['e_etime'],$exam['e_room'],$exam['e_name'],$exam['e_teachernum']);
                         }
-                        else 
-                            return 'false';
+                        else {
+                            $this->output->set_status_header(200);
+                            $this->output
+                                ->set_content_type('application/json')
+                                ->set_output(json_encode(array("err" => "true")));   
+                            return true; 
+                        }
                     }
                     $this->distribute_model->okstate($exam['e_date'],$exam['e_stime'],$exam['e_etime'],$exam['e_room'],$exam['e_name']);
-
                 }
             }
-            return 'true';
+            $this->output->set_status_header(200);
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode(array("err" => "false")));
+            return false;
         }
         else{
             $this->output->set_status_header(401);

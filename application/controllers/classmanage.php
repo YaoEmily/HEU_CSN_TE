@@ -12,7 +12,7 @@ class classmanage extends CI_Controller {
     public function index(){
         $state=$this->logstate->normalstate();
         if($state=='true'){
-            $data = array('title' => '哈工程6系监考系统','heading' => '哈工程6系监考系统管理');
+            $data = array('title' => $this->Sys_model->getname(),'heading' => $this->Sys_model->getname());
             $this->load->view('templates/header.php',$data);
             $this->load->view('templates/teacher_menu.php',array('current' => 'classmanage'));
             $this->load->view('teacher/classmanage.php');
