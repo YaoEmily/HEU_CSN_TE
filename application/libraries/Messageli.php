@@ -15,14 +15,13 @@ class Messageli {
 		$req = new AlibabaAliqinFcSmsNumSendRequest;
 		$req->setExtend("123456"); //这个是用户名记录那个用户操作
 		$req->setSmsType("normal"); //这个不用改你短信的话就默认这个就好了
-		$req->setSmsFreeSignName("大鱼测试"); //这个是签名
+		$req->setSmsFreeSignName("监考管理系统"); //这个是签名
 
 
 		$req->setSmsParam("{'name':'$name','ename':'$ename','date':'$date','stime':'$stime','room':'$room'}"); //这个是短信签名
 		$req->setRecNum("$tel"); //这个是写手机号码
 		$req->setSmsTemplateCode("SMS_8185063"); //这个是模版ID 主要也是短信内容
 		$resp = $c->execute($req);
-		return $resp;
 	}
 
 

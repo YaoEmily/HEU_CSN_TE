@@ -217,6 +217,7 @@
                                         "sSortDescending": ": 以降序排列此列"
                                     }
                                 },
+                                bDestory: "true",
                                 ajax: "/exammanage/examinfo",
                                 columns: [
                                     { "data": "e_date" },
@@ -227,7 +228,7 @@
                                     { "data": "e_teachernum" },
                                 ],
                                 select: {
-                                    style: 'os'
+                                    style: 'single'
                                 }
                     });
                 }
@@ -262,6 +263,7 @@
                                         "sSortDescending": ": 以降序排列此列"
                                     }
                                 },
+
                                 ajax: "/teachermanage/getall",
                                 columns: [
                                     { "data": "t_id" },
@@ -437,7 +439,8 @@
                             $("#distrubute-dis-prompt").animate({opacity:1},1000,function() {
                                 $("#distrubute-dis-prompt").text("成功分配考试"+name);
                                 changed("#distrubute-dis-prompt");
-                                table1();
+                                table1.fnClearTable(this);
+                                table1({"bDestroy":true});
                             });
                         }else if(data.msg == "num"){
                             $("#distrubute-dis-prompt").animate({opacity:1},1000,function() {

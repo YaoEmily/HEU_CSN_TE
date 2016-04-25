@@ -71,7 +71,7 @@
                     <input id="teachermanage-create-t_id" class="form-control" placeholder="" value="" autofocus="autofocus" pattern="[A-z0-9]{1,20}"></div>
                 <div class="form-group">
                     <label>密码</label>
-                    <input id="teachermanage-create-t_password" class="form-control" placeholder="6-16位字母及数字"  value="" pattern="[A-z0-9]{6,16}"></div>
+                    <input id="teachermanage-create-t_password" class="form-control" placeholder="6-16位字母及数字"  value="" pattern="[A-z0-9]{6,16}" type="password"></div>
                 <div class="form-group">
                     <label>姓名</label>
                     <input id="teachermanage-create-t_name" class="form-control" placeholder=""  value="" ></div>
@@ -421,16 +421,18 @@
                             async:true,
                             dataType:'json',
                             success:function(data) {  
-                                if(data.msg =="true") {
+                                if(data.msg ==true) {
                                     $("#teachermanage-create-prompt").animate({opacity:0},1000,function() {
                                         $("#teachermanage-create-prompt").text("成功新建工号"+id+"的教师");
                                         changed("#teachermanage-create-prompt");
+                                        // table.fnClearTable();
                                     });
                                 }
                                 else {
                                     $("#teachermanage-create-prompt").animate({opacity:0},1000,function() {
                                         $("#teachermanage-create-prompt").text("工号为"+id+"的教师已存在");
                                         changed("#teachermanage-create-prompt");
+                                        // table.fnClearTable();
                                     });
                                 }
                              },

@@ -17,7 +17,7 @@ class teachermanage_model extends CI_Model {
 		return $query;
 	}
 	public function delete($id){
-		$query = $this->db->query("delete from teacher where  t_id ='$id");
+		$query = $this->db->query("delete from teacher where  t_id ='$id'");
 		return $query;
 	}
 	public function updatetel($id,$tel){

@@ -137,50 +137,58 @@
     function push() {
         var $btn = $("#pushmanage-modal-confirm-btn").button('loading')
         var $btncl = $("#pushmanage-modal-confirm-btncl").button('loading')
-        $.ajax( {
-          url:'/message/sendstart',// 跳转到 action  
-          data:{
-              tern: table().rows( { selected: true } ).data()
-          },
-          type:'post',
-          cache:false,
-          async:true,
-          dataType:'json',
-          success:function(data) {
-            if(data.msg==="true") {
+        var datas = {};
+        var data = table().rows( { selected: true } ).data();
+        for(var i=0;i<data.length;i++){
+            $.ajax( {
+              url:'/message/sendchoose',// 跳转到 action  
+              data:{
+                "d_date": data[i]["d_date"],
+                "d_time": data[i]["d_time"],
+                "d_room": data[i]["d_room"],
+                "d_ename": data[i]["d_ename"],
+                "d_tid": data[i]["d_tid"],
+              },
+              type:'post',
+              cache:false,
+              async:true,
+              dataType:'json',
+              success:function(data) {
+                if(data.msg==="true") {
+                    $('#pushmanage-modal-confirm').modal('hide');
+                    $btn.button('reset');
+                    $btncl.button('reset');
+                    $("#pushmanage-modal-prompt-p").html("<span style='color: red'>推送成功！"+i+"/"+data.length+"</span>");
+                    $('#pushmanage-modal-prompt').modal('show');
+                }
+
+              },
+              error: function(jqXHR, textStatus, errorThrown) {
                 $('#pushmanage-modal-confirm').modal('hide');
                 $btn.button('reset');
                 $btncl.button('reset');
-                        $("#pushmanage-modal-prompt-p").html("<span style='color: red'>修改成功！</span>");
-                        $('#pushmanage-modal-prompt').modal('show');           
-            }
-
-          },
-          error: function(jqXHR, textStatus, errorThrown) {
-            $('#pushmanage-modal-confirm').modal('hide');
-            $btn.button('reset');
-            $btncl.button('reset');
-                    $("#pushmanage-modal-prompt-p").html("<span style='color: red'>"+errmsg.ajaxerr+"</span>");
-                    $('#pushmanage-modal-prompt').modal('show');
-          },
-          statusCode: 
-          {
-              404: function() { 
-                $('#pushmanage-modal-confirm').modal('hide');
-                    $btn.button('reset');
-                    $btncl.button('reset');
-                            $("#pushmanage-modal-prompt-p").html("<span style='color: red'>"+errmsg.ajaxerr+"，错误码:404</span>");
-                            $('#pushmanage-modal-prompt').modal('show');
+                        $("#pushmanage-modal-prompt-p").html("<span style='color: red'>"+errmsg.ajaxerr+"</span>");
+                        $('#pushmanage-modal-prompt').modal('show');
               },
-              401: function() { 
-                $('#pushmanage-modal-confirm').modal('hide');
-                    $btn.button('reset');
-                    $btncl.button('reset');
-                            $("#pushmanage-modal-prompt-p").html("<span style='color: red'>"+errmsg.ajaxerr+"，错误码:401(无权限)</span>");
-                            $('#pushmanage-modal-prompt').modal('show');
+              statusCode: 
+              {
+                  404: function() { 
+                    $('#pushmanage-modal-confirm').modal('hide');
+                        $btn.button('reset');
+                        $btncl.button('reset');
+                                $("#pushmanage-modal-prompt-p").html("<span style='color: red'>"+errmsg.ajaxerr+"，错误码:404</span>");
+                                $('#pushmanage-modal-prompt').modal('show');
+                  },
+                  401: function() { 
+                    $('#pushmanage-modal-confirm').modal('hide');
+                        $btn.button('reset');
+                        $btncl.button('reset');
+                                $("#pushmanage-modal-prompt-p").html("<span style='color: red'>"+errmsg.ajaxerr+"，错误码:401(无权限)</span>");
+                                $('#pushmanage-modal-prompt').modal('show');
+                  }
               }
-          }
-        });
+            });
+        }
     }
     function pushall() {
         var $btn = $("#pushmanage-modal-confirm-btn").button('loading')
@@ -200,7 +208,13 @@
                         $("#pushmanage-modal-prompt-p").html("<span style='color: red'>推送成功！</span>");
                         $('#pushmanage-modal-prompt').modal('show');           
             }
-
+            else {
+                $('#pushmanage-modal-confirm').modal('hide');
+                $btn.button('reset');
+                $btncl.button('reset');
+                        $("#pushmanage-modal-prompt-p").html("<span style='color: red'>推送失败，原因未知，请联系管理员！</span>");
+                        $('#pushmanage-modal-prompt').modal('show');                   
+            }
           },
           error: function(jqXHR, textStatus, errorThrown) {
             $('#pushmanage-modal-confirm').modal('hide');
