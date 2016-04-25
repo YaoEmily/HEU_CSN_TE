@@ -375,7 +375,7 @@
                             $("#distrubute-autodis-prompt").animate({opacity:1},1000,function() {
                                 $("#distrubute-autodis-prompt").text("成功自动分配考试");
                                 changed("#distrubute-autodis-prompt");
-                                table1();
+                                table1().ajax.reload();
                             });
                         }else if(data.err == "false"){
                             $("#distrubute-autodis-prompt").animate({opacity:1},1000,function() {
@@ -439,8 +439,7 @@
                             $("#distrubute-dis-prompt").animate({opacity:1},1000,function() {
                                 $("#distrubute-dis-prompt").text("成功分配考试"+name);
                                 changed("#distrubute-dis-prompt");
-                                table1.fnClearTable(this);
-                                table1({"bDestroy":true});
+                                table1().ajax.reload();
                             });
                         }else if(data.msg == "num"){
                             $("#distrubute-dis-prompt").animate({opacity:1},1000,function() {
