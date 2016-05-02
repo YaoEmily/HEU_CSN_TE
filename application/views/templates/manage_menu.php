@@ -5,6 +5,8 @@
                         <i class="fa fa-gear fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
+                        <li><a href="/faq"><i class="fa fa-question fa-fw"></i> 帮助</a>
+                        </li>
                         <li><a href="/setting"><i class="fa fa-gear fa-fw"></i> 设置</a>
                         </li>
                     </ul>

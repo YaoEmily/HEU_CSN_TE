@@ -15,8 +15,8 @@ class login extends CI_Controller {
         $password = $this->input->post('password');
         $word= $this->input->post('word');
         if($id==null && $password==null) {
-             $data = array('title' => '请登录','heading' =>  $this->Sys_model->getname());  
-             $this->load->view('templates/login.html',$data);
+             $data = array('title' => '请登录','heading' =>  $this->Sys_model->getname(),'word' => "");  
+             $this->load->view('templates/login.php',$data);
         }
         else{
              if($this->iftrue($word)=='true'){
@@ -24,7 +24,7 @@ class login extends CI_Controller {
              }
              else{
                $data = array('title' => '请登录','heading' =>  $this->Sys_model->getname(),'word' => "验证码错误");  
-               $this->load->view('templates/login.html',$data);           
+               $this->load->view('templates/login.php',$data);           
              }
         }
         
@@ -52,7 +52,7 @@ class login extends CI_Controller {
         $login= $this->login_model->getlog($id);
         if($login==NULL){
              $data = array('title' => '请登录','heading' =>  $this->Sys_model->getname(),'word' => "用户名错误");  
-             $this->load->view('templates/login.html',$data); 
+             $this->load->view('templates/login.php',$data); 
         }
         else if($password==$login['t_password']){
             if($login['t_power']=='1'){    //1为普通管理员
@@ -70,7 +70,7 @@ class login extends CI_Controller {
         }
         else{
             $data = array('title' => '请登录','heading' =>  $this->Sys_model->getname(),'word' => "密码错误");        //密码错误处理方式
-            $this->load->view('templates/login.html',$data);
+            $this->load->view('templates/login.php',$data);
         }
     }
 

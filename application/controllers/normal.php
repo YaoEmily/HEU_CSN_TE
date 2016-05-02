@@ -70,4 +70,19 @@ class normal extends CI_Controller {
             $this->load->view('errors/401.php');
         }        
     }
+    public function faq() {
+        $state=$this->logstate->normalstate();
+        if($state=='true'){
+            $data = array('title' =>  $this->Sys_model->getname(),'heading' =>  $this->Sys_model->getname());
+            // $this->load->view('templates/header.php',$data);
+            // $this->load->view('templates/teacher_menu.php');
+            $this->load->view('teacher/faq.php',$data);
+            // $this->load->view('templates/footer.php');
+        }
+        else
+        {
+            $this->output->set_status_header(401);
+            $this->load->view('errors/401.php');
+        }        
+    }
 }

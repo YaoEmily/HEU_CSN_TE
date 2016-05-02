@@ -1,5 +1,14 @@
             <ul class="nav navbar-top-links navbar-right">
-                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-question-circle fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="/normal/faq"><i class="fa fa-question fa-fw"></i> 帮助</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
@@ -11,6 +20,7 @@
                     <!-- /.dropdown-user -->
                 </li>
                 <!-- /.dropdown -->
+
             </ul>
             <!-- /.navbar-top-links -->
 

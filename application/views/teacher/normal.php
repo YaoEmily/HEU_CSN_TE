@@ -29,7 +29,7 @@
               </div>
               <a href="/normal/exammanage">
                   <div class="panel-footer">
-                      <span class="pull-left">详细信息</span>
+                      <span class="pull-left">点击查看详细信息</span>
                       <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                       <div class="clearfix"></div>
                   </div>
@@ -53,7 +53,7 @@ function load() {
       success:function(data) {
           console.log(data)
           $("#normal-huges").text(data["msg"]);
-          $("#normal-pmts").text("新监考请求待处理");
+          $("#normal-pmts").text("监考请求待处理");
           if(data['msg'] !== 0) {
           	$("#normal-panel").removeClass("panel-green");
           	$("#normal-panel").addClass("panel-red");
