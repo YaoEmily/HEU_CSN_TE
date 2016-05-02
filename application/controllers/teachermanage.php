@@ -34,7 +34,7 @@ class teachermanage extends CI_Controller {
             $data = array('title' => '教师导入','heading' => '教师导入管理');
             $this->load->view('templates/header.php',$data);
             $this->load->view('templates/manage_menu.php',array('current' => 'teachermanage'));
-            $this->load->view('manage/teachermanage_import.php', array('error' => ' ' , 'disabled' => 'disabled'));
+            $this->load->view('manage/teachermanage_import.php', array('error' => '请确认上传文件符合导入模版规范 ' , 'disabled' => 'disabled'));
             $this->load->view('templates/footer.php');
         }
         else{

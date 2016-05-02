@@ -33,7 +33,7 @@ class exammanage extends CI_Controller {
             $data = array('title' => '考试导入','heading' => '考试导入管理');
             $this->load->view('templates/header.php',$data);
             $this->load->view('templates/manage_menu.php',array('current' => 'exammanage'));
-            $this->load->view('manage/exammanage_import.php', array('error' => ' ' , 'disabled' => 'disabled'));
+            $this->load->view('manage/exammanage_import.php', array('error' => '请确认上传文件符合导入模版规范' , 'disabled' => 'disabled'));
             $this->load->view('templates/footer.php');
         }
         else{

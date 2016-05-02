@@ -27,32 +27,32 @@ class distribute extends CI_Controller {
         }
     }
     public function autodis(){
+        $success=0;
+        $false=0;
         $state=$this->logstate->adminstate();
         if($state=='true'){
             $examinfo=$this->exammanage_model->examinfo();
             $result = $examinfo->result_array();
             foreach($result as $exam){
-                if($exam['e_state']=='0'){
+                if($exam['e_teachernum']>0){
                     while($exam['e_teachernum']>0){
-                        if($this->distribute_model->disteacher($exam['e_date'],$exam['e_stime'],$exam['e_etime'],$exam['e_room'],$exam['e_name'])!='false'){
+                        if($this->distribute_model->disteacher($exam['e_date'],$exam['e_stime'],$exam['e_etime'],$exam['e_room'],$exam['e_name'])){
                     	   $exam['e_teachernum']=$exam['e_teachernum']-1;
+                           $success=$success+1;
                            $this->distribute_model->updatenum($exam['e_date'],$exam['e_stime'],$exam['e_etime'],$exam['e_room'],$exam['e_name'],$exam['e_teachernum']);
                         }
                         else {
-                            $this->output->set_status_header(200);
-                            $this->output
-                                ->set_content_type('application/json')
-                                ->set_output(json_encode(array("err" => "true")));   
-                            return true; 
+                            $false=$false+1;
                         }
                     }
                     $this->distribute_model->okstate($exam['e_date'],$exam['e_stime'],$exam['e_etime'],$exam['e_room'],$exam['e_name']);
                 }
             }
+            $data=array('msg' => "true","success" => $success,"false" => $false);
             $this->output->set_status_header(200);
             $this->output
                 ->set_content_type('application/json')
-                ->set_output(json_encode(array("err" => "false")));
+                ->set_output(json_encode($data));
             return false;
         }
         else{

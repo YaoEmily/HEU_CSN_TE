@@ -31,7 +31,7 @@
                                             <th>考试名称</th>
                                             <th>房间</th>
                                             <th>教工号</th>
-                                            <th>姓名</th>  
+                                            <!-- <th>姓名</th>   -->
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -41,7 +41,7 @@
                                             <th>考试名称</th>
                                             <th>房间</th>
                                             <th>教工号</th>
-                                            <th>姓名</th>
+                                            <!-- <th>姓名</th> -->
                                         </tr>
                                     </tfoot>
                                     <tbody></tbody>
@@ -131,64 +131,58 @@
         document.getElementById("pushmanage-modal-confirm-btn").disabled=false
         $("#pushmanage-modal-confirm-btn").off("click");
         $("#pushmanage-modal-confirm-btn").on("click",pushall);
-        $("#pushmanage-modal-confirm-p").html("确定向所有待监考教师发送提醒短信？");
+        $("#pushmanage-modal-confirm-p").html("系统将自动为目前考试还未开始，且教师已接受的监考信息进行短信群发");
         $('#pushmanage-modal-confirm').modal('show');
     }
     function push() {
         var $btn = $("#pushmanage-modal-confirm-btn").button('loading')
         var $btncl = $("#pushmanage-modal-confirm-btncl").button('loading')
         var datas = {};
-        var data = table().rows( { selected: true } ).data();
-        for(var i=0;i<data.length;i++){
+        var n = 0;
+        var f = 0;
+        var datas = table().rows( { selected: true } ).data();
+        for(var i=0;i<datas.length;i++){
             $.ajax( {
               url:'/message/sendchoose',// 跳转到 action  
               data:{
-                "d_date": data[i]["d_date"],
-                "d_time": data[i]["d_time"],
-                "d_room": data[i]["d_room"],
-                "d_ename": data[i]["d_ename"],
-                "d_tid": data[i]["d_tid"],
+                "d_date": datas[i]["d_date"],
+                "d_time": datas[i]["d_time"],
+                "d_room": datas[i]["d_room"],
+                "d_ename": datas[i]["d_ename"],
+                "d_tid": datas[i]["d_tid"],
               },
               type:'post',
               cache:false,
-              async:true,
+              async:false,
               dataType:'json',
               success:function(data) {
                 if(data.msg==="true") {
-                    $('#pushmanage-modal-confirm').modal('hide');
-                    $btn.button('reset');
-                    $btncl.button('reset');
-                    $("#pushmanage-modal-prompt-p").html("<span style='color: red'>推送成功！"+i+"/"+data.length+"</span>");
-                    $('#pushmanage-modal-prompt').modal('show');
+                    // n++;
+                    ++n;
                 }
 
               },
               error: function(jqXHR, textStatus, errorThrown) {
-                $('#pushmanage-modal-confirm').modal('hide');
-                $btn.button('reset');
-                $btncl.button('reset');
-                        $("#pushmanage-modal-prompt-p").html("<span style='color: red'>"+errmsg.ajaxerr+"</span>");
-                        $('#pushmanage-modal-prompt').modal('show');
+                f++;
+                // $("#pushmanage-modal-prompt-p").html("<span style='color: red'>"+errmsg.ajaxerr+"</span>");
+                // $('#pushmanage-modal-prompt').modal('show');
               },
               statusCode: 
               {
                   404: function() { 
-                    $('#pushmanage-modal-confirm').modal('hide');
-                        $btn.button('reset');
-                        $btncl.button('reset');
-                                $("#pushmanage-modal-prompt-p").html("<span style='color: red'>"+errmsg.ajaxerr+"，错误码:404</span>");
-                                $('#pushmanage-modal-prompt').modal('show');
+                    f++;
                   },
                   401: function() { 
-                    $('#pushmanage-modal-confirm').modal('hide');
-                        $btn.button('reset');
-                        $btncl.button('reset');
-                                $("#pushmanage-modal-prompt-p").html("<span style='color: red'>"+errmsg.ajaxerr+"，错误码:401(无权限)</span>");
-                                $('#pushmanage-modal-prompt').modal('show');
+                    f++;
                   }
               }
             });
         }
+        $('#pushmanage-modal-confirm').modal('hide');
+        $btn.button('reset');
+        $btncl.button('reset');
+        $("#pushmanage-modal-prompt-p").html("<p>推送成功:"+(n)+"/"+datas.length+"<br>推送失败:"+(f)+"/"+datas.length+"</p>");
+        $('#pushmanage-modal-prompt').modal('show');
     }
     function pushall() {
         var $btn = $("#pushmanage-modal-confirm-btn").button('loading')
@@ -279,7 +273,7 @@
                             { "data": "d_ename" },
                             { "data": "d_room"},
                             { "data": "d_tid"},
-                            { "data": "d_name"},
+                            // { "data": "d_name"},
                         ],
                         select: {
                             style: "os"

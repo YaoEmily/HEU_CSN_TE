@@ -106,6 +106,7 @@
 					<label><input id="classmanage-create-x" type="checkbox" name="x">第24周</label>
 					<label><input id="classmanage-create-y" type="checkbox" name="y">第25周</label>
 					</div></div>
+				<div>提示：若一门课在一周内有多个时间段，请分别添加课程信息</div>
             </div>
             <div class="modal-footer panel-footer">
                 <span id="classmanage-create-prompt" style="color: red; opacity: 0"></span>

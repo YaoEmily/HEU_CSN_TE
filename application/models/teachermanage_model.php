@@ -12,6 +12,13 @@ class teachermanage_model extends CI_Model {
 		return $query;
 	}
 
+	public function output($year)
+	{
+
+		$query = $this->db->query("select t_id,t_name,$year from teacher ");
+		return $query;
+	}
+
 	public function info($id){
 	    $query = $this->db->query("select * from teacher where t_id='$id'");
 		return $query;
