@@ -33,3 +33,6 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /node_modules
 
 /uploads
+
+# 因为我和sz的db用户名和密码不一致
+/application/config/database.php
