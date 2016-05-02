@@ -131,7 +131,7 @@
         document.getElementById("pushmanage-modal-confirm-btn").disabled=false
         $("#pushmanage-modal-confirm-btn").off("click");
         $("#pushmanage-modal-confirm-btn").on("click",pushall);
-        $("#pushmanage-modal-confirm-p").html("确定向所有待监考教师发送提醒短信？");
+        $("#pushmanage-modal-confirm-p").html("系统将自动为目前考试还未开始，且教师已接受的监考信息进行短信群发");
         $('#pushmanage-modal-confirm').modal('show');
     }
     function push() {

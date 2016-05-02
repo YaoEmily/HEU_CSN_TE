@@ -27,7 +27,7 @@ class all_model extends CI_Model {
 		$year=$year-1;
 		$year="y".(string)$year;
 		$query = $this->db->query("alter table teacher change  t_num $year int(11)");
-		$query = $this->db->query("ALTER TABLE teacher ADD t_num int(11) default 0");
+		$query = $this->db->query("ALTER TABLE teacher ADD t_num int(11) not null default 0");
 		return $query;
 	}
 

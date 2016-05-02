@@ -30,7 +30,7 @@
                                             <th>考试名称</th>
                                             <th>房间</th>
                                             <th>班级</th>
-                                            <th>仍需求的需求教师数</th>
+                                            <th>当前需求教师数</th>
                                             <!-- <th>状态</th> -->
                                             <th>编辑</th>
                                         </tr>
@@ -43,7 +43,7 @@
                                             <th>考试名称</th>
                                             <th>房间</th>
                                             <th>班级</th>
-                                            <th>仍需求的需求教师数</th>
+                                            <th>当前需求教师数</th>
                                             <!-- <th>状态</th> -->
                                             <th>编辑</th>
                                         </tr>
@@ -280,7 +280,7 @@
                                     { "data": "e_class" },
                                     { "data": "e_teachernum" },
                                     // { "data": "e_state"},
-                                    { "data": null, "title":"操作","defaultContent": "<button  class='exammanage-btn-edit btn btn-info btn-sm' type='button' onclick='edit(this)' data-toggle='modal' data-target='#exammanage-panel-edit'  disabled >编辑</button> <button  class='exammanage-btn-dele btn btn-danger btn-sm' type='button' onclick='dele(this)' data-toggle='modal' data-target='#exammanage-panel-dele'>删除</button>"}
+                                    { "data": null, "title":"操作","defaultContent": "<button  class='exammanage-btn-dele btn btn-danger btn-sm' type='button' onclick='dele(this)' data-toggle='modal' data-target='#exammanage-panel-dele'>删除</button>"}
                                 ],
                                 select: true
                     });

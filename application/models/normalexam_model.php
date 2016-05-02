@@ -15,7 +15,7 @@ class normalexam_model extends CI_Model {
 	public function teacher()
 	{
 	    
-	    $query = $this->db->query("select t_id,t_name from teacher");
+	    $query = $this->db->query("select t_id,t_name,t_tel from teacher");
 		return $query;
 	}
 

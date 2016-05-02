@@ -87,7 +87,7 @@
                 <h4 class="modal-title" id="myModalLabel">自动分配确认</h4>
             </div>
             <div class="modal-body">
-                你真的要执行自动分配么？
+                系统将自动为未开始且需求教师数大于0的考试分配一名教师，分配顺序按照此教师监考次数从小到大排序。
             </div>
             <div class="modal-footer">
                 <span id="distrubute-autodis-prompt" style="color: red; opacity: 0"></span>
@@ -369,15 +369,21 @@
                     type:'get',  
                     cache:false,
                     async:false,
-                    dataType:'json',  
+                    dataType:'json',
                     success:function(data) {  
-                        if(data.err == "true"){
+                        if(data.msg == "true"){
                             $("#distrubute-autodis-prompt").animate({opacity:1},1000,function() {
-                                $("#distrubute-autodis-prompt").text("成功自动分配考试");
+                                $("#distrubute-autodis-prompt").text(" 分配成功:"+(data["success"])+"/"+(data["success"]+data["false"])+" 分配失败:"+(data["false"])+"/"+(data["success"]+data["false"])+" ");
                                 changed("#distrubute-autodis-prompt");
+                                // $('#pushmanage-modal-confirm').modal('hide');
+                                // $btn.button('reset');
+                                // $btncl.button('reset');
+                                // $("#pushmanage-modal-prompt-p").html("<p>推送成功:"+(n)+"/"+datas.length+" 推送失败:"+(f)+"/"+datas.length+"</p>");
+                                // $('#pushmanage-modal-prompt').modal('show');
+
                                 table1().ajax.reload();
                             });
-                        }else if(data.err == "false"){
+                        }else if(data.msg == "false"){
                             $("#distrubute-autodis-prompt").animate({opacity:1},1000,function() {
                                 $("#distrubute-autodis-prompt").text("自动分配失败，请咨询管理员");
                                 changed("#distrubute-autodis-prompt");
