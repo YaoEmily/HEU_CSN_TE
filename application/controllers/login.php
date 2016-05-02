@@ -19,44 +19,22 @@ class login extends CI_Controller {
              $this->load->view('templates/login.html',$data);
         }
         else{
-            if($this->iftrue($word)=='true'){
+             if($this->iftrue($word)=='true'){
                 $this->log($id,$password);
-            }
-            else{
-                $data = array('title' => '请登录','heading' =>  $this->Sys_model->getname(),'word' => "验证码错误");  
-                $this->load->view('templates/login.html',$data);           
-            }
+             }
+             else{
+               $data = array('title' => '请登录','heading' =>  $this->Sys_model->getname(),'word' => "验证码错误");  
+               $this->load->view('templates/login.html',$data);           
+             }
         }
         
         
     }
 
     public function getpic(){
-        $vals = array(
-            'word'      => 'Random word',
-            'img_path'  => './captcha/',
-            'img_url'   => 'http://example.com/captcha/',
-            'font_path' => './path/to/fonts/texb.ttf',
-            'img_width' => '150',
-            'img_height'    => 30,
-            'expiration'    => 7200,
-            'word_length'   => 8,
-            'font_size' => 16,
-            'img_id'    => 'Imageid',
-            'pool'      => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-
-            // White background and border, black text and red grid
-            'colors'    => array(
-                'background' => array(255, 255, 255),
-                'border' => array(255, 255, 255),
-                'text' => array(0, 0, 0),
-                'grid' => array(255, 40, 40)
-            )
-        );
-        Header("Content-type: image/png");
-        $cap = create_captcha($vals);
-        $this->session->set_tempdata('word', $cap['word'], 3000);
-        echo $cap['image'];
+        ob_end_clean();
+        $this->yan->doimg();
+        $this->session->set_tempdata('word',  $this->yan->getCode(), 3000);
     }
 
     public function iftrue($word){
