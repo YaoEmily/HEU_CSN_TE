@@ -352,8 +352,9 @@
                         dataType:'json',
                         success:function(data) {  
                             if(data.msg =="true" ){
+                                console.log("asdfas");
                                 $("#teachermanage-pass-prompt").animate({opacity:0},1000,function() {
-                                    $("#teachermanage-pass-prompt").text("成功修改为"+t_password); 
+                                    $("#teachermanage-pass-prompt").text("成功修改为"+password); 
                                     changed("#teachermanage-pass-prompt")
                                 });
                             }else{

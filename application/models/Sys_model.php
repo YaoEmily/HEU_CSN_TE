@@ -15,4 +15,13 @@ class Sys_model extends CI_Model {
 		$query = $this->db->query("update sysname set name='$name'");
 		return $query;
 	}
+
+	public function getdate(){
+		$this->load->database();
+	    $query = $this->db->query("select * from common ");
+	    $time=$query->row_array();
+        $date=$time['start'];
+        return $date;
+	}
+
 }

@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">学期管理</h1>
-            <p id="setting-term-curterm">当前学期开学日期：<span id="setting-term-curterm-span"></span> </p>
+            <p id="setting-term-curterm">当前学期开学日期：<span id="setting-term-curterm-span"><?php  echo $date; ?></span> </p>
         </div>
     </div>
     <div class="row">

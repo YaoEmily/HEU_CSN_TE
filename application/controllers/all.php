@@ -11,9 +11,13 @@ class all extends CI_Controller {
     }
 
     public function index(){
-        $i=2016;
+        $i=2015;
         $terms = array();
-        for($i=2016;$i<=(int)date('Y');$i=$i+1){
+        $date=(int)date('Y');
+        if((int)date('m')<9){
+            $date=$date-1;
+        }
+        for($i=2015;$i<=$date;$i=$i+1){
             $terms[]="$i";
         }
 

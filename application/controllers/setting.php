@@ -44,7 +44,7 @@ class setting extends CI_Controller {
             $data = array('title' =>  $this->Sys_model->getname(),'heading' =>  $this->Sys_model->getname());
             $this->load->view('templates/header.php',$data);
             $this->load->view('templates/setting_menu.php',array('current' => 'term'));
-            $this->load->view('manage/setting_term.php');
+            $this->load->view('manage/setting_term.php',array('date' => $this->Sys_model->getdate()));
             $this->load->view('templates/footer.php');
         }
         else{

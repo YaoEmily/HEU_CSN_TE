@@ -76,15 +76,15 @@ class distribute_model extends CI_Model {
 
     public function dis($date,$stime,$etime,$room,$ename,$tid){
 
-        $query=$this->db->query("select e_teachernum from exam where e_date= '$date' and e_stime= '$stime' and e_etime= '$etime' and e_room= $room and e_name= '$ename'");
+        $query=$this->db->query("select e_teachernum from exam where e_date= '$date' and e_stime= '$stime' and e_etime= '$etime' and e_room= '$room' and e_name= '$ename'");
         $num=$query->row_array();
         if($num['e_teachernum']>0){
 
             $distribute = array(
-                'd_date' => $date,
-                'd_time' => $stime,
-                'd_room' => $room,
-                'd_ename'=>$ename,
+                'd_date' => "$date",
+                'd_time' => "$stime",
+                'd_room' => "$room",
+                'd_ename'=>"$ename",
                 'd_tid'=>"$tid",
                 'd_type'=>'0',
                 'd_state'=>'0',
@@ -95,7 +95,7 @@ class distribute_model extends CI_Model {
                 );
             $query=$this->db->insert('distribute', $distribute);
             if($query) {
-                $this->db->query("update exam set e_teachernum=e_teachernum-1 where e_date= '$date' and e_stime= '$stime' and e_etime= '$etime' and e_room= $room and e_name= '$ename'");
+                $this->db->query("update exam set e_teachernum=e_teachernum-1 where e_date= '$date' and e_stime= '$stime' and e_etime= '$etime' and e_room= '$room' and e_name= '$ename'");
                 return "true";
 
             }

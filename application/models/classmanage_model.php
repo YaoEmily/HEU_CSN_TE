@@ -24,9 +24,9 @@ class classmanage_model extends CI_Model {
 		$classinfo = array(
         'id' => "$id",
         'c_name' => "$name",
-        'c_day' => $day,
-        'c_stime'=>$stime,
-        'c_etime'=>$etime,
+        'c_day' => "$day",
+        'c_stime'=>"$stime",
+        'c_etime'=>"$etime",
         'week1'=>$a,
         'week2'=>$b,
         'week3'=>$c,
@@ -59,9 +59,9 @@ class classmanage_model extends CI_Model {
 	public function updateclass($id,$name,$day,$stime,$etime,$a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k,$l,$m,$n,$o,$p,$q,$r,$s,$t,$u,$v,$w,$x,$y){
 		$query = $this->db->query("delete from class where  id =".$id." and c_name = '$name' and c_day =".$day." and c_stime= '$stime' and c_etime='$etime' ");
 		$classinfo = array(
-        'id' => $id,
-        'c_name' => $name,
-        'c_day' => $day,
+        'id' => "$id",
+        'c_name' => "$name",
+        'c_day' => "$day",
         'c_stime'=>"$stime",
         'c_etime'=>"$etime",
         'week1'=>$a,

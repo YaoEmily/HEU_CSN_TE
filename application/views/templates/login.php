@@ -11,7 +11,7 @@
 
 <body style="background-image: url('/public/assets/images/bg5.jpg'); width:100%; height: 100%;background-repeat: no-repeat; background-size: 100% 100%;">
     <div id="wrapper" style="opacity: 0.95;">
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; background-color: rgba(0,0,0,0.2); border-bottom-width: 0px">
             <div class="navbar-header">
                 <a class="navbar-brand" href="index.html"><span style="background-image: url('/public/assets/images/clogo_64.png');background-size:100%;height: 32px;width: 32px;display: inline-block;left: 6px;top:6px;position: absolute;"></span><span style="position: relative;left: 32px;"><?php echo $heading;?></a>
             </div>

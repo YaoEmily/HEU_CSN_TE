@@ -22,6 +22,10 @@ class normalexam_model extends CI_Model {
 	public function accept($date,$time,$room,$ename,$id)
 	{
 	    $this->db->query("update teacher set t_num=t_num+1 where t_id= '$id'");
+	    $query=$this->db->query("select d_zid from distribute  where d_date='$date' and d_time='$time' and d_room= '$room' and d_ename= '$ename' and d_tid= '$id'");
+	    $z_id=$query->row_array();
+	    $z_id=$z_id['d_zid'];
+	    $this->db->query("update distribute set d_state = '1' where d_date='$date' and d_time='$time' and d_room= '$room' and d_ename= '$ename' and d_tid= '$z_id'");
 	    $query = $this->db->query("update distribute set d_state = '1' where d_date='$date' and d_time='$time' and d_room= '$room' and d_ename= '$ename' and d_tid= '$id'");
 		return $query;
 	}
@@ -32,7 +36,8 @@ class normalexam_model extends CI_Model {
 	    $this->db->query("update distribute set d_state = '2' where d_date='$date' and d_time='$time' and d_room= '$room' and d_ename= '$ename' and d_tid= '$id'");
 	    $query=$this->db->query("select d_zid from distribute where d_date='$date' and d_time='$time' and d_room= '$room' and d_ename= '$ename' and d_tid= '$id'");
 		$newid=$query->row_array();
-	    $query=$this->db->query("update distribute set d_state = '0',d_type = '0' where d_date='$date' and d_time='$time' and d_room= '$room' and d_ename= '$ename' and d_tid=".$newid['d_zid']);
+		$newid=$newid['d_zid'];
+	    $query=$this->db->query("update distribute set d_state = '0',d_type = '0' where d_date='$date' and d_time='$time' and d_room= '$room' and d_ename= '$ename' and d_tid='$newid'");
 	    return $query;
 	}
 

@@ -390,11 +390,12 @@
 			alert(errmsg["ajaxerr"]);
 			return false;
 		}
-		var date = exams[ci]["date"];
-		var time = exams[ci]["time"];
-		var room = exams[ci]["room"];
-		var ename = exams[ci]["ename"];
-		var tid = exams[ci]["tid"];
+		var date = exams[ci]["d_date"];
+		var time = exams[ci]["d_time"];
+		var room = exams[ci]["d_room"];
+		var ename = exams[ci]["d_ename"];
+		var tid = exams[ci]["d_tid"];
+        console.log(exams[ci])
         $.ajax( {  
             url:'/normalexam/refuse',// 跳转到 action  
             data:{
