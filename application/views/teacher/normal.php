@@ -10,7 +10,7 @@
         <div class="col-sm-6">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    ←请在左侧选择功能
+                    &#9756;请在左侧选择功能，初次使用建议首先阅读右上角问号处的帮助文档
                 </div>
             </div>
         </div>
