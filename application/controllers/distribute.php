@@ -43,6 +43,7 @@ class distribute extends CI_Controller {
                         }
                         else {
                             $false=$false+1;
+                            $exam['e_teachernum']=$exam['e_teachernum']-1;
                         }
                     }
                     $this->distribute_model->okstate($exam['e_date'],$exam['e_stime'],$exam['e_etime'],$exam['e_room'],$exam['e_name']);

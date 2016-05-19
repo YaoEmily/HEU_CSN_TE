@@ -7,7 +7,7 @@ class exammanage_model extends CI_Model {
     }
 	public function examinfo()
 	{
-	    $query = $this->db->query("select * from exam ");
+	    $query = $this->db->query("select * from exam where e_teachernum>0");
 		return $query;
 	}
 	public function delete($date,$stime,$etime,$room,$name){
